@@ -51,9 +51,8 @@ const Work = () => {
 
   return (
     <div className="flex flex-col items-center content-frame ">
-      <h2 className="text-4xl font-bold text-center my-8 ">
-        My Creative{" "}
-        <span className="font-extrabold text-primary">Portfolio</span>
+      <h2 className="text-3xl font-semibold text-center my-8 ">
+        My Creative <span className="font-bold text-primary">Portfolio</span>
       </h2>
 
       <div className="flex flex-wrap justify-center mb-12 gap-3">
@@ -113,7 +112,7 @@ const Card = ({ containerRef, work, className }: Props) => {
       dragConstraints={containerRef}
       style={randomStyles}
       dragElastic={0.3}
-      className="absolute cursor-grab active:cursor-grabbing drag-elements"
+      className="absolute cursor-grab active:cursor-grabbing drag-elements will-change-transform"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
