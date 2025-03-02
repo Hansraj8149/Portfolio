@@ -45,9 +45,9 @@ const Work = () => {
   };
 
   return (
-    <div className=" h-auto flex-col flex items-center content-frame">
+    <div className="flex flex-col items-center content-frame ">
       <h2 className="text-4xl font-bold text-center my-6">
-        My Creative <span className="text-blue-500">Portfolio</span> Section
+        My Creative <span className="text-primary">Portfolio</span> Section
       </h2>
 
       {/* Filter Buttons */}
@@ -57,10 +57,10 @@ const Work = () => {
             <button
               key={index}
               onClick={() => handleWorkFilter(item)}
-              className={`px-4 py-2 m-2 rounded-lg font-semibold transition-all ${
+              className={`px-4 py-2 m-2 rounded-lg font-mulish font-semibold transition-all ${
                 activeFilter === item
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 hover:bg-blue-400 hover:text-white"
+                  ? "bg-primary text-text"
+                  : " text-primary border-text border hover:border-primary hover:text-white"
               }`}
             >
               {item}
@@ -78,7 +78,7 @@ const Work = () => {
         {filterWork.map((work, index) => (
           <div
             key={index}
-            className="group relative  rounded-lg shadow-lg p-4 hover:shadow-2xl transition-all"
+            className="group relative rounded-lg shadow-lg p-4 hover:shadow-2xl transition-all"
           >
             <Image
               src={urlFor(work.imgUrl).url()}
@@ -113,9 +113,9 @@ const Work = () => {
             <div className="mt-4 text-center">
               <h4 className="text-xl font-semibold">{work.title}</h4>
               <p className="text-gray-600 mt-2">{work.description}</p>
-              <div className="absolute top-0 left-4  text-gray-700 px-3 py-1 rounded-md text-sm font-semibold shadow-md">
+              <span className="text-gray-700 px-3 py-1 rounded-md text-sm font-semibold shadow-md">
                 {work.tags[0]}
-              </div>
+              </span>
             </div>
           </div>
         ))}
@@ -124,4 +124,4 @@ const Work = () => {
   );
 };
 
-export default AppWrap(MotionWrap(Work, "work"), "work", "bg-gray-100");
+export default AppWrap(MotionWrap(Work, "work"), "work");

@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${rubik.variable} ${mulish.variable} ${eczar.variable} antialiased bg-background`}
+        className={`${rubik.variable} ${mulish.variable} ${eczar.variable} bg-background antialiased bg-background`}
       >
         {children}
       </body>

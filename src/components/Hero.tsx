@@ -5,6 +5,7 @@ import Link from "next/link";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { MotionWrap } from "@/wrapper";
+import { Spotlight } from "./ui/spotlight";
 import { Ripple } from "./magicui/ripple";
 import { BackgroundLines } from "./ui/background-lines";
 
