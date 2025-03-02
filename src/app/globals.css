@@ -110,7 +110,7 @@
   --color-light-text: #D1D5DB; /* gray-300 */
   --color-dark-text: #9CA3AF; /* gray-400 */
   
-  --color-background: #171717; /* neutral-900 */
+  --color-background: #000; /* neutral-900 */
   --color-light-background: #525252; /* neutral-600 */
   --color-background-dark: #0A0A0A; /* neutral-950 */
   
