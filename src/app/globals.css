@@ -127,3 +127,13 @@
     @apply bg-background text-foreground;
   }
 }
+.app-head {
+  font-size: 2.75rem;
+  font-weight: bold;
+  font-family: var(--font-eczar), serif;
+}
+
+.app-p {
+  font-family: var(--font-mulish), sans-serif;
+}
+

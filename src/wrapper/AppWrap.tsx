@@ -10,13 +10,10 @@ const AppWrap = <P extends object>(
     return (
       <div
         id={idName}
-        className={clsx(
-          "flex min-h-[100vh] w-full border border-black",
-          classNames
-        )}
+        className={clsx("flex min-h-[100vh] w-full", classNames)}
       >
         <SocialMedia />
-        <div className="flex w-full h-auto flex-col items-center  py-4 px-2 sm:px-1 border border-red-500">
+        <div className="flex w-full h-auto flex-col gap-4  py-8 px-4 sm:px-2">
           <Component {...props} />
           <div className="text-end text-gray-600 text-sm">
             <p>©2022 HANSRAJ</p>
