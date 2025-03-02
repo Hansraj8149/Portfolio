@@ -15,10 +15,6 @@ const AppWrap = <P extends object>(
         <SocialMedia />
         <div className="flex w-full h-auto flex-col gap-4  py-8 px-4 sm:px-2">
           <Component {...props} />
-          <div className="text-end text-gray-600 text-sm">
-            <p>©2022 HANSRAJ</p>
-            <p>All rights reserved</p>
-          </div>
         </div>
         <NavigationDots active={idName} />
       </div>
