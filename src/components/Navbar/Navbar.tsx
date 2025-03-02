@@ -6,17 +6,16 @@ import { client } from "@/sanity/lib/client";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  const [resume, setResume] = useState("");
+  const [resume, setResume] = useState<string | null>(null);
+
   useEffect(() => {
     const fetchData = async () => {
       const resumeData = await client.fetch('*[_type == "resume"]');
-      setResume(resumeData[0].pdf);
+      setResume(resumeData[0]?.pdf || null);
     };
 
     fetchData();
   }, []);
-
-  console.log("resume", resume);
 
   return (
     <nav
@@ -46,7 +45,7 @@ const Navbar = () => {
         </ul>
 
         <a
-          href="https://drive.google.com/file/d/10UKpYmp3qFza8onnqYzt2ZrD6OqIKuxg/view?usp=drive_link"
+          href={resume || "#"}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:block"
@@ -101,7 +100,7 @@ const Navbar = () => {
 
             {/* Resume Button */}
             <a
-              href={resume}
+              href={resume || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 w-full"
