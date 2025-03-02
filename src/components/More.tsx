@@ -36,7 +36,7 @@ const More = () => {
             whileInView={{ opacity: 1 }}
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.5, type: "tween" }}
-            className="w-64 md:w-72 bg-white text-black shadow-md rounded-lg p-4 cursor-pointer transition-all"
+            className="w-64 md:w-72  text-black shadow-md rounded-lg p-4 cursor-pointer transition-all"
             key={item.title + index}
           >
             {/* Uncomment Next.js Image for optimization */}

@@ -45,7 +45,7 @@ const Work = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className=" h-auto flex-col flex items-center content-frame">
       <h2 className="text-4xl font-bold text-center my-6">
         My Creative <span className="text-blue-500">Portfolio</span> Section
       </h2>
@@ -78,11 +78,11 @@ const Work = () => {
         {filterWork.map((work, index) => (
           <div
             key={index}
-            className="group relative bg-white rounded-lg shadow-lg p-4 hover:shadow-2xl transition-all"
+            className="group relative  rounded-lg shadow-lg p-4 hover:shadow-2xl transition-all"
           >
             <Image
               src={urlFor(work.imgUrl).url()}
-              alt={work.name}
+              alt={work.name || "Project Image"}
               layout="fill"
               objectFit="cover"
               className="rounded-lg"
@@ -113,7 +113,7 @@ const Work = () => {
             <div className="mt-4 text-center">
               <h4 className="text-xl font-semibold">{work.title}</h4>
               <p className="text-gray-600 mt-2">{work.description}</p>
-              <div className="absolute top-0 left-4 bg-white text-gray-700 px-3 py-1 rounded-md text-sm font-semibold shadow-md">
+              <div className="absolute top-0 left-4  text-gray-700 px-3 py-1 rounded-md text-sm font-semibold shadow-md">
                 {work.tags[0]}
               </div>
             </div>

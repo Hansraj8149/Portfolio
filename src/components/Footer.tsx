@@ -74,7 +74,7 @@ const Footer = () => {
       {/* Contact Form */}
       {!isFormSubmitted ? (
         <form
-          className="w-full md:w-3/5 flex flex-col gap-4 bg-white shadow-md p-6 rounded-lg"
+          className="w-full md:w-3/5 flex flex-col gap-4  shadow-md p-6 rounded-lg"
           onSubmit={handleSubmit}
         >
           <input

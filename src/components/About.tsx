@@ -8,7 +8,10 @@ import { AppWrap, MotionWrap } from "@/wrapper";
 
 const About = () => {
   return (
-    <div id="about" className="w-full h-full p-4 flex items-center py-16">
+    <div
+      id="about"
+      className="w-full h-full p-4 flex items-center py-16 content-frame"
+    >
       <div className="max-w-[1240px] mx-auto md:grid grid-cols-3 gap-8">
         {/* Left Section */}
         <div className="col-span-2">

@@ -82,7 +82,7 @@ const Skills = () => {
                     whileInView={{ opacity: [0, 1] }}
                     transition={{ duration: 0.5 }}
                     key={work.name}
-                    className="p-4 bg-white rounded-lg shadow-md"
+                    className="p-4  rounded-lg shadow-md"
                   >
                     <h4 className="text-lg font-semibold text-gray-900">
                       {work.name}

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -133,7 +134,7 @@
   font-family: var(--font-eczar), serif;
 }
 
-.app-p {
-  font-family: var(--font-mulish), sans-serif;
+.font-mulish {
+  font-family: 'Mulish', sans-serif;
 }
 
