@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
+import { Eczar, Mulish, Rubik } from "next/font/google";
 import "./globals.css";
 import "./components.css";
 
@@ -7,6 +7,17 @@ const rubik = Rubik({
   variable: "--font-rubik",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
+});
+const eczar = Eczar({
+  variable: "--font-eczar",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"], // Adjust as needed
+});
+
+const mulish = Mulish({
+  variable: "--font-mulish",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"], // Adjust as needed
 });
 
 export const metadata: Metadata = {
@@ -22,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${rubik.variable}  antialiased bg-neutral-900 text-white `}
+        className={`${rubik.variable} ${mulish.variable} ${eczar.variable} antialiased bg-background`}
       >
         {children}
       </body>

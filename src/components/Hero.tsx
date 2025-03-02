@@ -5,6 +5,7 @@ import Link from "next/link";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa"; // Keeping these since HeroIcons lacks brand logos
 import { MotionWrap } from "@/wrapper";
+import { Ripple } from "./magicui/ripple";
 
 const Hero = () => {
   return (
@@ -13,16 +14,16 @@ const Hero = () => {
       className="w-full h-screen text-center flex items-center justify-center"
     >
       <div className="max-w-[1240px] mx-auto px-4">
-        <p className="uppercase text-sm tracking-widest text-gray-600">
+        <p className="uppercase text-sm tracking-widest text-gray-300">
           LET&apos;S BUILD SOMETHING TOGETHER
         </p>
-        <h1 className="py-4 text-gray-700 text-4xl font-bold">
+        <h1 className="py-4 text-white text-4xl font-bold">
           Hi, I&apos;m <span className="text-blue-500">Hansraj</span>
         </h1>
-        <h2 className="py-2 text-gray-700 text-3xl font-semibold">
+        <h2 className="py-2 text-white text-3xl font-semibold">
           A Fullstack Web Developer
         </h2>
-        <p className="py-4 text-gray-600 sm:max-w-[70%] mx-auto">
+        <p className="py-4 text-gray-300 sm:max-w-[70%] mx-auto">
           I’m focused on building responsive fullstack web applications while
           learning & exploring other technologies.
         </p>
@@ -62,6 +63,7 @@ const Hero = () => {
           </a> */}
         </div>
       </div>
+      <Ripple />
     </div>
   );
 };
