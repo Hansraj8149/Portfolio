@@ -99,6 +99,8 @@
   --color-primary: #3B82F6; /* blue-500 */
   --color-primary-light: #60A5FA; /* blue-400 */
   --color-primary-dark: #2563EB; /* blue-600 */
+  --color-primary-lighter: #DBEAFE; /* blue-300 */
+  --color-primary-darker: #2563EB; /* blue-600 */
 
   --color-secondary: #93C5FD; /* blue-300 */
   --color-secondary-light: #BFDBFE; /* blue-200 */

@@ -1,10 +1,22 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
+import { client } from "@/sanity/lib/client";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const [resume, setResume] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      const resumeData = await client.fetch('*[_type == "resume"]');
+      setResume(resumeData[0].pdf);
+    };
+
+    fetchData();
+  }, []);
+
+  console.log("resume", resume);
 
   return (
     <nav
@@ -13,8 +25,8 @@ const Navbar = () => {
     >
       <div className=" content-frame flex justify-between items-center px-2">
         <div className="flex items-center">
-          <h1 className="font-mulish text-2xl font-bold text-blue-500">H</h1>
-          <h1 className="font-mulish text-2xl font-bold text-white">S</h1>
+          <h1 className="font-mulish text-2xl font-bold text-primary">H</h1>
+          <h1 className="font-mulish text-2xl font-bold text-text">S</h1>
         </div>
 
         <ul className="hidden md:flex space-x-1 lg:space-x-2">
@@ -22,12 +34,12 @@ const Navbar = () => {
             <li key={item} className="group px-3 py-2">
               <a
                 href={`#${item}`}
-                className="font-mulish px-1 text-white text-[0.9rem] font-bold capitalize rounded-lg transition-colors duration-300 relative inline-block overflow-hidden"
+                className="font-mulish px-1 text-text text-[0.9rem] font-bold capitalize rounded-lg transition-colors duration-300 relative inline-block overflow-hidden"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-blue-600">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-primary-dark">
                   {item}
                 </span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
           ))}
@@ -39,16 +51,16 @@ const Navbar = () => {
           rel="noopener noreferrer"
           className="hidden md:block"
         >
-          <button className="bg-blue-500 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-blue-600 hover:shadow-md hover:shadow-blue-200 transform hover:-translate-y-0.5">
+          <button className="bg-primary text-text px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-primary-dark  transform">
             Resume
           </button>
         </a>
 
         <button
-          className="md:hidden p-2 rounded-full bg-blue-50 transition-colors duration-300 hover:bg-blue-100"
+          className="md:hidden p-2 rounded-full bg-primary-lighter transition-colors duration-300 hover:bg-primary-darker"
           onClick={() => setToggle(true)}
         >
-          <HiMenuAlt4 className="text-2xl text-blue-500" />
+          <HiMenuAlt4 className="text-2xl text-primary hover:text-secondary-light" />
         </button>
 
         {toggle && (
@@ -64,13 +76,13 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed top-0 right-0 w-80 h-full  shadow-lg p-8 flex flex-col items-start justify-center z-50 md:hidden"
+            className="fixed top-0 right-0 h-full max-w-[80%] w-[320px] shadow-xl p-6 flex flex-col items-center justify-start z-50 bg-background md:hidden"
           >
             <button
               onClick={() => setToggle(false)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition-colors duration-300"
+              className="absolute top-5 right-5 p-2 md:hidden  rounded-full bg-primary-lighter transition-colors duration-300 hover:bg-primary-darker"
             >
-              <HiX className="text-xl text-blue-500" />
+              <HiX className="text-2xl text-primary hover:text-secondary-light" />
             </button>
 
             <ul className="space-y-4 w-full">
@@ -79,7 +91,7 @@ const Navbar = () => {
                   <a
                     href={`#${item}`}
                     onClick={() => setToggle(false)}
-                    className="font-mulish  py-3 px-4 text-white text-[0.9rem] font-bold capitalize rounded-lg transition-colors duration-300 hover:bg-blue-50 hover:text-blue-600 flex flex-col no-underline"
+                    className="font-mulish  py-4 px-4 text-white text-[0.9rem] font-bold capitalize rounded-lg transition-colors duration-300 hover:bg-primary-lighter hover:text-primary-dark flex flex-col no-underline"
                   >
                     {item}
                   </a>
@@ -87,13 +99,14 @@ const Navbar = () => {
               ))}
             </ul>
 
+            {/* Resume Button */}
             <a
-              href="https://drive.google.com/file/d/10UKpYmp3qFza8onnqYzt2ZrD6OqIKuxg/view?usp=drive_link"
+              href={resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 w-full"
+              className="mt-10 w-full"
             >
-              <button className="w-full bg-blue-500 text-white py-3 rounded-lg font-medium transition-all duration-300 hover:bg-blue-600 hover:shadow-md">
+              <button className="w-full bg-primary text-text py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-dark">
                 Resume
               </button>
             </a>
