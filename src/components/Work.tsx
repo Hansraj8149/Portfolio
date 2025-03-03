@@ -118,7 +118,7 @@ const Card = ({ containerRef, work, className }: Props) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="w-48 md:w-56 lg:w-64 rounded-xl overflow-hidden shadow-lg transition-all duration-300 bg-background border border-border dark:bg-background-dark dark:border-border-dark-mode hover:shadow-2xl">
+      <div className="w-48 md:w-56 lg:w-64 rounded-xl overflow-hidden transition-all duration-300 bg-background border border-border dark:bg-background-dark dark:border-border-dark-mode">
         <div className="relative lg:h-40 md:h-36 h-24 overflow-hidden">
           <Image
             width={300}
@@ -144,7 +144,7 @@ const Card = ({ containerRef, work, className }: Props) => {
               rel="noreferrer"
               aria-label="View Project"
             >
-              <div className="w-10 h-10 sm:w-9 sm:h-9 xs:w-8 xs:h-8 flex items-center justify-center bg-secondary-lighter rounded-full shadow-lg backdrop-blur-sm">
+              <div className="w-10 h-10 sm:w-9 sm:h-9 xs:w-8 xs:h-8 flex items-center justify-center bg-secondary-lighter rounded-full backdrop-blur-sm">
                 <AiFillEye size={20} className="text-primary-dark" />
               </div>
             </a>
@@ -154,7 +154,7 @@ const Card = ({ containerRef, work, className }: Props) => {
               rel="noreferrer"
               aria-label="View Code"
             >
-              <div className="w-10 h-10 sm:w-9 sm:h-9 xs:w-8 xs:h-8 flex items-center justify-center bg-secondary-lighter rounded-full shadow-lg backdrop-blur-sm">
+              <div className="w-10 h-10 sm:w-9 sm:h-9 xs:w-8 xs:h-8 flex items-center justify-center bg-secondary-lighter rounded-full backdrop-blur-sm">
                 <AiFillGithub size={20} className="text-primary-dark" />
               </div>
             </a>

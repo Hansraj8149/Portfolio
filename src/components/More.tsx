@@ -34,7 +34,7 @@ const More = () => {
   };
 
   return (
-    <div className="py-16 px-4 bg-background dark:bg-background-dark text-text dark:text-text-dark transition-all duration-300">
+    <div className="content-frame flex flex-col bg-background dark:bg-background-dark text-text dark:text-text-dark transition-all duration-300">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -45,8 +45,8 @@ const More = () => {
           My Expertise
         </span>
         <h2 className="text-3xl md:text-4xl font-extrabold mt-3 mb-6 leading-tight">
-          Where <span className="text-primary">Design</span> Meets{" "}
-          <span className="text-secondary">Development</span>
+          Where <span className="text-secondary">Design</span> Meets{" "}
+          <span className="text-primary-dark">Development</span>
         </h2>
         <p className="text-text-light dark:text-light-text-dark max-w-2xl mx-auto">
           Combining aesthetic design principles with solid development practices
@@ -73,7 +73,7 @@ const More = () => {
               y: -10,
               transition: { duration: 0.3 },
             }}
-            className={`rounded-xl overflow-hidden shadow-lg dark:shadow-background-light-dark hover:shadow-xl dark:hover:shadow-border-dark transition-all duration-300
+            className={`rounded-xl overflow-hidden transition-all duration-300
               ${selectedId === index ? "ring-2 ring-primary ring-offset-2" : ""}
               bg-background-lighter dark:bg-background-lighter-dark border border-border dark:border-border-dark-mode
             `}
@@ -87,11 +87,10 @@ const More = () => {
                   fill
                   className="object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
               {/* Category Badge */}
-              <div className="absolute top-4 right-4 bg-white/90 dark:bg-background-light-dark backdrop-blur-sm text-primary py-1 px-3 rounded-full text-xs font-medium shadow-sm">
+              <div className="absolute top-4 right-4 bg-secondary-lighter  backdrop-blur-sm text-primary py-1 px-3 rounded-full text-xs font-medium ">
                 Expertise
               </div>
             </div>

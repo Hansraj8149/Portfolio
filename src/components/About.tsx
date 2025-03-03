@@ -23,7 +23,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-3 py-1 bg-secondary-light text-primary dark:bg-secondary-darker dark:text-secondary-light rounded-full text-sm font-medium mb-4">
+          <span className="text-primary-dark text-sm font-bold uppercase mb-4">
             About Me
           </span>
           <h2 className="text-3xl font-semibold text-text dark:text-text-dark font-mulish mb-6">
@@ -32,7 +32,6 @@ const About = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-          {/* Left Section - Content */}
           <div className="md:col-span-3 space-y-6">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -41,7 +40,7 @@ const About = () => {
             >
               <h3 className="text-2xl font-bold text-light-text dark:text-light-text-dark mb-3">
                 Hi, I&apos;m{" "}
-                <span className="text-primary border-b-2 border-primary pb-1">
+                <span className="text-primary-dark border-b-2 border-primary pb-1">
                   Hansraj Saini
                 </span>
               </h3>
@@ -53,12 +52,11 @@ const About = () => {
               </p>
             </motion.div>
 
-            {/* Skills Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <SkillCard
                 icon={
                   <HiOutlineLightBulb
-                    className="text-primary-dark dark:text-primary-light"
+                    className="text-primary-dark "
                     size={24}
                   />
                 }
@@ -68,33 +66,20 @@ const About = () => {
               />
               <SkillCard
                 icon={
-                  <RiCodeSSlashLine
-                    className="text-primary-dark dark:text-primary-light"
-                    size={24}
-                  />
+                  <RiCodeSSlashLine className="text-primary-dark " size={24} />
                 }
                 title="API Development"
                 description="Led API development and optimized real-time data processing, cutting latency by 20%."
                 delay={0.4}
               />
               <SkillCard
-                icon={
-                  <FiAward
-                    className="text-primary-dark dark:text-primary-light"
-                    size={24}
-                  />
-                }
+                icon={<FiAward className="text-primary-dark" size={24} />}
                 title="Problem Solving"
                 description="Strong problem-solving skills with 500+ LeetCode problems solved and a 5-star C++ rating on HackerRank."
                 delay={0.5}
               />
               <SkillCard
-                icon={
-                  <FiCode
-                    className="text-primary-dark dark:text-primary-light"
-                    size={24}
-                  />
-                }
+                icon={<FiCode className="text-primary-dark " size={24} />}
                 title="Clean Code"
                 description="Passionate about clean, scalable code and delivering seamless user experiences."
                 delay={0.6}
@@ -109,7 +94,7 @@ const About = () => {
               className="mt-8"
             >
               <Link href="/#work">
-                <button className="flex items-center gap-2 px-8 py-3 text-text-light dark:text-dark-text-dark bg-gradient-to-r from-primary to-primary-dark dark:from-primary-dark dark:to-primary-darker rounded-full hover:shadow-lg hover:shadow-blue-300 dark:hover:shadow-blue-800 hover:-translate-y-1 transition-all duration-300 font-medium">
+                <button className="flex px-4 bg-primary text-secondary-lighter py-2 rounded-lg font-medium transition-all duration-300 hover:bg-primary-darker ">
                   See My Portfolio <BsArrowRightShort size={24} />
                 </button>
               </Link>
@@ -124,7 +109,7 @@ const About = () => {
             className="md:col-span-2 flex justify-center"
           >
             <CardContainer className="inter-var">
-              <CardBody className="relative group/card bg-background-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <CardBody className="relative group/card bg-background-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6  transition-all duration-300">
                 <CardItem
                   translateZ={50}
                   className="text-xl font-bold text-dark-text dark:text-text-dark mb-2 z-10"
@@ -141,7 +126,7 @@ const About = () => {
                 </CardItem>
 
                 <CardItem translateZ={100} className="w-full h-auto z-10">
-                  <div className="relative w-full aspect-square overflow-hidden rounded-xl shadow-lg">
+                  <div className="relative w-full aspect-square overflow-hidden rounded-xl">
                     <Image
                       src="/about.jpeg"
                       alt="Hansraj Saini - Full Stack Developer"
@@ -198,12 +183,10 @@ const SkillCard: React.FC<SkillCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      className="bg-background-lighter dark:bg-background-light-dark p-5 rounded-xl shadow-sm hover:shadow-md border border-border-light dark:border-border-dark-mode transition-all duration-300"
+      className="bg-background-lighter dark:bg-background-light-dark p-5 rounded-xl  border border-border-light dark:border-border-dark-mode transition-all duration-300"
     >
       <div className="flex items-start space-x-3">
-        <div className="p-2 bg-secondary-light dark:bg-secondary-dark rounded-lg">
-          {icon}
-        </div>
+        <div className="p-2 bg-secondary-light rounded-lg">{icon}</div>
         <div>
           <h4 className="font-semibold text-text dark:text-text-dark mb-1">
             {title}
