@@ -53,9 +53,7 @@ const Work = () => {
     <div className="flex flex-col items-center content-frame bg-background dark:bg-background-dark text-text dark:text-text-dark">
       <h2 className="text-3xl font-semibold text-center my-8">
         My Creative{" "}
-        <span className="font-bold text-primary dark:text-primary-light">
-          Portfolio
-        </span>
+        <span className="font-bold text-primary-dark">Portfolio</span>
       </h2>
 
       <div className="flex flex-wrap justify-center mb-12 gap-3">
@@ -67,8 +65,8 @@ const Work = () => {
               className={clsx(
                 "px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105",
                 activeFilter === item
-                  ? "bg-primary text-white shadow-lg dark:bg-primary-dark"
-                  : "bg-secondary-light text-text border border-border hover:border-primary hover:text-primary dark:bg-secondary-darker dark:text-dark-text-dark dark:border-border-dark-mode dark:hover:border-primary-light"
+                  ? "bg-primary text-secondary-lighter dark:bg-primary-dark"
+                  : "bg-secondary-lighter text-text border border-border hover:border-primary hover:text-primary  dark:border-border-dark-mode "
               )}
             >
               {item}
@@ -146,8 +144,8 @@ const Card = ({ containerRef, work, className }: Props) => {
               rel="noreferrer"
               aria-label="View Project"
             >
-              <div className="w-10 h-10 sm:w-9 sm:h-9 xs:w-8 xs:h-8 flex items-center justify-center bg-white/90 text-blue-600 rounded-full shadow-lg backdrop-blur-sm">
-                <AiFillEye size={20} />
+              <div className="w-10 h-10 sm:w-9 sm:h-9 xs:w-8 xs:h-8 flex items-center justify-center bg-secondary-lighter rounded-full shadow-lg backdrop-blur-sm">
+                <AiFillEye size={20} className="text-primary-dark" />
               </div>
             </a>
             <a
@@ -156,8 +154,8 @@ const Card = ({ containerRef, work, className }: Props) => {
               rel="noreferrer"
               aria-label="View Code"
             >
-              <div className="w-10 h-10 sm:w-9 sm:h-9 xs:w-8 xs:h-8 flex items-center justify-center bg-white/90 text-gray-800 rounded-full shadow-lg backdrop-blur-sm">
-                <AiFillGithub size={20} />
+              <div className="w-10 h-10 sm:w-9 sm:h-9 xs:w-8 xs:h-8 flex items-center justify-center bg-secondary-lighter rounded-full shadow-lg backdrop-blur-sm">
+                <AiFillGithub size={20} className="text-primary-dark" />
               </div>
             </a>
           </div>
@@ -176,7 +174,7 @@ const Card = ({ containerRef, work, className }: Props) => {
               work.tags.map((tag, index) => (
                 <span
                   key={`tag-${index}`}
-                  className="inline-block bg-secondary-lighter text-primary px-3 sm:px-2 xs:px-2 py-1 rounded-full lg:text-xs md:text-[11px] text-[10px] font-medium border border-border-light dark:bg-secondary-dark dark:text-primary-light dark:border-border-dark-mode"
+                  className="bg-secondary-lighter text-text border border-border text-[10px] p-2 rounded-full dark:border-border-dark-mode "
                 >
                   {tag}
                 </span>

@@ -16,14 +16,11 @@ const Hero = () => {
         className="w-full h-screen text-center flex items-center justify-center bg-background dark:bg-background-dark"
       >
         <div className="max-w-[1240px] mx-auto px-4">
-          <p className="uppercase text-sm tracking-widest text-text-light dark:text-light-text-dark">
+          <p className="uppercase text-sm tracking-widest text-text dark:text-light-text-dark">
             LET&apos;S BUILD SOMETHING AWESOME
           </p>
           <h1 className="py-4 text-text dark:text-text-dark text-4xl font-bold">
-            Hi, I&apos;m{" "}
-            <span className="text-primary dark:text-primary-light">
-              Hansraj
-            </span>
+            Hi, I&apos;m <span className="text-primary-darker">Hansraj</span>
           </h1>
           <h2 className="py-2 text-text dark:text-text-dark text-3xl font-semibold">
             A Fullstack Developer
@@ -40,8 +37,8 @@ const Hero = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <div className="rounded-full bg-text-light dark:bg-light-text-dark p-4 cursor-pointer hover:scale-110 transition duration-300">
-                <FaLinkedinIn className="w-6 h-6 text-primary-dark dark:text-primary-light" />
+              <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 transition duration-300">
+                <FaLinkedinIn className="w-6 h-6 text-primary-dark" />
               </div>
             </a>
 
@@ -50,14 +47,14 @@ const Hero = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <div className="rounded-full bg-text-light dark:bg-light-text-dark p-4 cursor-pointer hover:scale-110 transition duration-300">
-                <FaGithub className="w-6 h-6 text-primary-dark dark:text-primary-light" />
+              <div className="rounded-full bg-secondary-lighter  p-4 cursor-pointer hover:scale-110 transition duration-300">
+                <FaGithub className="w-6 h-6 text-primary-dark" />
               </div>
             </a>
 
             <Link href="/#contact">
-              <div className="rounded-full bg-text-light dark:bg-light-text-dark p-4 cursor-pointer hover:scale-110 transition duration-300">
-                <EnvelopeIcon className="w-6 h-6 text-primary-dark dark:text-primary-light" />
+              <div className="rounded-full bg-secondary-lighter  p-4 cursor-pointer hover:scale-110 transition duration-300">
+                <EnvelopeIcon className="w-6 h-6 text-primary-dark" />
               </div>
             </Link>
           </div>

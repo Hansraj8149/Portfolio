@@ -14,7 +14,7 @@ const NavigationDots = ({ active }: NavigationDotsProps) => {
           key={item}
           href={`#${item}`}
           className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-            active === item ? "bg-primary-dark" : "bg-text"
+            active === item ? "bg-primary" : "bg-secondary"
           } hover:bg-primary`}
         />
       ))}

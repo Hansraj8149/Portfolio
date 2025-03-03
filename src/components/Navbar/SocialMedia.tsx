@@ -5,15 +5,15 @@ import { BsInstagram } from "react-icons/bs";
 const socialLinks = [
   {
     href: "https://www.linkedin.com/in/hansraj-saini-634864190/",
-    icon: <FaLinkedin className="w-4 h-4 text-primary-darker" />,
+    icon: <FaLinkedin className="w-4 h-4 text-primary" />,
   },
   {
     href: "https://www.instagram.com/direct/inbox/",
-    icon: <BsInstagram className="w-4 h-4 text-primary-darker" />,
+    icon: <BsInstagram className="w-4 h-4 text-primary" />,
   },
   {
     href: "https://github.com/Hansraj8149?tab=repositories",
-    icon: <FaGithub className="w-4 h-4 text-primary-darker" />,
+    icon: <FaGithub className="w-4 h-4 text-primary" />,
   },
 ];
 
@@ -29,7 +29,7 @@ const SocialMedia = () => {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 hover:text-white text-lg"
+            className="text-lg"
           >
             {icon}
           </a>
