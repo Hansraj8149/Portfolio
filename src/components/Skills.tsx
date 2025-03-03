@@ -27,7 +27,9 @@ const Skills = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const expData = await client.fetch('*[_type == "experiences"]');
+      const expData = await client.fetch(
+        '*[_type == "experiences"] | order(year desc)'
+      );
       const skillsData = await client.fetch('*[_type == "skills"]');
       setExperiences(expData);
       setSkills(skillsData);
@@ -37,71 +39,118 @@ const Skills = () => {
   }, []);
 
   return (
-    <section className="text-center py-16 bg-gray-100">
-      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-gray-800">
-        Skills & Experiences
-      </h2>
-
-      <div className="container mx-auto flex flex-col md:flex-row items-start justify-center gap-12">
-        {/* Skills Section */}
-        <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {skills.map((skill) => (
-            <motion.div
-              whileInView={{ opacity: [0, 1] }}
-              transition={{ duration: 0.5 }}
-              key={skill.name}
-              className="flex flex-col items-center space-y-2"
-            >
-              <div
-                className="w-24 h-24 flex items-center justify-center rounded-full shadow-md"
-                style={{ backgroundColor: skill.bgColor }}
-              >
-                <Image
-                  src={urlFor(skill.icon).url()}
-                  alt={skill.name}
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                />
-              </div>
-              <p className="text-sm font-medium text-gray-700">{skill.name}</p>
-            </motion.div>
-          ))}
+    <section className="py-20">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
+            Skills & <span className="text-primary">Experiences</span>
+          </h2>
+          <p className="text-light-text max-w-2xl mx-auto">
+            My professional journey and technical expertise that I bring to
+            every project
+          </p>
         </motion.div>
 
-        {/* Experience Section */}
-        <div className="w-full max-w-2xl">
-          {experiences.map((experience) => (
-            <div key={experience.year} className="mb-6">
-              <h3 className="text-xl font-bold text-gray-800">
-                {experience.year}
-              </h3>
-              <motion.div className="space-y-4 mt-4">
-                {experience.works.map((work) => (
-                  <motion.div
-                    whileInView={{ opacity: [0, 1] }}
-                    transition={{ duration: 0.5 }}
-                    key={work.name}
-                    className="p-4  rounded-lg shadow-md"
+        <div className="flex flex-col lg:flex-row gap-16">
+          {/* Skills Section */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:w-2/5"
+          >
+            <h3 className="text-2xl font-bold mb-8 text-text border-b-2 border-primary inline-block pb-2">
+              Technical Skills
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              {skills.map((skill) => (
+                <motion.div
+                  whileInView={{ opacity: [0, 1] }}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                  key={skill.name}
+                  className="flex flex-col items-center"
+                >
+                  <div
+                    className="w-20 h-20 rounded-xl flex items-center justify-center shadow-lg mb-3 hover:shadow-xl transition-shadow duration-300"
+                    style={{ backgroundColor: skill.bgColor || "#ffffff" }}
                   >
-                    <h4 className="text-lg font-semibold text-gray-900">
-                      {work.name}
-                    </h4>
-                    <p className="text-sm text-gray-600">{work.company}</p>
-                    <p className="mt-2 text-gray-500 text-sm">{work.desc}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
+                    <Image
+                      src={urlFor(skill.icon).url()}
+                      alt={skill.name}
+                      width={36}
+                      height={36}
+                      className="object-contain"
+                    />
+                  </div>
+                  <p className="font-medium text-light-text">{skill.name}</p>
+                </motion.div>
+              ))}
             </div>
-          ))}
+          </motion.div>
+
+          {/* Experience Section */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="lg:w-3/5"
+          >
+            <h3 className="text-2xl font-bold mb-8 text-text border-b-2 border-primary inline-block pb-2">
+              Work Experience
+            </h3>
+            <div className="relative border-l-2 border-primary pl-6 ml-4">
+              {experiences.map((experience, index) => (
+                <div key={experience.year} className="mb-12">
+                  <div className="absolute w-4 h-4 bg-primary rounded-full -left-3 mt-1.5"></div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="mb-2"
+                  >
+                    <span className="bg-primary text-text px-4 py-1 rounded-full text-sm font-semibold">
+                      {experience.year}
+                    </span>
+                  </motion.div>
+
+                  <div className="space-y-6 mt-4">
+                    {experience.works.map((work, workIndex) => (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.5,
+                          delay: index * 0.1 + workIndex * 0.05,
+                        }}
+                        key={work.name}
+                        className="p-5 bg-secondary-light rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                      >
+                        <h4 className="text-xl font-semibold text-background">
+                          {work.name}
+                        </h4>
+                        <p className="text-primary-dark font-medium mt-1">
+                          {work.company}
+                        </p>
+                        <p className="mt-3 text-light-text leading-relaxed">
+                          {work.desc}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
 
-export default AppWrap(
-  MotionWrap(Skills, "app__skills"),
-  "skills",
-  "bg-gray-100"
-);
+export default AppWrap(MotionWrap(Skills, "app__skills"), "skills");
