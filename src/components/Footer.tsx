@@ -38,7 +38,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="w-full py-16 bg-background text-text transition-colors duration-300">
+    <div className="w-full py-20 content-frame flex flex-col transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
           <motion.div
             whileHover={{ y: -5 }}
-            className="flex items-center p-6 rounded-xl bg-background-light hover:bg-secondary-lighter shadow-lg transition-all duration-300"
+            className="flex items-center p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter transition-all duration-300"
           >
             <div className="p-3 rounded-full mr-4 bg-secondary">
               <Image
@@ -70,12 +70,12 @@ const Footer = () => {
               />
             </div>
             <div>
-              <h3 className="text-sm uppercase font-semibold mb-1 text-text-light">
+              <h3 className="text-sm uppercase font-semibold mb-1 hover:text-primary-light  dark:text-text-dark">
                 Email
               </h3>
               <a
                 href="mailto:hansrajsaini8149@gmail.com"
-                className="text-lg font-medium hover:text-primary-light transition-colors text-text-dark"
+                className="text-lg font-medium hover:text-primary-light  dark:text-text-dark"
               >
                 hansrajsaini8149@gmail.com
               </a>
@@ -84,7 +84,7 @@ const Footer = () => {
 
           <motion.div
             whileHover={{ y: -5 }}
-            className="flex items-center p-6 rounded-xl bg-background-light hover:bg-secondary-lighter shadow-lg transition-all duration-300"
+            className="flex items-center p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter transition-all duration-300"
           >
             <div className="p-3 rounded-full mr-4 bg-secondary-light">
               <Image
@@ -96,12 +96,12 @@ const Footer = () => {
               />
             </div>
             <div>
-              <h3 className="text-sm uppercase font-semibold mb-1 text-text-light">
+              <h3 className="text-sm uppercase font-semibold mb-1 hover:text-primary-light  dark:text-text-dark">
                 Phone
               </h3>
               <a
                 href="tel:+91 9398881610"
-                className="text-lg font-medium hover:text-primary-light transition-colors text-text-dark"
+                className="text-lg font-medium hover:text-primary-light  dark:text-text-dark"
               >
                 +91 9398881610
               </a>
@@ -116,10 +116,10 @@ const Footer = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="shadow-xl rounded-2xl p-8 transition-colors bg-background-light duration-300"
+              className="p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter transition-all duration-300"
               onSubmit={handleSubmit}
             >
-              <h3 className="text-2xl font-bold mb-6 text-text-dark">
+              <h3 className="text-lg font-medium hover:text-primary-light  dark:text-text-dark mb-4 ">
                 Send me a message
               </h3>
 
@@ -133,7 +133,7 @@ const Footer = () => {
                   </label>
                   <input
                     id="username"
-                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background-lighter border border-border text-text-dark placeholder-text-light"
+                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background dark:bg-background-dark border border-border text-text-dark placeholder-text-light"
                     type="text"
                     placeholder="John Doe"
                     name="username"
@@ -152,7 +152,7 @@ const Footer = () => {
                   </label>
                   <input
                     id="email"
-                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background-lighter border border-border text-text-dark placeholder-text-light"
+                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background dark:bg-background-dark border border-border text-text-dark placeholder-text-light"
                     type="email"
                     placeholder="john@example.com"
                     name="email"
@@ -171,7 +171,7 @@ const Footer = () => {
                   </label>
                   <textarea
                     id="message"
-                    className="w-full p-3 rounded-lg min-h-32 focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background-lighter border border-border text-text-dark placeholder-text-light"
+                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background dark:bg-background-dark border border-border text-text-dark placeholder-text-light"
                     placeholder="Tell me about your project..."
                     name="message"
                     value={formData.message}
@@ -187,7 +187,7 @@ const Footer = () => {
                     loading
                       ? "bg-secondary-dark cursor-not-allowed"
                       : "bg-primary hover:bg-primary-dark"
-                  } text-text shadow-lg`}
+                  } text-text`}
                   disabled={loading}
                 >
                   {loading ? (
@@ -224,7 +224,7 @@ const Footer = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center p-10 rounded-2xl shadow-lg text-text"
+              className="text-center p-10 rounded-2xl text-text"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 mx-auto mb-6 rounded-full bg-secondary-ligher">
                 <svg

@@ -109,7 +109,7 @@ const About = () => {
             className="md:col-span-2 flex justify-center"
           >
             <CardContainer className="inter-var">
-              <CardBody className="relative group/card bg-background-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6  transition-all duration-300">
+              <CardBody className="relative group/card bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6  transition-all duration-300">
                 <CardItem
                   translateZ={50}
                   className="text-xl font-bold text-dark-text dark:text-text-dark mb-2 z-10"
@@ -133,7 +133,6 @@ const About = () => {
                       fill
                       className="object-cover transform group-hover/card:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60"></div>
                   </div>
                 </CardItem>
 
@@ -183,7 +182,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      className="bg-background-lighter dark:bg-background-light-dark p-5 rounded-xl  border border-border-light dark:border-border-dark-mode transition-all duration-300"
+      className="bg-secondary-lighter dark:bg-background-light-dark p-5 rounded-xl  border border-border-light dark:border-border-dark-mode transition-all duration-300"
     >
       <div className="flex items-start space-x-3">
         <div className="p-2 bg-secondary-light rounded-lg">{icon}</div>

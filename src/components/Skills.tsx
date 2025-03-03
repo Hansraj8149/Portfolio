@@ -37,9 +37,9 @@ const Skills = () => {
 
     fetchData();
   }, []);
-
+  console.log(skills);
   return (
-    <section className="py-20 bg-background dark:bg-background-dark transition-colors">
+    <section className="py-20 transition-colors content-frame flex flex-col">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,6 +61,7 @@ const Skills = () => {
 
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Skills Section */}
+
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -80,7 +81,7 @@ const Skills = () => {
                   className="flex flex-col items-center"
                 >
                   <div
-                    className="w-20 h-20 rounded-xl flex items-center justify-center shadow-lg dark:shadow-md dark:bg-background-light-dark mb-3 hover:shadow-xl transition-shadow duration-300"
+                    className="w-20 h-20 rounded-xl flex items-center justify-center dark:bg-background-light-dark mb-3  duration-300"
                     style={{ backgroundColor: skill.bgColor || "#ffffff" }}
                   >
                     <Image
@@ -134,12 +135,12 @@ const Skills = () => {
                           delay: index * 0.1 + workIndex * 0.05,
                         }}
                         key={work.name}
-                        className="p-5 bg-secondary-light dark:bg-background-light-dark rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="p-5 bg-secondary-lighter dark:bg-background-light-dark rounded-lg transition-all duration-300"
                       >
-                        <h4 className="text-xl font-semibold text-background dark:text-background-dark">
+                        <h4 className="text-xl font-semibold text-text dark:text-background">
                           {work.name}
                         </h4>
-                        <p className="text-primary-dark dark:text-secondary-lighter font-medium mt-1">
+                        <p className="text-primary-dark dark:text-secondary-light font-medium mt-1">
                           {work.company}
                         </p>
                         <p className="mt-3 text-light-text dark:text-light-text-dark leading-relaxed">

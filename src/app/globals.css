@@ -103,11 +103,11 @@
   --color-primary-darker: #1E40AF; /* blue-800 */
 
   /* Secondary Colors - Softer Contrast */
-  --color-secondary: #93C5FD; /* blue-300 */
-  --color-secondary-light: #BFDBFE; /* blue-200 */
-  --color-secondary-lighter: #DBEAFE; /* blue-100 */
-  --color-secondary-dark: #60A5FA; /* blue-400 */
-  --color-secondary-darker: #3B82F6; /* blue-500 */
+  --color-secondary: #BFDBFE; /* blue-200 */
+  --color-secondary-light: #DBEAFE; /* blue-100 */
+  --color-secondary-lighter: #eff6ff; /* blue-50 */
+  --color-secondary-dark: #93C5FD; /* blue-300 */
+  --color-secondary-darker: #60A5FA; /* blue-400 */
 
   /* Neutral Colors - Light Mode */
   --color-text: #111827; /* neutral-900 (dark gray for readability) */
