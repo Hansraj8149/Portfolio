@@ -46,7 +46,7 @@ const Footer = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4 text-text-light">
+          <h2 className="text-4xl font-bold mb-4 text-text-dark">
             Let&apos;s <span className="text-primary">Connect</span>
           </h2>
           <p className="text-lg text-text-light max-w-2xl mx-auto">
@@ -58,9 +58,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
           <motion.div
             whileHover={{ y: -5 }}
-            className="flex items-center p-6 rounded-xl  bg-text hover:bg-secondary-lighter shadow-lg transition-all duration-300"
+            className="flex items-center p-6 rounded-xl bg-background-light hover:bg-secondary-lighter shadow-lg transition-all duration-300"
           >
-            <div className="p-3 rounded-full mr-4 bg-secondary-light">
+            <div className="p-3 rounded-full mr-4 bg-secondary">
               <Image
                 src="/images/email.png"
                 alt="email"
@@ -75,7 +75,7 @@ const Footer = () => {
               </h3>
               <a
                 href="mailto:hansrajsaini8149@gmail.com"
-                className="text-lg font-medium hover:primary-light transition-colors text-text-dark"
+                className="text-lg font-medium hover:text-primary-light transition-colors text-text-dark"
               >
                 hansrajsaini8149@gmail.com
               </a>
@@ -84,9 +84,9 @@ const Footer = () => {
 
           <motion.div
             whileHover={{ y: -5 }}
-            className="flex items-center p-6 rounded-xl text-text hover:bg-blue-50 shadow-lg transition-all duration-300"
+            className="flex items-center p-6 rounded-xl bg-background-light hover:bg-secondary-lighter shadow-lg transition-all duration-300"
           >
-            <div className="p-3 rounded-full mr-4 bg-blue-100">
+            <div className="p-3 rounded-full mr-4 bg-secondary-light">
               <Image
                 src="/images/mobile.png"
                 alt="phone"
@@ -96,12 +96,12 @@ const Footer = () => {
               />
             </div>
             <div>
-              <h3 className="text-sm uppercase font-semibold mb-1 text-text-500">
+              <h3 className="text-sm uppercase font-semibold mb-1 text-text-light">
                 Phone
               </h3>
               <a
                 href="tel:+91 9398881610"
-                className="text-lg font-medium hover:text-primary-light transition-colors text-text-800"
+                className="text-lg font-medium hover:text-primary-light transition-colors text-text-dark"
               >
                 +91 9398881610
               </a>
@@ -116,10 +116,10 @@ const Footer = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="shadow-xl rounded-2xl p-8 transition-colors duration-300"
+              className="shadow-xl rounded-2xl p-8 transition-colors bg-background-light duration-300"
               onSubmit={handleSubmit}
             >
-              <h3 className="text-2xl font-bold mb-6 text-text-800">
+              <h3 className="text-2xl font-bold mb-6 text-text-dark">
                 Send me a message
               </h3>
 
@@ -127,13 +127,13 @@ const Footer = () => {
                 <div>
                   <label
                     htmlFor="username"
-                    className="block text-sm font-medium mb-2 text-text-700"
+                    className="block text-sm font-medium mb-2 text-text-light"
                   >
                     Your Name
                   </label>
                   <input
                     id="username"
-                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-gray-50 border border-gray-300 text-text-900 placeholder-gray-500"
+                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background-lighter border border-border text-text-dark placeholder-text-light"
                     type="text"
                     placeholder="John Doe"
                     name="username"
@@ -146,13 +146,13 @@ const Footer = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium mb-2 text-text-700"
+                    className="block text-sm font-medium mb-2 text-text-light"
                   >
                     Your Email
                   </label>
                   <input
                     id="email"
-                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colorsbg-gray-50 border border-gray-300 text-text-900 placeholder-gray-500"
+                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background-lighter border border-border text-text-dark placeholder-text-light"
                     type="email"
                     placeholder="john@example.com"
                     name="email"
@@ -165,13 +165,13 @@ const Footer = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium mb-2 text-text-700"
+                    className="block text-sm font-medium mb-2 text-text-light"
                   >
                     Your Message
                   </label>
                   <textarea
                     id="message"
-                    className="w-full p-3 rounded-lg min-h-32 focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-gray-50 border border-gray-300 text-text-900 placeholder-gray-500"
+                    className="w-full p-3 rounded-lg min-h-32 focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background-lighter border border-border text-text-dark placeholder-text-light"
                     placeholder="Tell me about your project..."
                     name="message"
                     value={formData.message}
@@ -245,7 +245,7 @@ const Footer = () => {
               <h3 className="text-2xl font-bold mb-2 text-text-light">
                 Thank you for getting in touch!
               </h3>
-              <p className="text-lg text-text">
+              <p className="text-lg text-text-light">
                 I&apos;ll get back to you as soon as possible.
               </p>
               <button

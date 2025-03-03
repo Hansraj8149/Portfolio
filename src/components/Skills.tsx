@@ -39,7 +39,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-background dark:bg-background-dark transition-colors">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,10 +47,13 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
-            Skills & <span className="text-primary">Experiences</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-text dark:text-text-dark mb-4">
+            Skills &{" "}
+            <span className="text-primary dark:text-primary-light">
+              Experiences
+            </span>
           </h2>
-          <p className="text-light-text max-w-2xl mx-auto">
+          <p className="text-light-text dark:text-light-text-dark max-w-2xl mx-auto">
             My professional journey and technical expertise that I bring to
             every project
           </p>
@@ -64,7 +67,7 @@ const Skills = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:w-2/5"
           >
-            <h3 className="text-2xl font-bold mb-8 text-text border-b-2 border-primary inline-block pb-2">
+            <h3 className="text-2xl font-bold mb-8 text-text dark:text-text-dark border-b-2 border-primary dark:border-primary-light inline-block pb-2">
               Technical Skills
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
@@ -77,7 +80,7 @@ const Skills = () => {
                   className="flex flex-col items-center"
                 >
                   <div
-                    className="w-20 h-20 rounded-xl flex items-center justify-center shadow-lg mb-3 hover:shadow-xl transition-shadow duration-300"
+                    className="w-20 h-20 rounded-xl flex items-center justify-center shadow-lg dark:shadow-md dark:bg-background-light-dark mb-3 hover:shadow-xl transition-shadow duration-300"
                     style={{ backgroundColor: skill.bgColor || "#ffffff" }}
                   >
                     <Image
@@ -88,7 +91,9 @@ const Skills = () => {
                       className="object-contain"
                     />
                   </div>
-                  <p className="font-medium text-light-text">{skill.name}</p>
+                  <p className="font-medium text-light-text dark:text-light-text-dark">
+                    {skill.name}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -101,20 +106,20 @@ const Skills = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="lg:w-3/5"
           >
-            <h3 className="text-2xl font-bold mb-8 text-text border-b-2 border-primary inline-block pb-2">
+            <h3 className="text-2xl font-bold mb-8 text-text dark:text-text-dark border-b-2 border-primary dark:border-primary-light inline-block pb-2">
               Work Experience
             </h3>
-            <div className="relative border-l-2 border-primary pl-6 ml-4">
+            <div className="relative border-l-2 border-primary dark:border-primary-light pl-6 ml-4">
               {experiences.map((experience, index) => (
                 <div key={experience.year} className="mb-12">
-                  <div className="absolute w-4 h-4 bg-primary rounded-full -left-3 mt-1.5"></div>
+                  <div className="absolute w-4 h-4 bg-primary dark:bg-primary-light rounded-full -left-3 mt-1.5"></div>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     className="mb-2"
                   >
-                    <span className="bg-primary text-text px-4 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-primary dark:bg-primary-light text-text dark:text-text-dark px-4 py-1 rounded-full text-sm font-semibold">
                       {experience.year}
                     </span>
                   </motion.div>
@@ -129,15 +134,15 @@ const Skills = () => {
                           delay: index * 0.1 + workIndex * 0.05,
                         }}
                         key={work.name}
-                        className="p-5 bg-secondary-light rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                        className="p-5 bg-secondary-light dark:bg-background-light-dark rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition-all duration-300"
                       >
-                        <h4 className="text-xl font-semibold text-background">
+                        <h4 className="text-xl font-semibold text-background dark:text-background-dark">
                           {work.name}
                         </h4>
-                        <p className="text-primary-dark font-medium mt-1">
+                        <p className="text-primary-dark dark:text-secondary-lighter font-medium mt-1">
                           {work.company}
                         </p>
-                        <p className="mt-3 text-light-text leading-relaxed">
+                        <p className="mt-3 text-light-text dark:text-light-text-dark leading-relaxed">
                           {work.desc}
                         </p>
                       </motion.div>

@@ -14,7 +14,7 @@ const About = () => {
   return (
     <div
       id="about"
-      className="w-full min-h-screen bg-background py-20 content-frame"
+      className="w-full min-h-screen bg-background dark:bg-background-dark py-20 content-frame"
     >
       <div className="max-w-[1240px] mx-auto px-4 md:px-8 lg:px-0">
         <motion.div
@@ -23,10 +23,10 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-3 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium mb-4">
+          <span className="inline-block px-3 py-1 bg-secondary-light text-primary dark:bg-secondary-darker dark:text-secondary-light rounded-full text-sm font-medium mb-4">
             About Me
           </span>
-          <h2 className="text-3xl font-semibold text-text  font-mulish mb-6">
+          <h2 className="text-3xl font-semibold text-text dark:text-text-dark font-mulish mb-6">
             Bringing Ideas to Life with Scalable Solutions
           </h2>
         </motion.div>
@@ -39,13 +39,13 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h3 className="text-2xl font-bold text-light-text mb-3">
+              <h3 className="text-2xl font-bold text-light-text dark:text-light-text-dark mb-3">
                 Hi, I&apos;m{" "}
                 <span className="text-primary border-b-2 border-primary pb-1">
                   Hansraj Saini
                 </span>
               </h3>
-              <p className="text-light-text leading-relaxed mb-6">
+              <p className="text-light-text dark:text-light-text-dark leading-relaxed mb-6">
                 A results-driven Full-Stack Developer with expertise in React
                 Native, Next.js, and backend technologies like Express.js and
                 PostgreSQL. I specialize in crafting scalable, high-performance
@@ -57,7 +57,10 @@ const About = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <SkillCard
                 icon={
-                  <HiOutlineLightBulb className="text-primary-dark" size={24} />
+                  <HiOutlineLightBulb
+                    className="text-primary-dark dark:text-primary-light"
+                    size={24}
+                  />
                 }
                 title="Mobile Development"
                 description="Built a cross-platform mobile app, reducing load times by 40% and improving overall performance."
@@ -65,20 +68,33 @@ const About = () => {
               />
               <SkillCard
                 icon={
-                  <RiCodeSSlashLine className="text-primary-dark" size={24} />
+                  <RiCodeSSlashLine
+                    className="text-primary-dark dark:text-primary-light"
+                    size={24}
+                  />
                 }
                 title="API Development"
                 description="Led API development and optimized real-time data processing, cutting latency by 20%."
                 delay={0.4}
               />
               <SkillCard
-                icon={<FiAward className="text-primary-dark" size={24} />}
+                icon={
+                  <FiAward
+                    className="text-primary-dark dark:text-primary-light"
+                    size={24}
+                  />
+                }
                 title="Problem Solving"
                 description="Strong problem-solving skills with 500+ LeetCode problems solved and a 5-star C++ rating on HackerRank."
                 delay={0.5}
               />
               <SkillCard
-                icon={<FiCode className="text-primary-dark" size={24} />}
+                icon={
+                  <FiCode
+                    className="text-primary-dark dark:text-primary-light"
+                    size={24}
+                  />
+                }
                 title="Clean Code"
                 description="Passionate about clean, scalable code and delivering seamless user experiences."
                 delay={0.6}
@@ -93,7 +109,7 @@ const About = () => {
               className="mt-8"
             >
               <Link href="/#work">
-                <button className="flex items-center gap-2 px-8 py-3 text-text-light bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full hover:shadow-lg hover:shadow-blue-300 hover:-translate-y-1 transition-all duration-300 font-medium">
+                <button className="flex items-center gap-2 px-8 py-3 text-text-light dark:text-dark-text-dark bg-gradient-to-r from-primary to-primary-dark dark:from-primary-dark dark:to-primary-darker rounded-full hover:shadow-lg hover:shadow-blue-300 dark:hover:shadow-blue-800 hover:-translate-y-1 transition-all duration-300 font-medium">
                   See My Portfolio <BsArrowRightShort size={24} />
                 </button>
               </Link>
@@ -108,12 +124,10 @@ const About = () => {
             className="md:col-span-2 flex justify-center"
           >
             <CardContainer className="inter-var">
-              <CardBody className="relative group/card bg-white  border border-gray-200 w-full h-auto rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary-light to-secondary-light opacity-50 rounded-2xl z-0"></div>
-
+              <CardBody className="relative group/card bg-background-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <CardItem
                   translateZ={50}
-                  className="text-xl font-bold text-dark-text mb-2 z-10"
+                  className="text-xl font-bold text-dark-text dark:text-text-dark mb-2 z-10"
                 >
                   Full Stack Developer
                 </CardItem>
@@ -121,7 +135,7 @@ const About = () => {
                 <CardItem
                   as="div"
                   translateZ={60}
-                  className="text-sm text-primary-dark font-medium mb-4 z-10"
+                  className="text-sm text-primary-dark dark:text-primary-light font-medium mb-4 z-10"
                 >
                   Crafting digital experiences
                 </CardItem>
@@ -184,13 +198,19 @@ const SkillCard: React.FC<SkillCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      className="bg-white p-5 rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300"
+      className="bg-background-lighter dark:bg-background-light-dark p-5 rounded-xl shadow-sm hover:shadow-md border border-border-light dark:border-border-dark-mode transition-all duration-300"
     >
       <div className="flex items-start space-x-3">
-        <div className="p-2 bg-blue-50 rounded-lg">{icon}</div>
+        <div className="p-2 bg-secondary-light dark:bg-secondary-dark rounded-lg">
+          {icon}
+        </div>
         <div>
-          <h4 className="font-semibold text-gray-800 mb-1">{title}</h4>
-          <p className="text-gray-600 text-sm">{description}</p>
+          <h4 className="font-semibold text-text dark:text-text-dark mb-1">
+            {title}
+          </h4>
+          <p className="text-light-text dark:text-light-text-dark text-sm">
+            {description}
+          </p>
         </div>
       </div>
     </motion.div>

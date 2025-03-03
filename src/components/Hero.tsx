@@ -13,28 +13,22 @@ const Hero = () => {
     <BackgroundLines>
       <div
         id="home"
-        className="w-full h-screen text-center flex items-center justify-center"
+        className="w-full h-screen text-center flex items-center justify-center bg-background dark:bg-background-dark"
       >
-        {/* <InteractiveGridPattern
-          className={cn(
-            "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]"
-          )}
-          width={20}
-          height={20}
-          squares={[80, 80]}
-          squaresClassName="hover:fill-blue-500"
-        /> */}
         <div className="max-w-[1240px] mx-auto px-4">
-          <p className="uppercase text-sm tracking-widest text-light">
+          <p className="uppercase text-sm tracking-widest text-text-light dark:text-light-text-dark">
             LET&apos;S BUILD SOMETHING AWESOME
           </p>
-          <h1 className="py-4 text-text text-4xl font-bold">
-            Hi, I&apos;m <span className="text-primary">Hansraj</span>
+          <h1 className="py-4 text-text dark:text-text-dark text-4xl font-bold">
+            Hi, I&apos;m{" "}
+            <span className="text-primary dark:text-primary-light">
+              Hansraj
+            </span>
           </h1>
-          <h2 className="py-2 text-text text-3xl font-semibold">
+          <h2 className="py-2 text-text dark:text-text-dark text-3xl font-semibold">
             A Fullstack Developer
           </h2>
-          <p className="py-4 text-light-text sm:max-w-[70%] mx-auto">
+          <p className="py-4 text-text-light dark:text-light-text-dark sm:max-w-[70%] mx-auto">
             I love solving problems, building things from scratch, and taking on
             new challenges. Engineering scalable and efficient solutions excites
             me, and I’m always exploring new technologies to improve my craft.
@@ -46,8 +40,8 @@ const Hero = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <div className="rounded-full bg-light-text p-4 cursor-pointer hover:scale-110 transition duration-300">
-                <FaLinkedinIn className="w-6 h-6 text-primary-darker" />
+              <div className="rounded-full bg-text-light dark:bg-light-text-dark p-4 cursor-pointer hover:scale-110 transition duration-300">
+                <FaLinkedinIn className="w-6 h-6 text-primary-dark dark:text-primary-light" />
               </div>
             </a>
 
@@ -56,14 +50,14 @@ const Hero = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <div className="rounded-full bg-light-text p-4 cursor-pointer hover:scale-110 transition duration-300">
-                <FaGithub className="w-6 h-6 text-primary-darker" />
+              <div className="rounded-full bg-text-light dark:bg-light-text-dark p-4 cursor-pointer hover:scale-110 transition duration-300">
+                <FaGithub className="w-6 h-6 text-primary-dark dark:text-primary-light" />
               </div>
             </a>
 
             <Link href="/#contact">
-              <div className="rounded-full bg-light-text p-4 cursor-pointer hover:scale-110 transition duration-300">
-                <EnvelopeIcon className="w-6 h-6 text-primary-darker" />
+              <div className="rounded-full bg-text-light dark:bg-light-text-dark p-4 cursor-pointer hover:scale-110 transition duration-300">
+                <EnvelopeIcon className="w-6 h-6 text-primary-dark dark:text-primary-light" />
               </div>
             </Link>
           </div>

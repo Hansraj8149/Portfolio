@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Eczar, Mulish, Rubik } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import "./components.css";
-
 const rubik = Rubik({
   variable: "--font-rubik",
   subsets: ["latin"],
@@ -33,9 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${rubik.variable} ${mulish.variable} ${eczar.variable} bg-background antialiased bg-background`}
+        className={`${rubik.variable} ${mulish.variable} ${eczar.variable} bg-background text-text antialiased dark:text-text-dark dark:bg-background-dark `}
       >
-        {children}
+        <ThemeProvider attribute="class">{children}</ThemeProvider>
       </body>
     </html>
   );

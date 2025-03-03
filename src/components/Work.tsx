@@ -50,9 +50,12 @@ const Work = () => {
   };
 
   return (
-    <div className="flex flex-col items-center content-frame ">
-      <h2 className="text-3xl font-semibold text-center my-8 ">
-        My Creative <span className="font-bold text-primary">Portfolio</span>
+    <div className="flex flex-col items-center content-frame bg-background dark:bg-background-dark text-text dark:text-text-dark">
+      <h2 className="text-3xl font-semibold text-center my-8">
+        My Creative{" "}
+        <span className="font-bold text-primary dark:text-primary-light">
+          Portfolio
+        </span>
       </h2>
 
       <div className="flex flex-wrap justify-center mb-12 gap-3">
@@ -61,11 +64,12 @@ const Work = () => {
             <button
               key={index}
               onClick={() => handleWorkFilter(item)}
-              className={`px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105 ${
+              className={clsx(
+                "px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105",
                 activeFilter === item
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                  : "bg-white text-gray-700 border border-gray-200 hover:border-blue-400 hover:text-blue-600 shadow-sm"
-              }`}
+                  ? "bg-primary text-white shadow-lg dark:bg-primary-dark"
+                  : "bg-secondary-light text-text border border-border hover:border-primary hover:text-primary dark:bg-secondary-darker dark:text-dark-text-dark dark:border-border-dark-mode dark:hover:border-primary-light"
+              )}
             >
               {item}
             </button>
@@ -74,7 +78,7 @@ const Work = () => {
       </div>
 
       <div
-        className=" inset-0 z-10 relative min-h-screen w-full place-content-center overflow-hidden"
+        className="inset-0 z-10 relative min-h-screen w-full place-content-center overflow-hidden"
         ref={containerRef}
       >
         {filterWork.map((work, index) => {
@@ -116,7 +120,7 @@ const Card = ({ containerRef, work, className }: Props) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="w-48 md:w-56 lg:w-64 rounded-xl overflow-hidden shadow-lg transition-all duration-300 bg-white border border-gray-100 hover:shadow-2xl">
+      <div className="w-48 md:w-56 lg:w-64 rounded-xl overflow-hidden shadow-lg transition-all duration-300 bg-background border border-border dark:bg-background-dark dark:border-border-dark-mode hover:shadow-2xl">
         <div className="relative lg:h-40 md:h-36 h-24 overflow-hidden">
           <Image
             width={300}
@@ -160,10 +164,10 @@ const Card = ({ containerRef, work, className }: Props) => {
         </div>
 
         <div className="p-4 sm:p-3 xs:p-2">
-          <h4 className="lg:text-lg md:text-base text-sm font-bold text-gray-800 mb-1 line-clamp-1">
+          <h4 className="lg:text-lg md:text-base text-sm font-bold text-text dark:text-text-dark mb-1 line-clamp-1">
             {work.title}
           </h4>
-          <p className="text-gray-600 lg:text-sm md:text-xs text-[11px] mb-2 line-clamp-2">
+          <p className="text-text-light dark:text-light-text-dark lg:text-sm md:text-xs text-[11px] mb-2 line-clamp-2">
             {work.description}
           </p>
 
@@ -172,7 +176,7 @@ const Card = ({ containerRef, work, className }: Props) => {
               work.tags.map((tag, index) => (
                 <span
                   key={`tag-${index}`}
-                  className="inline-block bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-600 px-3 sm:px-2 xs:px-2 py-1 rounded-full lg:text-xs md:text-[11px] text-[10px] font-medium border border-blue-100"
+                  className="inline-block bg-secondary-lighter text-primary px-3 sm:px-2 xs:px-2 py-1 rounded-full lg:text-xs md:text-[11px] text-[10px] font-medium border border-border-light dark:bg-secondary-dark dark:text-primary-light dark:border-border-dark-mode"
                 >
                   {tag}
                 </span>
