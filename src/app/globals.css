@@ -123,9 +123,9 @@
   --color-border-dark: #9CA3AF; /* neutral-400 */
 
   /* Dark Mode Colors */
-  --color-text-dark: #F3F4F6; /* neutral-100 (light gray for readability) */
-  --color-light-text-dark: #9CA3AF; /* neutral-400 */
-  --color-dark-text-dark: #D1D5DB; /* neutral-300 */
+  --color-text-dark: #FAFAFA; /* neutral-50 (light gray for readability) */
+  --color-light-text-dark: #F3F4F6; /* neutral-100 */
+  --color-dark-text-dark: #E5E5E5; /* neutral-200 */
 
   --color-background-dark: #111827; /* neutral-900 (deep dark gray) */
   --color-background-light-dark: #1F2937; /* neutral-800 */

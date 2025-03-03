@@ -58,7 +58,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="hidden md:block"
           >
-            <button className="bg-primary dark:bg-primary-dark text-text dark:text-text-dark px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-primary-darker dark:hover:bg-primary-light transform">
+            <button className="bg-primary dark:bg-primary-dark text-text-dark px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-primary-darker dark:hover:bg-primary-light transform">
               Resume
             </button>
           </a>
@@ -66,21 +66,21 @@ const Navbar = () => {
           {/* Theme Toggle Button */}
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-full bg-primary-light dark:bg-primary-darker transition-colors duration-300 hover:bg-primary-dark dark:hover:bg-primary-light"
+            className="p-2 rounded-full bg-primary transition-colors duration-300 hover:bg-primary-dark "
           >
             {theme === "dark" ? (
-              <MdLightMode className="text-2xl text-primary dark:text-secondary-light" />
+              <MdLightMode className="text-2xl text-secondary-lighter" />
             ) : (
-              <MdDarkMode className="text-2xl text-primary dark:text-secondary-light" />
+              <MdDarkMode className="text-2xl text-secondary-lighter" />
             )}
           </button>
 
           {/* Mobile Menu Toggle Button */}
           <button
-            className="md:hidden p-2 rounded-full bg-primary-light dark:bg-primary-darker transition-colors duration-300 hover:bg-primary-dark dark:hover:bg-primary-light"
+            className="md:hidden p-2 rounded-full bg-primary  transition-colors duration-300 hover:bg-primary-dark"
             onClick={() => setToggle(true)}
           >
-            <HiMenuAlt4 className="text-2xl text-primary dark:text-secondary-light" />
+            <HiMenuAlt4 className="text-2xl text-secondary-lighter" />
           </button>
         </div>
 
@@ -104,9 +104,9 @@ const Navbar = () => {
             {/* Close Button */}
             <button
               onClick={() => setToggle(false)}
-              className="absolute top-5 right-5 p-2 md:hidden rounded-full bg-primary-light dark:bg-primary-darker transition-colors duration-300 hover:bg-primary-dark dark:hover:bg-primary-light"
+              className="absolute top-5 right-5 p-2 md:hidden rounded-full bg-primary transition-colors duration-300 hover:bg-primary-dark "
             >
-              <HiX className="text-2xl text-primary dark:text-secondary-light" />
+              <HiX className="text-2xl text-secondary-lighter" />
             </button>
 
             {/* Mobile Menu Items */}
@@ -131,7 +131,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="mt-10 w-full"
             >
-              <button className="w-full bg-primary dark:bg-primary-dark text-text dark:text-text-dark py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-darker dark:hover:bg-primary-light">
+              <button className="w-full bg-primary text-secondary-lighter py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-darker ">
                 Resume
               </button>
             </a>
@@ -139,12 +139,12 @@ const Navbar = () => {
             {/* Theme Toggle Button in Mobile Menu */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="mt-6 w-full flex items-center justify-center gap-2 bg-primary dark:bg-primary-dark text-text dark:text-text-dark py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-darker dark:hover:bg-primary-light"
+              className="mt-6 w-full flex items-center justify-center gap-2 bg-primary text-secondary-lighter py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-darker "
             >
               {theme === "dark" ? (
-                <MdLightMode className="text-xl" />
+                <MdLightMode className="text-2xl text-secondary-lighter" />
               ) : (
-                <MdDarkMode className="text-xl" />
+                <MdDarkMode className="text-2xl text-secondary-lighter" />
               )}
               {theme === "dark" ? "Light Mode" : "Dark Mode"}
             </button>
