@@ -63,7 +63,7 @@ const Work = () => {
               key={index}
               onClick={() => handleWorkFilter(item)}
               className={clsx(
-                "px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105",
+                "px-5 py-2 rounded-full font-medium text-sm  transform hover:scale-105",
                 activeFilter === item
                   ? "bg-primary text-secondary-lighter dark:bg-primary-dark"
                   : "bg-secondary-lighter text-text border border-border hover:border-primary hover:text-primary  dark:border-border-dark-mode "
@@ -118,13 +118,13 @@ const Card = ({ containerRef, work, className }: Props) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="w-48 md:w-56 lg:w-64 rounded-xl overflow-hidden transition-all duration-300 bg-background border border-border dark:bg-background-dark dark:border-border-dark-mode">
+      <div className="w-48 md:w-56 lg:w-64 rounded-xl overflow-hidden bg-background border border-border dark:bg-background-dark dark:border-border-dark-mode">
         <div className="relative lg:h-40 md:h-36 h-24 overflow-hidden">
           <Image
             width={300}
             height={200}
             className={twMerge(
-              "object-cover w-full h-full transition-transform duration-500",
+              "object-cover w-full h-full",
               className,
               isHovered ? "scale-110" : "scale-100"
             )}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import emailjs from "emailjs-com";
 import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "@/wrapper";
+import clsx from "clsx";
 
 const Footer = () => {
   const [formData, setFormData] = useState({
@@ -38,7 +39,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="w-full py-20 content-frame flex flex-col transition-colors duration-300">
+    <div className="w-full py-20 content-frame flex flex-col">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,7 +47,7 @@ const Footer = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4 text-text-dark">
+          <h2 className="text-4xl font-bold mb-4 dark:text-background text-text">
             Let&apos;s <span className="text-primary">Connect</span>
           </h2>
           <p className="text-lg text-text-light max-w-2xl mx-auto">
@@ -54,11 +55,10 @@ const Footer = () => {
           </p>
         </motion.div>
 
-        {/* Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
           <motion.div
             whileHover={{ y: -5 }}
-            className="flex items-center p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter transition-all duration-300"
+            className="flex items-center p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter"
           >
             <div className="p-3 rounded-full mr-4 bg-secondary">
               <Image
@@ -84,7 +84,7 @@ const Footer = () => {
 
           <motion.div
             whileHover={{ y: -5 }}
-            className="flex items-center p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter transition-all duration-300"
+            className="flex items-center p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter"
           >
             <div className="p-3 rounded-full mr-4 bg-secondary-light">
               <Image
@@ -116,7 +116,7 @@ const Footer = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter transition-all duration-300"
+              className="p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter"
               onSubmit={handleSubmit}
             >
               <h3 className="text-lg font-medium hover:text-primary-light  dark:text-text-dark mb-4 ">
@@ -133,7 +133,7 @@ const Footer = () => {
                   </label>
                   <input
                     id="username"
-                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background dark:bg-background-dark border border-border text-text-dark placeholder-text-light"
+                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light bg-background dark:bg-background-dark border border-border"
                     type="text"
                     placeholder="John Doe"
                     name="username"
@@ -152,7 +152,7 @@ const Footer = () => {
                   </label>
                   <input
                     id="email"
-                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background dark:bg-background-dark border border-border text-text-dark placeholder-text-light"
+                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light bg-background dark:bg-background-dark border border-border"
                     type="email"
                     placeholder="john@example.com"
                     name="email"
@@ -171,7 +171,7 @@ const Footer = () => {
                   </label>
                   <textarea
                     id="message"
-                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors bg-background dark:bg-background-dark border border-border text-text-dark placeholder-text-light"
+                    className="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light bg-background dark:bg-background-dark border border-border"
                     placeholder="Tell me about your project..."
                     name="message"
                     value={formData.message}
@@ -183,11 +183,12 @@ const Footer = () => {
 
                 <button
                   type="submit"
-                  className={`w-full py-4 rounded-lg font-medium transition-all transform hover:translate-y-1 ${
+                  className={clsx(
+                    "w-full py-3 rounded-lg font-medium hover:bg-primary-darker text-secondary-lighter",
                     loading
                       ? "bg-secondary-dark cursor-not-allowed"
-                      : "bg-primary hover:bg-primary-dark"
-                  } text-text`}
+                      : "bg-primary "
+                  )}
                   disabled={loading}
                 >
                   {loading ? (
@@ -208,7 +209,7 @@ const Footer = () => {
                         ></circle>
                         <path
                           className="opacity-75"
-                          fill="currentColor"
+                          fill="white"
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         ></path>
                       </svg>
@@ -250,7 +251,7 @@ const Footer = () => {
               </p>
               <button
                 onClick={() => setIsFormSubmitted(false)}
-                className="mt-6 px-6 py-2 bg-primary hover:bg-primary-dark text-text rounded-lg transition-colors"
+                className="mt-6 px-6 py-2 bg-primary hover:bg-primary-dark text-text rounded-lg"
               >
                 Send another message
               </button>
@@ -258,31 +259,8 @@ const Footer = () => {
           )}
         </div>
 
-        {/* Footer Credits */}
-        <div className="mt-16 pt-8 border-t border-light text-text-light">
-          <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p>© {new Date().getFullYear()} | All rights reserved</p>
-            <div className="flex space-x-4 mt-4 sm:mt-0">
-              <a
-                href="#"
-                className="hover:text-primary-light transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="#"
-                className="hover:text-primary-light transition-colors"
-              >
-                GitHub
-              </a>
-              <a
-                href="#"
-                className="hover:text-primary-light transition-colors"
-              >
-                Twitter
-              </a>
-            </div>
-          </div>
+        <div className="py-10 text-right mt-10">
+          <p>© {new Date().getFullYear()} | All rights reserved</p>
         </div>
       </div>
     </div>

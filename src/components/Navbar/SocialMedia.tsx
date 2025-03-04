@@ -23,7 +23,7 @@ const SocialMedia = () => {
       {socialLinks.map(({ href, icon }, index) => (
         <div
           key={index}
-          className="rounded-full bg-light-text p-4 cursor-pointer hover:scale-110 w-8 h-8 flex items-center justify-center transition-all duration-300"
+          className="rounded-full bg-light-text p-4 cursor-pointer hover:scale-110 w-8 h-8 flex items-center justify-center "
         >
           <a
             href={href}

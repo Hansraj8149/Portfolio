@@ -39,7 +39,7 @@ const Skills = () => {
   }, []);
   console.log(skills);
   return (
-    <section className="py-20 transition-colors content-frame flex flex-col">
+    <section className="py-20 content-frame flex flex-col">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -120,7 +120,7 @@ const Skills = () => {
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     className="mb-2"
                   >
-                    <span className="bg-primary dark:bg-primary-light text-text dark:text-text-dark px-4 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-primary text-secondary-lighter px-4 py-1 rounded-full text-sm font-semibold">
                       {experience.year}
                     </span>
                   </motion.div>
@@ -135,7 +135,7 @@ const Skills = () => {
                           delay: index * 0.1 + workIndex * 0.05,
                         }}
                         key={work.name}
-                        className="p-5 bg-secondary-lighter dark:bg-background-light-dark rounded-lg transition-all duration-300"
+                        className="p-5 bg-secondary-lighter dark:bg-background-light-dark rounded-lg"
                       >
                         <h4 className="text-xl font-semibold text-text dark:text-background">
                           {work.name}

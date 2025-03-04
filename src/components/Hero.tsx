@@ -37,7 +37,7 @@ const Hero = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 transition duration-300">
+              <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 ">
                 <FaLinkedinIn className="w-6 h-6 text-primary-dark" />
               </div>
             </a>
@@ -47,13 +47,13 @@ const Hero = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <div className="rounded-full bg-secondary-lighter  p-4 cursor-pointer hover:scale-110 transition duration-300">
+              <div className="rounded-full bg-secondary-lighter  p-4 cursor-pointer hover:scale-110 ">
                 <FaGithub className="w-6 h-6 text-primary-dark" />
               </div>
             </a>
 
             <Link href="/#contact">
-              <div className="rounded-full bg-secondary-lighter  p-4 cursor-pointer hover:scale-110 transition duration-300">
+              <div className="rounded-full bg-secondary-lighter  p-4 cursor-pointer hover:scale-110 ">
                 <EnvelopeIcon className="w-6 h-6 text-primary-dark" />
               </div>
             </Link>

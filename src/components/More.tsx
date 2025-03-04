@@ -34,7 +34,7 @@ const More = () => {
   };
 
   return (
-    <div className="content-frame flex flex-col bg-background dark:bg-background-dark text-text dark:text-text-dark transition-all duration-300">
+    <div className="content-frame flex flex-col bg-background dark:bg-background-dark text-text dark:text-text-dark ">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ const More = () => {
               y: -10,
               transition: { duration: 0.3 },
             }}
-            className={`rounded-xl overflow-hidden transition-all duration-300
+            className={`rounded-xl overflow-hidden 
               ${selectedId === index ? "ring-2 ring-primary ring-offset-2" : ""}
               bg-background-lighter dark:bg-background-lighter-dark border border-border dark:border-border-dark-mode
             `}
@@ -85,7 +85,7 @@ const More = () => {
                   src={urlFor(item.imgUrl).url()}
                   alt={item.title}
                   fill
-                  className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover transform group-hover:scale-105"
                 />
               </div>
 

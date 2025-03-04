@@ -94,7 +94,7 @@ const About = () => {
               className="mt-8"
             >
               <Link href="/#work">
-                <button className="flex px-4 bg-primary text-secondary-lighter py-2 rounded-lg font-medium transition-all duration-300 hover:bg-primary-darker ">
+                <button className="flex px-4 bg-primary text-secondary-lighter py-2 rounded-lg font-medium  hover:bg-primary-darker ">
                   See My Portfolio <BsArrowRightShort size={24} />
                 </button>
               </Link>
@@ -109,7 +109,7 @@ const About = () => {
             className="md:col-span-2 flex justify-center"
           >
             <CardContainer className="inter-var">
-              <CardBody className="relative group/card bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6  transition-all duration-300">
+              <CardBody className="relative group/card bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6  ">
                 <CardItem
                   translateZ={50}
                   className="text-xl font-bold text-dark-text dark:text-text-dark mb-2 z-10"
@@ -182,7 +182,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      className="bg-secondary-lighter dark:bg-background-light-dark p-5 rounded-xl  border border-border-light dark:border-border-dark-mode transition-all duration-300"
+      className="bg-secondary-lighter dark:bg-background-light-dark p-5 rounded-xl  border border-border-light dark:border-border-dark-mode "
     >
       <div className="flex items-start space-x-3">
         <div className="p-2 bg-secondary-light rounded-lg">{icon}</div>
