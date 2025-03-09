@@ -48,7 +48,6 @@ const Work = () => {
       );
     }, 500);
   };
-
   return (
     <div className="flex flex-col items-center content-frame bg-background dark:bg-background-dark text-text dark:text-text-dark">
       <h2 className="text-3xl font-semibold text-center my-8">

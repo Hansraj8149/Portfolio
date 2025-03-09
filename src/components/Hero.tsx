@@ -1,68 +1,99 @@
 "use client";
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { MotionWrap } from "@/wrapper";
 import { Ripple } from "./magicui/ripple";
-import { BackgroundLines } from "./ui/background-lines";
+
+interface HeroData {
+  id: number;
+  title: string;
+  heading: string;
+  subheading: string;
+  description: string;
+  linkedinLink: string;
+  githubLink: string;
+  emailLink: string;
+  twitterLink: string;
+  leetcodeLink: string;
+}
 
 const Hero = () => {
-  return (
-    <BackgroundLines>
-      <div
-        id="home"
-        className="w-full h-screen text-center flex items-center justify-center bg-background dark:bg-background-dark"
-      >
-        <div className="max-w-[1240px] mx-auto px-4">
-          <p className="uppercase text-sm tracking-widest text-text dark:text-light-text-dark">
-            LET&apos;S BUILD SOMETHING AWESOME
-          </p>
-          <h1 className="py-4 text-text dark:text-text-dark text-4xl font-bold">
-            Hi, I&apos;m <span className="text-primary-darker">Hansraj</span>
-          </h1>
-          <h2 className="py-2 text-text dark:text-text-dark text-3xl font-semibold">
-            A Fullstack Developer
-          </h2>
-          <p className="py-4 text-text-light dark:text-light-text-dark sm:max-w-[70%] mx-auto">
-            I love solving problems, building things from scratch, and taking on
-            new challenges. Engineering scalable and efficient solutions excites
-            me, and I’m always exploring new technologies to improve my craft.
-          </p>
+  const [data, setData] = useState<HeroData | null>(null);
 
-          <div className="flex items-center justify-center space-x-6 py-4">
-            <a
-              href="https://www.linkedin.com/in/hansraj-saini-634864190/"
-              target="_blank"
-              rel="noreferrer"
-            >
+  useEffect(() => {
+    const fetchHeroData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/heroes?pLevel=4`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+            },
+          }
+        );
+        const result = await response.json();
+        setData(result.data[0]);
+      } catch (error) {
+        console.error("Error fetching hero data:", error);
+      }
+    };
+
+    fetchHeroData();
+  }, []);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div
+      id="home"
+      className="w-full h-screen text-center flex items-center justify-center bg-background dark:bg-background-dark"
+    >
+      <div className="max-w-[1240px] mx-auto px-4">
+        <p className="uppercase text-sm tracking-widest text-text dark:text-light-text-dark">
+          {data.title}
+        </p>
+        <h1 className="py-4 text-text dark:text-text-dark text-4xl font-bold">
+          {data.heading}
+        </h1>
+        <h2 className="py-2 text-text dark:text-text-dark text-3xl font-semibold">
+          {data.subheading}
+        </h2>
+        <p className="py-4 text-text-light dark:text-light-text-dark sm:max-w-[70%] mx-auto">
+          {data.description}
+        </p>
+
+        <div className="flex items-center justify-center space-x-6 py-4">
+          {data.linkedinLink && (
+            <a href={data.linkedinLink} target="_blank" rel="noreferrer">
               <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 ">
                 <FaLinkedinIn className="w-6 h-6 text-primary-dark" />
               </div>
             </a>
+          )}
 
-            <a
-              href="https://github.com/Hansraj8149?tab=repositories"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="rounded-full bg-secondary-lighter  p-4 cursor-pointer hover:scale-110 ">
+          {data.githubLink && (
+            <a href={data.githubLink} target="_blank" rel="noreferrer">
+              <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 ">
                 <FaGithub className="w-6 h-6 text-primary-dark" />
               </div>
             </a>
+          )}
 
-            <Link href="/#contact">
-              <div className="rounded-full bg-secondary-lighter  p-4 cursor-pointer hover:scale-110 ">
+          {data.emailLink && (
+            <Link href={data.emailLink}>
+              <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 ">
                 <EnvelopeIcon className="w-6 h-6 text-primary-dark" />
               </div>
             </Link>
-          </div>
+          )}
         </div>
-        <Ripple />
       </div>
-    </BackgroundLines>
+      <Ripple />
+    </div>
   );
 };
 
-export default MotionWrap(Hero, "home");
+export default Hero;

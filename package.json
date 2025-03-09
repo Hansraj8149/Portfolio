@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "cross-env next dev --turbopack",
+    "build": "cross-env NODE_ENV=production next build",
+    "start": "dotenvx run -f .env.production.local -f .env.production -- next start",
     "lint": "next lint"
   },
   "dependencies": {
