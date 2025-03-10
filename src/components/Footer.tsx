@@ -1,15 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "@/wrapper";
 import ContactInfo from "./contact/ContactInfo";
 import ContactForm from "./contact/ContactForm";
 import FormSubmitted from "./contact/FormSubmitted";
+import { ContactProps } from "@/lib/models";
 
 const Footer = () => {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [data, setData] = useState<ContactProps | null>(null);
 
+  useEffect(() => {
+    const fetchHeroData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/contacts?populate=*`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+            },
+          }
+        );
+        const result = await response.json();
+        setData(result.data[0]);
+      } catch (error) {
+        console.error("Error fetching hero data:", error);
+      }
+    };
+
+    fetchHeroData();
+  }, []);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="w-full py-20 content-frame flex flex-col">
       <div className="max-w-6xl mx-auto px-4">
@@ -20,10 +46,10 @@ const Footer = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-4 dark:text-background text-text">
-            Let&apos;s <span className="text-primary">Connect</span>
+            {data.heading}
           </h2>
           <p className="text-lg text-text-light max-w-2xl mx-auto">
-            Take a coffee & chat with me about your next project
+            {data.subheading}
           </p>
         </motion.div>
 
