@@ -3,26 +3,37 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "@/wrapper";
-import { client, urlFor } from "../sanity/lib/client";
 import { FiArrowUpRight } from "react-icons/fi";
-
-interface MoreItem {
-  title: string;
-  description: string;
-  imgUrl: string;
-}
+import { ExpertiseProps } from "@/lib/models";
 
 const More = () => {
-  const [more, setMore] = useState<MoreItem[]>([]);
+  const [more, setMore] = useState<ExpertiseProps | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   useEffect(() => {
-    const query = '*[_type == "more"]';
-    client.fetch(query).then((data) => {
-      setMore(data);
-    });
+    const fetchExpertiseData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/expertises?populate=*`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+            },
+          }
+        );
+        const result = await response.json();
+        setMore(result.data[0]);
+      } catch (error) {
+        console.error("Error fetching hero data:", error);
+      }
+    };
+
+    fetchExpertiseData();
   }, []);
 
+  if (!more) {
+    return <div>Loading...</div>;
+  }
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -32,7 +43,6 @@ const More = () => {
       },
     },
   };
-
   return (
     <div className="content-frame flex flex-col bg-background dark:bg-background-dark text-text dark:text-text-dark ">
       <motion.div
@@ -42,16 +52,13 @@ const More = () => {
         className="text-center max-w-4xl mx-auto mb-16"
       >
         <span className="bg-gradient-to-r from-primary to-primary-dark text-transparent bg-clip-text font-bold text-sm uppercase tracking-wider">
-          My Expertise
+          {more?.heading}
         </span>
         <h2 className="text-3xl md:text-4xl font-extrabold mt-3 mb-6 leading-tight">
-          Where <span className="text-secondary">Design</span> Meets{" "}
-          <span className="text-primary-dark">Development</span>
+          {more?.subheading}
         </h2>
         <p className="text-text-light dark:text-light-text-dark max-w-2xl mx-auto">
-          Combining aesthetic design principles with solid development practices
-          creates seamless digital experiences that are both beautiful and
-          functional.
+          {more?.description[0].children[0].text}
         </p>
 
         <div className="flex justify-center mt-8">
@@ -66,7 +73,7 @@ const More = () => {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        {more.map((item, index) => (
+        {more?.expertises.map((item, index) => (
           <motion.div
             key={item.title + index}
             whileHover={{
@@ -80,14 +87,14 @@ const More = () => {
             onClick={() => setSelectedId(selectedId === index ? null : index)}
           >
             <div className="relative">
-              <div className="relative h-56 overflow-hidden">
+              {/* <div className="relative h-56 overflow-hidden">
                 <Image
-                  src={urlFor(item.imgUrl).url()}
+                  src={(item.i}
                   alt={item.title}
                   fill
                   className="object-cover transform group-hover:scale-105"
                 />
-              </div>
+              </div> */}
 
               {/* Category Badge */}
               <div className="absolute top-4 right-4 bg-secondary-lighter  backdrop-blur-sm text-primary py-1 px-3 rounded-full text-xs font-medium ">
@@ -106,7 +113,7 @@ const More = () => {
               </div>
 
               <p className="text-text-light dark:text-light-text-dark text-sm mb-4 line-clamp-3">
-                {item.description}
+                {item.description[0].children[0].text}
               </p>
 
               <div className="pt-4 border-t border-border-light dark:border-border-dark-mode flex justify-between items-center">
@@ -123,7 +130,7 @@ const More = () => {
                   ))}
                 </div>
                 <span className="text-sm text-text-light dark:text-dark-text-dark">
-                  Advanced
+                  {item.level}
                 </span>
               </div>
             </div>

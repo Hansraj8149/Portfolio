@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRightShort } from "react-icons/bs";
@@ -10,7 +10,52 @@ import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "@/wrapper";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
+interface AboutData {
+  id: number;
+  heading: string;
+  subheading: string;
+  description: string;
+  title: string;
+  buttonText: string;
+  buttonLink: string;
+  aboutPoints: {
+    id: number;
+    title: string;
+    description: { type: string; children: { text: string }[] }[];
+  }[];
+  photoCard: {
+    heading: string;
+    subheading: string;
+  };
+}
+
 const About = () => {
+  const [data, setData] = useState<AboutData | null>(null);
+
+  useEffect(() => {
+    const fetchHeroData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/abouts?populate=*`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+            },
+          }
+        );
+        const result = await response.json();
+        setData(result.data[0]);
+      } catch (error) {
+        console.error("Error fetching hero data:", error);
+      }
+    };
+
+    fetchHeroData();
+  }, []);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
   return (
     <div
       id="about"
@@ -24,10 +69,10 @@ const About = () => {
           className="text-center mb-12"
         >
           <span className="text-primary-dark text-sm font-bold uppercase mb-4">
-            About Me
+            {data?.heading}
           </span>
           <h2 className="text-3xl font-semibold text-text dark:text-text-dark font-mulish mb-6">
-            Bringing Ideas to Life with Scalable Solutions
+            {data.subheading}
           </h2>
         </motion.div>
 
@@ -39,51 +84,23 @@ const About = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <h3 className="text-2xl font-bold text-light-text dark:text-light-text-dark mb-3">
-                Hi, I&apos;m{" "}
-                <span className="text-primary-dark border-b-2 border-primary pb-1">
-                  Hansraj Saini
-                </span>
+                {data.title}
               </h3>
               <p className="text-light-text dark:text-light-text-dark leading-relaxed mb-6">
-                A results-driven Full-Stack Developer with expertise in React
-                Native, Next.js, and backend technologies like Express.js and
-                PostgreSQL. I specialize in crafting scalable, high-performance
-                applications that drive user engagement and business growth.
+                {data.description}
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <SkillCard
-                icon={
-                  <HiOutlineLightBulb
-                    className="text-primary-dark "
-                    size={24}
-                  />
-                }
-                title="Mobile Development"
-                description="Built a cross-platform mobile app, reducing load times by 40% and improving overall performance."
-                delay={0.3}
-              />
-              <SkillCard
-                icon={
-                  <RiCodeSSlashLine className="text-primary-dark " size={24} />
-                }
-                title="API Development"
-                description="Led API development and optimized real-time data processing, cutting latency by 20%."
-                delay={0.4}
-              />
-              <SkillCard
-                icon={<FiAward className="text-primary-dark" size={24} />}
-                title="Problem Solving"
-                description="Strong problem-solving skills with 500+ LeetCode problems solved and a 5-star C++ rating on HackerRank."
-                delay={0.5}
-              />
-              <SkillCard
-                icon={<FiCode className="text-primary-dark " size={24} />}
-                title="Clean Code"
-                description="Passionate about clean, scalable code and delivering seamless user experiences."
-                delay={0.6}
-              />
+              {data.aboutPoints.map((point, index) => (
+                <SkillCard
+                  key={point.id}
+                  icon={getIcon(index)}
+                  title={point.title}
+                  description={point.description[0].children[0].text}
+                  delay={0.3 + index * 0.1}
+                />
+              ))}
             </div>
 
             {/* CTA Button */}
@@ -93,9 +110,9 @@ const About = () => {
               transition={{ duration: 0.5, delay: 0.7 }}
               className="mt-8"
             >
-              <Link href="/#work">
+              <Link href={data.buttonLink}>
                 <button className="flex px-4 bg-primary text-secondary-lighter py-2 rounded-lg font-medium  hover:bg-primary-darker ">
-                  See My Portfolio <BsArrowRightShort size={24} />
+                  {data.buttonText} <BsArrowRightShort size={24} />
                 </button>
               </Link>
             </motion.div>
@@ -109,12 +126,12 @@ const About = () => {
             className="md:col-span-2 flex justify-center"
           >
             <CardContainer className="inter-var">
-              <CardBody className="relative group/card bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6  ">
+              <CardBody className="relative group/card bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6">
                 <CardItem
                   translateZ={50}
                   className="text-xl font-bold text-dark-text dark:text-text-dark mb-2 z-10"
                 >
-                  Full Stack Developer
+                  {data.photoCard.heading}
                 </CardItem>
 
                 <CardItem
@@ -122,7 +139,7 @@ const About = () => {
                   translateZ={60}
                   className="text-sm text-primary-dark dark:text-primary-light font-medium mb-4 z-10"
                 >
-                  Crafting digital experiences
+                  {data.photoCard.subheading}
                 </CardItem>
 
                 <CardItem translateZ={100} className="w-full h-auto z-10">
@@ -182,7 +199,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      className="bg-secondary-lighter dark:bg-background-light-dark p-5 rounded-xl  border border-border-light dark:border-border-dark-mode "
+      className="bg-secondary-lighter dark:bg-background-light-dark p-5 rounded-xl border border-border-light dark:border-border-dark-mode"
     >
       <div className="flex items-start space-x-3">
         <div className="p-2 bg-secondary-light rounded-lg">{icon}</div>
@@ -197,6 +214,25 @@ const SkillCard: React.FC<SkillCardProps> = ({
       </div>
     </motion.div>
   );
+};
+
+// Function to return corresponding icons
+const getIcon = (index: number) => {
+  const icons = [
+    <HiOutlineLightBulb
+      key="lightbulb"
+      className="text-primary-dark "
+      size={24}
+    />,
+    <RiCodeSSlashLine
+      key="code-slash"
+      className="text-primary-dark "
+      size={24}
+    />,
+    <FiAward key="award" className="text-primary-dark" size={24} />,
+    <FiCode key="code" className="text-primary-dark " size={24} />,
+  ];
+  return icons[index % icons.length];
 };
 
 export default AppWrap(MotionWrap(About, "about"), "about");
