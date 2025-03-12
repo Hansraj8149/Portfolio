@@ -7,6 +7,7 @@ import ContactInfo from "./contact/ContactInfo";
 import ContactForm from "./contact/ContactForm";
 import FormSubmitted from "./contact/FormSubmitted";
 import { ContactProps } from "@/lib/models";
+import SectionHeader from "./SectionHeader";
 
 const Footer = () => {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -39,19 +40,11 @@ const Footer = () => {
   return (
     <div className="w-full py-20 content-frame flex flex-col">
       <div className="max-w-6xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold mb-4 dark:text-background text-text">
-            {data.heading}
-          </h2>
-          <p className="text-lg text-text-light max-w-2xl mx-auto">
-            {data.subheading}
-          </p>
-        </motion.div>
+        <SectionHeader
+          heading={data.heading}
+          subheading={data.subheading}
+          description={data.description}
+        />
 
         <ContactInfo />
 

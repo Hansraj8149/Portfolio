@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "@/wrapper";
 import { FiArrowUpRight } from "react-icons/fi";
 import { ExpertiseProps } from "@/lib/models";
+import SectionHeader from "./SectionHeader";
 
 const More = () => {
   const [more, setMore] = useState<ExpertiseProps | null>(null);
@@ -45,26 +46,11 @@ const More = () => {
   };
   return (
     <div className="content-frame flex flex-col bg-background dark:bg-background-dark text-text dark:text-text-dark ">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-center max-w-4xl mx-auto mb-16"
-      >
-        <span className="bg-gradient-to-r from-primary to-primary-dark text-transparent bg-clip-text font-bold text-sm uppercase tracking-wider">
-          {more?.heading}
-        </span>
-        <h2 className="text-3xl md:text-4xl font-extrabold mt-3 mb-6 leading-tight">
-          {more?.subheading}
-        </h2>
-        <p className="text-text-light dark:text-light-text-dark max-w-2xl mx-auto">
-          {more?.description[0].children[0].text}
-        </p>
-
-        <div className="flex justify-center mt-8">
-          <div className="h-1 w-20 bg-gradient-to-r from-primary-light to-secondary-dark rounded-full"></div>
-        </div>
-      </motion.div>
+      <SectionHeader
+        heading={more.heading}
+        subheading={more.subheading}
+        description={more.description[0].children[0].text}
+      />
 
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"

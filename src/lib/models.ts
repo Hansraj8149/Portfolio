@@ -57,3 +57,64 @@ export interface ContactProps {
   contactDetails: ContactDetail[];
   form: Form;
 }
+
+export interface SkillsProps {
+  id: number;
+  heading: string;
+  subheading: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  skills: {
+    id: number;
+    skill: string;
+    tag: string;
+  }[];
+}
+interface Experience {
+  id: number;
+  role: string;
+  company: string;
+  description?: string[];
+  fromDate: string;
+  toDate: string;
+  location: string;
+  technologies?: string[];
+}
+
+export interface ExperienceProps {
+  heading: string;
+  subheading: string;
+  description: string;
+  experiences: Experience[];
+}
+
+export interface WorkType {
+  id: number;
+  title: string;
+  description: Paragraph;
+  liveLink?: string;
+  githubLink?: string;
+  workTags: {
+    tag: string;
+  }[];
+  image: {
+    url: string;
+    name: string;
+  };
+}
+
+export interface WorksProps {
+  heading: string;
+  subHeading: string;
+  description: string;
+  works: WorkType[];
+  filters: {
+    id: string;
+    skillTags: {
+      id: string;
+      tag: string;
+    }[];
+  }[];
+}
