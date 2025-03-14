@@ -4,7 +4,6 @@ import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
-import { urlFor } from "@/sanity/lib/client";
 import { WorkType } from "@/lib/models";
 
 interface WorkCardProps {
@@ -45,7 +44,7 @@ const WorkCard = ({ containerRef, work, className }: WorkCardProps) => {
               className,
               isHovered ? "scale-110" : "scale-100"
             )}
-            src={urlFor(work?.image).url()}
+            src={work?.image?.url}
             alt={work?.title || "Project Image"}
           />
 
@@ -83,7 +82,7 @@ const WorkCard = ({ containerRef, work, className }: WorkCardProps) => {
             {work?.title}
           </h4>
           <p className="text-text-light dark:text-light-text-dark text-sm mb-2 line-clamp-2">
-            {work?.description?.children[0].text}
+            {work?.description[0]?.children[0].text}
           </p>
           <div className="flex flex-wrap gap-2">
             {work?.workTags?.map((tag, index) => (

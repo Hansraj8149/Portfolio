@@ -15,7 +15,7 @@ const More = () => {
     const fetchExpertiseData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/expertises?populate=*`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/expertises`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,

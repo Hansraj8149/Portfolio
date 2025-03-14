@@ -25,7 +25,7 @@ const Hero = () => {
     const fetchHeroData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/heroes?pLevel=4`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/heroes`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,

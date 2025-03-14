@@ -13,7 +13,7 @@ const Skills = () => {
     const fetchExperienceData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/skills?populate=*`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/skills`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,

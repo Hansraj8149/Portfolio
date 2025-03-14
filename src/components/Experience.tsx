@@ -12,7 +12,7 @@ const Experience = () => {
     const fetchExperienceData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/experinces?populate=*`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/experiences`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,

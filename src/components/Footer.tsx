@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "@/wrapper";
 import ContactInfo from "./contact/ContactInfo";
 import ContactForm from "./contact/ContactForm";
@@ -17,7 +16,7 @@ const Footer = () => {
     const fetchHeroData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/contacts?populate=*`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/contacts`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,

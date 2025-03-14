@@ -93,7 +93,7 @@ export interface ExperienceProps {
 export interface WorkType {
   id: number;
   title: string;
-  description: Paragraph;
+  description: Paragraph[];
   liveLink?: string;
   githubLink?: string;
   workTags: {
@@ -116,5 +116,5 @@ export interface WorksProps {
       id: string;
       tag: string;
     }[];
-  }[];
+  };
 }

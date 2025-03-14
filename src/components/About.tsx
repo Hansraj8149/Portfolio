@@ -36,7 +36,7 @@ const About = () => {
     const fetchHeroData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/abouts?populate=*`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/abouts`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,

@@ -17,7 +17,7 @@ const Work = () => {
     const fetchWorkData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/works?populate=*`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/works`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
@@ -31,9 +31,7 @@ const Work = () => {
         setFilteredWorks(workData.works);
         setFilters([
           "All",
-          ...workData?.filters?.flatMap((filter) =>
-            filter.skillTags.map((tag) => tag.tag)
-          ),
+          ...workData?.filters?.skillTags?.flatMap((filter) => filter.tag),
         ]);
       } catch (error) {
         console.error("Error fetching work data:", error);
@@ -72,7 +70,7 @@ const Work = () => {
         className="inset-0 z-10 relative min-h-screen w-full place-content-center overflow-hidden"
         ref={containerRef}
       >
-        {filteredWorks.map((work) => (
+        {filteredWorks?.map((work) => (
           <WorkCard key={work.id} containerRef={containerRef} work={work} />
         ))}
       </div>

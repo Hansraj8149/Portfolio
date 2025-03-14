@@ -21,6 +21,7 @@
     "@tanstack/zod-form-adapter": "^0.42.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cross-env": "^7.0.3",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.4.7",
     "groq": "^3.77.2",

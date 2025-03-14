@@ -17,7 +17,7 @@ const Navbar = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/navbars?populate=*`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/navbars`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
