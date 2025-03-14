@@ -1,8 +1,8 @@
-import About from "@/components/About";
+import About from "@/components/about/About";
 import Experience from "@/components/Experience";
+import Expertise from "@/components/Expertise";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import More from "@/components/More";
 import { Navbar } from "@/components/Navbar/index";
 import Skills from "@/components/Skills";
 import Work from "@/components/work/Work";
@@ -14,7 +14,7 @@ export default function Home() {
       <Hero />
       <Work />
       <About />
-      <More />
+      <Expertise />
       <Experience />
       <Skills />
       <Footer />

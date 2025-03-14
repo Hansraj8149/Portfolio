@@ -7,7 +7,76 @@ interface Paragraph {
   type: string;
   children: TextNode[];
 }
+export interface SkillTagsProps {
+  id: number;
+  tag: string;
+}
+export interface NavbarProps {
+  id: number;
+  primaryButtonText: string;
+  primaryButtonLink: string;
+  navbarLinks: {
+    id: number;
+    name: string;
+    link: string;
+  }[];
+}
 
+export interface HeroProps {
+  id: number;
+  title: string;
+  heading: string;
+  subheading: string;
+  description: string;
+  links: {
+    name: string;
+    link: string;
+  }[];
+}
+export interface AboutProps {
+  id: number;
+  heading: string;
+  subheading: string;
+  description: string;
+  title: string;
+  buttonText: string;
+  buttonLink: string;
+  aboutPoints: {
+    id: number;
+    title: string;
+    description: { type: string; children: { text: string }[] }[];
+  }[];
+  photoCard: {
+    heading: string;
+    subheading: string;
+  };
+}
+
+export interface WorkType {
+  id: number;
+  title: string;
+  description: Paragraph[];
+  liveLink?: string;
+  githubLink?: string;
+  workTags: {
+    tag: string;
+  }[];
+  image: {
+    url: string;
+    name: string;
+  };
+}
+
+export interface WorksProps {
+  heading: string;
+  subHeading: string;
+  description: string;
+  works: WorkType[];
+  filters: {
+    id: string;
+    skillTags: SkillTagsProps[];
+  };
+}
 interface Expertise {
   id: number;
   title: string;
@@ -15,7 +84,6 @@ interface Expertise {
   level: string;
   rating: number;
 }
-
 export interface ExpertiseProps {
   id: number;
   heading: string;
@@ -88,33 +156,4 @@ export interface ExperienceProps {
   subheading: string;
   description: string;
   experiences: Experience[];
-}
-
-export interface WorkType {
-  id: number;
-  title: string;
-  description: Paragraph[];
-  liveLink?: string;
-  githubLink?: string;
-  workTags: {
-    tag: string;
-  }[];
-  image: {
-    url: string;
-    name: string;
-  };
-}
-
-export interface WorksProps {
-  heading: string;
-  subHeading: string;
-  description: string;
-  works: WorkType[];
-  filters: {
-    id: string;
-    skillTags: {
-      id: string;
-      tag: string;
-    }[];
-  };
 }

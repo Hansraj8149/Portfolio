@@ -1,48 +1,22 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { EnvelopeIcon } from "@heroicons/react/24/solid";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import React from "react";
+import { FaGithub, FaLinkedinIn, FaEnvelope, FaCode } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Ripple } from "./magicui/ripple";
+import GetSectionData from "./GetSectionData";
+import { HeroProps } from "@/lib/models";
 
-interface HeroData {
-  id: number;
-  title: string;
-  heading: string;
-  subheading: string;
-  description: string;
-  linkedinLink: string;
-  githubLink: string;
-  emailLink: string;
-  twitterLink: string;
-  leetcodeLink: string;
-}
+const iconMap = {
+  LinkedIn: FaLinkedinIn,
+  Github: FaGithub,
+  Twitter: FaXTwitter,
+  Email: FaEnvelope,
+  Leetcode: FaCode, // Use a better icon if available
+};
+const Hero = async () => {
+  const data = await GetSectionData("heroes");
+  const hero: HeroProps = data?.data?.[0];
 
-const Hero = () => {
-  const [data, setData] = useState<HeroData | null>(null);
-
-  useEffect(() => {
-    const fetchHeroData = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/heroes`,
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
-            },
-          }
-        );
-        const result = await response.json();
-        setData(result.data[0]);
-      } catch (error) {
-        console.error("Error fetching hero data:", error);
-      }
-    };
-
-    fetchHeroData();
-  }, []);
-
-  if (!data) {
+  if (!hero) {
     return <div>Loading...</div>;
   }
 
@@ -53,43 +27,31 @@ const Hero = () => {
     >
       <div className="max-w-[1240px] mx-auto px-4">
         <p className="uppercase text-sm tracking-widest text-text dark:text-light-text-dark">
-          {data.title}
+          {hero.title}
         </p>
         <h1 className="py-4 text-text dark:text-text-dark text-4xl font-bold">
-          {data.heading}
+          {hero.heading}
         </h1>
         <h2 className="py-2 text-text dark:text-text-dark text-3xl font-semibold">
-          {data.subheading}
+          {hero.subheading}
         </h2>
         <p className="py-4 text-text-light dark:text-light-text-dark sm:max-w-[70%] mx-auto">
-          {data.description}
+          {hero.description}
         </p>
-
         <div className="flex items-center justify-center space-x-6 py-4">
-          {data.linkedinLink && (
-            <a href={data.linkedinLink} target="_blank" rel="noreferrer">
-              <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 ">
-                <FaLinkedinIn className="w-6 h-6 text-primary-dark" />
-              </div>
-            </a>
-          )}
-
-          {data.githubLink && (
-            <a href={data.githubLink} target="_blank" rel="noreferrer">
-              <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 ">
-                <FaGithub className="w-6 h-6 text-primary-dark" />
-              </div>
-            </a>
-          )}
-
-          {data.emailLink && (
-            <Link href={data.emailLink}>
-              <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 ">
-                <EnvelopeIcon className="w-6 h-6 text-primary-dark" />
-              </div>
-            </Link>
-          )}
+          {hero?.links?.map((link, index) => {
+            const IconComponent =
+              iconMap[link.name as keyof typeof iconMap] || FaCode; // Default icon if not found
+            return (
+              <a href={link.link} target="_blank" rel="noreferrer" key={index}>
+                <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 ">
+                  <IconComponent className="w-6 h-6 text-primary-dark" />
+                </div>
+              </a>
+            );
+          })}
         </div>
+        ;
       </div>
       <Ripple />
     </div>
