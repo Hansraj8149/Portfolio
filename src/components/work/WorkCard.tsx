@@ -36,17 +36,19 @@ const WorkCard = ({ containerRef, work, className }: WorkCardProps) => {
     >
       <div className="w-48 md:w-56 lg:w-64 rounded-xl overflow-hidden bg-background border border-border dark:bg-background-dark dark:border-border-dark-mode">
         <div className="relative lg:h-40 md:h-36 h-24 overflow-hidden">
-          <Image
-            width={300}
-            height={200}
-            className={twMerge(
-              "object-cover w-full h-full",
-              className,
-              isHovered ? "scale-110" : "scale-100"
-            )}
-            src={work?.image?.url}
-            alt={work?.title || "Project Image"}
-          />
+          {work?.image?.url ? (
+            <Image
+              width={300}
+              height={200}
+              className={twMerge(
+                "object-cover w-full h-full",
+                className,
+                isHovered ? "scale-110" : "scale-100"
+              )}
+              src={work.image.url}
+              alt={work?.title || "Project Image"}
+            />
+          ) : null}
 
           <div
             className={clsx(

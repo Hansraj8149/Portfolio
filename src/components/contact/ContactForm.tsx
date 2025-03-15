@@ -1,17 +1,24 @@
+"use client";
 import { useState } from "react";
 import emailjs from "emailjs-com";
 import clsx from "clsx";
+import { Form, FormInput } from "@/lib/models";
 
 interface ContactFormProps {
+  form: Form;
   onFormSubmit: () => void;
 }
 
-const ContactForm = ({ onFormSubmit }: ContactFormProps) => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    message: "",
-  });
+const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
+  const initialState = form.input.reduce(
+    (acc: { [key: string]: string }, input: FormInput) => ({
+      ...acc,
+      [input.label]: "",
+    }),
+    {}
+  );
+
+  const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
 
   const handleChangeInput = (
@@ -42,39 +49,22 @@ const ContactForm = ({ onFormSubmit }: ContactFormProps) => {
       onSubmit={handleSubmit}
     >
       <h3 className="text-lg font-medium mb-4 dark:text-text-dark">
-        Send me a message
+        {form.title}
       </h3>
 
       <div className="space-y-6">
-        <input
-          className="w-full p-3 rounded-lg bg-background dark:bg-background-dark border border-border"
-          type="text"
-          placeholder="Your Name"
-          name="username"
-          value={formData.username}
-          onChange={handleChangeInput}
-          required
-        />
-
-        <input
-          className="w-full p-3 rounded-lg bg-background dark:bg-background-dark border border-border"
-          type="email"
-          placeholder="Your Email"
-          name="email"
-          value={formData.email}
-          onChange={handleChangeInput}
-          required
-        />
-
-        <textarea
-          className="w-full p-3 rounded-lg bg-background dark:bg-background-dark border border-border"
-          placeholder="Your Message"
-          name="message"
-          value={formData.message}
-          onChange={handleChangeInput}
-          rows={5}
-          required
-        />
+        {form.input.map((field: FormInput) => (
+          <input
+            key={field.label}
+            className="w-full p-3 rounded-lg bg-background dark:bg-background-dark border border-border"
+            type={field.type}
+            placeholder={field.placeholder}
+            name={field.label}
+            value={formData[field.label]}
+            onChange={handleChangeInput}
+            required
+          />
+        ))}
 
         <button
           type="submit"
@@ -84,7 +74,7 @@ const ContactForm = ({ onFormSubmit }: ContactFormProps) => {
           )}
           disabled={loading}
         >
-          {loading ? "Sending..." : "Send Message"}
+          {loading ? "Sending..." : form.buttonText}
         </button>
       </div>
     </form>

@@ -21,7 +21,7 @@ const Skills = async () => {
         />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-          {data?.skills?.map((skill) => (
+          {skills?.skills?.map((skill) => (
             <div key={skill.id} className="flex flex-col items-center">
               <div
                 className="w-20 h-20 rounded-xl flex items-center justify-center dark:bg-background-light-dark mb-3 duration-300"

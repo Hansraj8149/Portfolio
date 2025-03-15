@@ -17,7 +17,7 @@ const Experience = async () => {
         <SectionHeader
           heading={experiences.heading}
           subheading={experiences.subheading}
-          description={experiences.description}
+          description={experiences?.description[0]?.children[0]?.text}
         />
 
         <div className="relative border-l-2 border-primary dark:border-primary-light pl-6 ml-4">
@@ -55,7 +55,9 @@ const Experience = async () => {
                 {experience.description && (
                   <ul className="mt-3 space-y-2 text-light-text dark:text-light-text-dark list-disc list-inside">
                     {experience.description.map((desc, i) => (
-                      <li key={i}>{desc}</li>
+                      <li key={i}>
+                        {desc.children.map((child) => child.text).join(" ")}
+                      </li>
                     ))}
                   </ul>
                 )}

@@ -96,36 +96,6 @@ interface Icon {
   url: string;
 }
 
-interface ContactDetail {
-  id: number;
-  name: string;
-  value: string;
-  icon: Icon;
-}
-
-interface FormInput {
-  id: number;
-  placeholder: string;
-  label: string;
-  type: string;
-}
-
-interface Form {
-  id: number;
-  title: string;
-  buttonText: string;
-  input: FormInput[];
-}
-
-export interface ContactProps {
-  id: number;
-  heading: string;
-  subheading: string;
-  description: string;
-  contactDetails: ContactDetail[];
-  form: Form;
-}
-
 export interface SkillsProps {
   id: number;
   heading: string;
@@ -144,7 +114,7 @@ interface Experience {
   id: number;
   role: string;
   company: string;
-  description?: string[];
+  description?: Paragraph[];
   fromDate: string;
   toDate: string;
   location: string;
@@ -154,6 +124,35 @@ interface Experience {
 export interface ExperienceProps {
   heading: string;
   subheading: string;
-  description: string;
+  description: Paragraph[];
   experiences: Experience[];
+}
+export interface ContactDetail {
+  id: number;
+  name: string;
+  value: string;
+  icon: Icon;
+}
+
+export interface FormInput {
+  id: number;
+  placeholder: string;
+  label: string;
+  type: string;
+}
+
+export interface Form {
+  id: number;
+  title: string;
+  buttonText: string;
+  input: FormInput[];
+}
+
+export interface ContactProps {
+  id: number;
+  heading: string;
+  subheading: string;
+  description: string;
+  contactDetails: ContactDetail[];
+  form: Form;
 }
