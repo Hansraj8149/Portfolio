@@ -110,7 +110,7 @@ export interface SkillsProps {
     tag: string;
   }[];
 }
-interface Experience {
+export interface Experience {
   id: number;
   role: string;
   company: string;

@@ -5,7 +5,15 @@ interface NavigationDotsProps {
 }
 
 const NavigationDots = ({ active }: NavigationDotsProps) => {
-  const sections = ["home", "work", "about", "more", "skills", "contact"];
+  const sections = [
+    "home",
+    "experience",
+    "work",
+    "about",
+    "expertise",
+    "skills",
+    "contact",
+  ];
 
   return (
     <div className="md:flex lg:flex flex-col items-center justify-center px-3 gap-3 hidden">
@@ -14,7 +22,7 @@ const NavigationDots = ({ active }: NavigationDotsProps) => {
           key={item}
           href={`#${item}`}
           className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-            active === item ? "bg-primary" : "bg-secondary"
+            active === item ? "bg-primary" : "bg-primary/10"
           } hover:bg-primary`}
         />
       ))}

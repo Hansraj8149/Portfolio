@@ -11,10 +11,10 @@ export default function Home() {
   return (
     <div className="">
       <Hero />
+      <Experience />
       <Work />
       <About />
       <Expertise />
-      <Experience />
       <Skills />
       <Contact />
       <Footer />
