@@ -4,6 +4,7 @@ import "./globals.css";
 import "./components.css";
 import { Navbar } from "@/components/Navbar/index";
 import AnimatedCursor from "react-animated-cursor";
+import { ScrollProgress } from "@/components/magicui/scroll-progress";
 const karla = Karla({
   variable: "--font-karla",
   subsets: ["latin"],
@@ -59,6 +60,7 @@ export default function RootLayout({
           ]}
         />
 
+        <ScrollProgress className="top-[65px]" />
         <Navbar />
         {children}
       </body>

@@ -48,23 +48,27 @@ const NavbarContent = ({ navbars }: { navbars: NavbarProps }) => {
   }));
 
   return (
-    <nav className="content-frame fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-auto">
-      <div className="flex items-center">
-        <h1 className="font-mulish text-2xl font-bold text-primary dark:text-primary-light">
-          H
-        </h1>
-        <h1 className="font-mulish text-2xl font-bold text-text dark:text-text-dark">
-          S
-        </h1>
+    <nav className="fixed z-50 w-full">
+      <div className="content-frame flex items-center justify-between w-full">
+        <div className="flex items-center">
+          <h1 className="font-nanum-pen-script text-5xl font-bold text-primary dark:text-primary-light">
+            H
+          </h1>
+          <h1 className="font-nanum-pen-script text-4xl font-bold text-text dark:text-text-dark">
+            S
+          </h1>
+        </div>
+        <FloatingDock mobileClassName="translate-y-0" items={links} />
+        {primaryButtonLink && (
+          <Button
+            text={primaryButtonText}
+            link={primaryButtonLink}
+            icon={
+              <IconArrowRight className="z-20 lg:size-6 md:size-6 size-4" />
+            }
+          />
+        )}
       </div>
-      <FloatingDock mobileClassName="translate-y-0" items={links} />
-      {primaryButtonLink && (
-        <Button
-          text={primaryButtonText}
-          link={primaryButtonLink}
-          icon={<IconArrowRight className="z-20 lg:size-6 md:size-6 size-4" />}
-        />
-      )}
     </nav>
   );
 };
