@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${karla.variable} ${nanumPenScript.variable} bg-background text-text antialiased dark:text-text-dark dark:bg-background-dark`}
+        className={`${karla.variable} ${nanumPenScript.variable} antialiased`}
       >
         <AnimatedCursor
           innerSize={4}

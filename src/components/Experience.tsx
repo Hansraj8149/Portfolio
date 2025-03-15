@@ -15,8 +15,8 @@ const Experience = async () => {
   }
 
   return (
-    <section className="py-36 content-frame">
-      <div className="mx-auto px-4">
+    <section className="py-36 w-full">
+      <div className="content-frame bg-background flex-col">
         <SectionHeader
           heading={experiences.heading}
           subheading={experiences.subheading}

@@ -63,6 +63,7 @@ const NavbarContent = ({ navbars }: { navbars: NavbarProps }) => {
           <Button
             text={primaryButtonText}
             link={primaryButtonLink}
+            target="_blank"
             icon={
               <IconArrowRight className="z-20 lg:size-6 md:size-6 size-4" />
             }
