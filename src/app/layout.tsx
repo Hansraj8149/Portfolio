@@ -3,7 +3,7 @@ import { Karla, Nanum_Pen_Script } from "next/font/google";
 import "./globals.css";
 import "./components.css";
 import { Navbar } from "@/components/Navbar/index";
-
+import AnimatedCursor from "react-animated-cursor";
 const karla = Karla({
   variable: "--font-karla",
   subsets: ["latin"],
@@ -28,6 +28,37 @@ export default function RootLayout({
       <body
         className={`${karla.variable} ${nanumPenScript.variable} bg-background text-text antialiased dark:text-text-dark dark:bg-background-dark`}
       >
+        <AnimatedCursor
+          innerSize={4}
+          outerSize={40}
+          innerScale={0.7}
+          outerScale={2}
+          innerStyle={{
+            backgroundColor: "rgb(106, 229, 132)",
+          }}
+          outerStyle={{
+            backgroundColor: "transparent",
+            border: "2px solid white",
+          }}
+          outerAlpha={1}
+          clickables={[
+            "a",
+            'input[type="text"]',
+            'input[type="email"]',
+            'input[type="number"]',
+            'input[type="submit"]',
+            'input[type="image"]',
+            "label[for]",
+            "select",
+            "textarea",
+            "button",
+            ".link",
+            {
+              target: ".custom",
+            },
+          ]}
+        />
+
         <Navbar />
         {children}
       </body>

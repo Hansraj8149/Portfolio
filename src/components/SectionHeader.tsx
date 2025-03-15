@@ -12,7 +12,7 @@ const SectionHeader = ({
   description,
 }: SectionHeaderProps) => {
   return (
-    <div className="text-center py-4">
+    <div className="text-center py-2">
       {heading && (
         <span className="bg-gradient-to-r from-primary to-primary-dark text-transparent bg-clip-text font-bold text-sm uppercase tracking-wider">
           {heading}
