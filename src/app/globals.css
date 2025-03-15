@@ -6,6 +6,7 @@
 
 @theme {
   --font-karla: var(--font-karla);
+  --font-nanum-pen-script: var(--font-nanum-pen-script);
 }
 
 :root {

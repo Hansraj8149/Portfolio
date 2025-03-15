@@ -1,59 +1,59 @@
 import React from "react";
 import { FaGithub, FaLinkedinIn, FaEnvelope, FaCode } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { Ripple } from "./magicui/ripple";
 import GetSectionData from "./GetSectionData";
 import { HeroProps } from "@/lib/models";
+import Loader from "./Loader";
+import SocialIcon from "./hero/SocialIcon";
+import SectionHeader from "./SectionHeader";
 
 const iconMap = {
   LinkedIn: FaLinkedinIn,
   Github: FaGithub,
   Twitter: FaXTwitter,
   Email: FaEnvelope,
-  Leetcode: FaCode, // Use a better icon if available
+  Leetcode: FaCode,
 };
 const Hero = async () => {
   const data = await GetSectionData("heroes");
   const hero: HeroProps = data?.data?.[0];
 
   if (!hero) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
     <div
       id="home"
-      className="w-full h-screen text-center flex items-center justify-center bg-background dark:bg-background-dark"
+      className="h-screen text-center flex items-center justify-center bg-background w-full bg-background bg-[linear-gradient(32deg,rgba(8,8,8,0.74)_30px,transparent)] bg-[size:60px_60px] bg-[position:-5px_-5px]"
     >
-      <div className="max-w-[1240px] mx-auto px-4">
-        <p className="uppercase text-sm tracking-widest text-text dark:text-light-text-dark">
+      <div className="content-frame flex-col">
+        <p className="uppercase text-2xl tracking-widest text-text font-nanum-pen-script">
           {hero.title}
         </p>
-        <h1 className="py-4 text-text dark:text-text-dark text-4xl font-bold">
-          {hero.heading}
-        </h1>
-        <h2 className="py-2 text-text dark:text-text-dark text-3xl font-semibold">
-          {hero.subheading}
-        </h2>
-        <p className="py-4 text-text-light dark:text-light-text-dark sm:max-w-[70%] mx-auto">
-          {hero.description}
-        </p>
-        <div className="flex items-center justify-center space-x-6 py-4">
+        <SectionHeader
+          heading={hero.heading}
+          subheading={hero.subheading}
+          description={hero.description}
+        />
+        <div className="flex items-center justify-center py-4">
           {hero?.links?.map((link, index) => {
             const IconComponent =
-              iconMap[link.name as keyof typeof iconMap] || FaCode; // Default icon if not found
+              iconMap[link.name as keyof typeof iconMap] || FaCode;
             return (
               <a href={link.link} target="_blank" rel="noreferrer" key={index}>
-                <div className="rounded-full bg-secondary-lighter p-4 cursor-pointer hover:scale-110 ">
-                  <IconComponent className="w-6 h-6 text-primary-dark" />
+                <div className="rounded-full bg-secondary-lighter lg:p-4 p-2 cursor-pointer hover:scale-110 ">
+                  <SocialIcon
+                    icon={
+                      <IconComponent className="w-6 h-6 text-primary-dark" />
+                    }
+                  />
                 </div>
               </a>
             );
           })}
         </div>
-        ;
       </div>
-      <Ripple />
     </div>
   );
 };

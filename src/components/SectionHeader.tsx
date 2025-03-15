@@ -1,3 +1,5 @@
+import { TypingAnimation } from "./magicui/typing-animation";
+
 interface SectionHeaderProps {
   heading?: string;
   subheading?: string;
@@ -10,24 +12,18 @@ const SectionHeader = ({
   description,
 }: SectionHeaderProps) => {
   return (
-    <div className="text-center max-w-4xl mx-auto mb-16">
+    <div className="text-center py-4">
       {heading && (
         <span className="bg-gradient-to-r from-primary to-primary-dark text-transparent bg-clip-text font-bold text-sm uppercase tracking-wider">
           {heading}
         </span>
       )}
-      {subheading && (
-        <h2 className="text-3xl md:text-4xl font-extrabold mt-3 mb-6 leading-tight">
-          {subheading}
-        </h2>
-      )}
+      {subheading && <TypingAnimation>{subheading}</TypingAnimation>}
       {description && (
-        <p className="text-text-light dark:text-light-text-dark max-w-2xl mx-auto">
-          {description}
-        </p>
+        <p className="text-text-light max-w-2xl mx-auto">{description}</p>
       )}
       <div className="flex justify-center mt-8">
-        <div className="h-1 w-20 bg-gradient-to-r from-primary-light to-secondary-dark rounded-full"></div>
+        <div className="h-1 w-24 bg-gradient-to-r from-primary-light to-secondary-dark rounded-full"></div>
       </div>
     </div>
   );

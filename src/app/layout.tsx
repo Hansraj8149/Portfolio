@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Karla } from "next/font/google";
+import { Karla, Nanum_Pen_Script } from "next/font/google";
 import "./globals.css";
 import "./components.css";
 import { Navbar } from "@/components/Navbar/index";
@@ -8,6 +8,11 @@ const karla = Karla({
   variable: "--font-karla",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
+});
+const nanumPenScript = Nanum_Pen_Script({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-nanum-pen-script",
 });
 
 export const metadata: Metadata = {
@@ -21,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${karla.variable} bg-background text-text antialiased dark:text-text-dark dark:bg-background-dark`}
+        className={`${karla.variable} ${nanumPenScript.variable} bg-background text-text antialiased dark:text-text-dark dark:bg-background-dark`}
       >
-        <Navbar /> {/* Navbar is always present */}
+        <Navbar />
         {children}
       </body>
     </html>
