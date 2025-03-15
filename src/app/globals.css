@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -6,9 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-rubik: var(--font-rubik);
-  --font-mulish: var(--font-mulish);
-  --font-eczar: var(--font-eczar);
+  --font-karla: var(--font-karla);
 }
 
 :root {
@@ -97,43 +94,31 @@
 }
 @theme {
   /* Primary Colors - Vibrant & Accessible */
-  --color-primary: #2563EB; /* blue-600 */
-  --color-primary-light: #3B82F6; /* blue-500 */
-  --color-primary-dark: #1D4ED8; /* blue-700 */
-  --color-primary-darker: #1E40AF; /* blue-800 */
+  --color-primary: #6ae584; /* green-400 */
+  --color-primary-light: #81f29b; /* green-300 */
+  --color-primary-dark: #4dcc6b; /* green-500 */
+  --color-primary-darker: #3ea85a; /* green-600 */
 
-  /* Secondary Colors - Softer Contrast */
-  --color-secondary: #BFDBFE; /* blue-200 */
-  --color-secondary-light: #DBEAFE; /* blue-100 */
-  --color-secondary-lighter: #eff6ff; /* blue-50 */
-  --color-secondary-dark: #93C5FD; /* blue-300 */
-  --color-secondary-darker: #60A5FA; /* blue-400 */
+  /* Secondary Background */
+  --color-background: #111111; /* dark background */
+  --color-background-light: #151515; /* slightly lighter dark background */
+  --color-background-lighter: #1e1e1e; /* subtle grayish black */
 
-  /* Neutral Colors - Light Mode */
-  --color-text: #111827; /* neutral-900 (dark gray for readability) */
-  --color-text-light: #6B7280; /* neutral-500 */
-  --color-text-dark: #374151; /* neutral-700 */
+  /* Text Colors */
+  --color-text: #ffffff; /* pure white text */
+  --color-text-secondary: #cdcbd1; /* neutral soft gray */
 
-  --color-background: #F9FAFB; /* neutral-50 (soft white) */
-  --color-background-light: #E5E7EB; /* neutral-200 */
-  --color-background-lighter: #F3F4F6; /* neutral-100 */
+  /* Borders */
+  --color-border: #2d2d2d; /* dark gray for subtle borders */
+  --color-border-light: #3a3a3a; /* lighter gray */
+  --color-border-dark: #505050; /* even softer gray */
 
-  --color-border: #D1D5DB; /* neutral-300 */
-  --color-border-light: #E5E7EB; /* neutral-200 */
-  --color-border-dark: #9CA3AF; /* neutral-400 */
-
-  /* Dark Mode Colors */
-  --color-text-dark: #FAFAFA; /* neutral-50 (light gray for readability) */
-  --color-light-text-dark: #F3F4F6; /* neutral-100 */
-  --color-dark-text-dark: #E5E5E5; /* neutral-200 */
-
-  --color-background-dark: #111827; /* neutral-900 (deep dark gray) */
-  --color-background-light-dark: #1F2937; /* neutral-800 */
-  --color-background-lighter-dark: #374151; /* neutral-700 */
-
-  --color-border-dark-mode: #4B5563; /* neutral-600 */
-  --color-border-light-dark: #6B7280; /* neutral-500 */
+  /* Button & Interactive Elements */
+  --color-button-primary: #6ae584; /* matches primary */
+  --color-button-hover: #4dcc6b; /* darker green for hover */
+  --color-button-text: #ffffff; /* ensures readability */
 }
+
 
 
 /* SPOTLIGHT ANIMATION */

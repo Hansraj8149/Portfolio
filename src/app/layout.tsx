@@ -1,23 +1,13 @@
 import type { Metadata } from "next";
-import { Eczar, Mulish, Rubik } from "next/font/google";
+import { Karla } from "next/font/google";
 import "./globals.css";
 import "./components.css";
-import { ThemeContextProvider } from "@/components/ThemeContext";
-const rubik = Rubik({
-  variable: "--font-rubik",
+import { Navbar } from "@/components/Navbar/index";
+
+const karla = Karla({
+  variable: "--font-karla",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
-});
-const eczar = Eczar({
-  variable: "--font-eczar",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"], // Adjust as needed
-});
-
-const mulish = Mulish({
-  variable: "--font-mulish",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"], // Adjust as needed
 });
 
 export const metadata: Metadata = {
@@ -27,15 +17,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body
-        className={`${rubik.variable} ${mulish.variable} ${eczar.variable} bg-background text-text antialiased dark:text-text-dark dark:bg-background-dark `}
+        className={`${karla.variable} bg-background text-text antialiased dark:text-text-dark dark:bg-background-dark`}
       >
-        <ThemeContextProvider>{children}</ThemeContextProvider>
+        <Navbar /> {/* Navbar is always present */}
+        {children}
       </body>
     </html>
   );
