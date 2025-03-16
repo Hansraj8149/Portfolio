@@ -12,6 +12,7 @@ import {
 import Image from "next/image";
 import { NavbarProps } from "@/lib/models";
 import Button from "../Button";
+import Logo from "../Logo";
 
 const ICONS_MAP: Record<string, JSX.Element> = {
   Home: (
@@ -50,14 +51,7 @@ const NavbarContent = ({ navbars }: { navbars: NavbarProps }) => {
   return (
     <nav className="fixed z-50 w-full">
       <div className="content-frame flex items-center justify-between w-full">
-        <div className="flex items-center">
-          <h1 className="font-nanum-pen-script text-5xl font-bold text-primary dark:text-primary-light">
-            H
-          </h1>
-          <h1 className="font-nanum-pen-script text-4xl font-bold text-text dark:text-text-dark">
-            S
-          </h1>
-        </div>
+        <Logo />
         <FloatingDock mobileClassName="translate-y-0" items={links} />
         {primaryButtonLink && (
           <Button

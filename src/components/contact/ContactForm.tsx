@@ -3,6 +3,8 @@ import { useState } from "react";
 import emailjs from "emailjs-com";
 import clsx from "clsx";
 import { Form, FormInput } from "@/lib/models";
+import Input from "../Input";
+import { motion } from "motion/react";
 
 interface ContactFormProps {
   form: Form;
@@ -20,6 +22,7 @@ const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
 
   const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -44,40 +47,80 @@ const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
   };
 
   return (
-    <form
-      className="p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter"
-      onSubmit={handleSubmit}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
     >
-      <h3 className="text-lg font-medium mb-4 dark:text-text-dark">
-        {form.title}
-      </h3>
+      <form
+        className="p-8 rounded-2xl bg-background border border-gray-800 
+          shadow-sm hover:shadow-md transition-all duration-300"
+        onSubmit={handleSubmit}
+      >
+        <h3 className="text-xl font-medium mb-6 text-text-secondary text-center">
+          {form.title}
+        </h3>
 
-      <div className="space-y-6">
-        {form.input.map((field: FormInput) => (
-          <input
-            key={field.label}
-            className="w-full p-3 rounded-lg bg-background dark:bg-background-dark border border-border"
-            type={field.type}
-            placeholder={field.placeholder}
-            name={field.label}
-            value={formData[field.label]}
-            onChange={handleChangeInput}
-            required
-          />
-        ))}
+        <div className="flex flex-col gap-y-8">
+          {form.input.map((field: FormInput) => (
+            <Input
+              key={field.label}
+              type={field.type}
+              placeholder={field.placeholder}
+              name={field.label}
+              label={field.label}
+              value={formData[field.label]}
+              onChange={handleChangeInput}
+              onFocus={() => setFocusedField(field.label)}
+              onBlur={() => setFocusedField(null)}
+              isFocused={focusedField === field.label}
+              required
+            />
+          ))}
 
-        <button
-          type="submit"
-          className={clsx(
-            "w-full py-3 rounded-lg font-medium text-secondary-lighter",
-            loading ? "bg-secondary-dark cursor-not-allowed" : "bg-primary"
-          )}
-          disabled={loading}
-        >
-          {loading ? "Sending..." : form.buttonText}
-        </button>
-      </div>
-    </form>
+          <motion.button
+            type="submit"
+            className={clsx(
+              "w-full py-3.5 rounded-xl font-medium text-white mt-8 transition-all duration-300",
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-primary hover:bg-primary-dark shadow-sm hover:shadow-md"
+            )}
+            disabled={loading}
+            whileHover={{ scale: loading ? 1 : 1.02 }}
+            whileTap={{ scale: loading ? 1 : 0.98 }}
+          >
+            {loading ? (
+              <div className="flex items-center justify-center">
+                <svg
+                  className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Sending...
+              </div>
+            ) : (
+              form.buttonText
+            )}
+          </motion.button>
+        </div>
+      </form>
+    </motion.div>
   );
 };
 

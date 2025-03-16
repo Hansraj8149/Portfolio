@@ -1,5 +1,7 @@
+"use client";
 import { ContactDetail } from "@/lib/models";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 interface ContactProps {
   contactDetails: ContactDetail[];
@@ -8,21 +10,32 @@ interface ContactProps {
 const ContactInfo = ({ contactDetails }: ContactProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
-      {contactDetails.map((contact) => (
-        <div
+      {contactDetails.map((contact, index) => (
+        <motion.div
           key={contact.id}
-          className="flex items-center p-6 rounded-xl bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode hover:bg-secondary-lighter"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: index * 0.1 }}
+          whileHover={{ y: -4 }}
+          className="group flex items-center p-6 rounded-2xl bg-background 
+            border border-gray-800 shadow-sm hover:shadow-md transition-all duration-300"
         >
-          <div className="p-3 rounded-full mr-4 bg-secondary">
-            <Image
-              src={contact.icon.url}
-              alt={contact.name}
-              width={32}
-              height={32}
-            />
+          <div
+            className="p-3 rounded-full mr-5 bg-primary/20 
+            group-hover:bg-primary/30 transition-colors duration-300"
+          >
+            <div className="relative w-8 h-8 flex items-center justify-center">
+              <Image
+                src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${contact.icon.url}`}
+                alt={contact.name}
+                width={24}
+                height={24}
+                className="transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
           </div>
           <div>
-            <h3 className="text-sm uppercase font-semibold mb-1 hover:text-primary-light dark:text-text-dark">
+            <h3 className="text-xs uppercase tracking-wider font-semibold mb-1.5 text-gray-400 group-hover:text-primary-light transition-colors duration-300">
               {contact.name}
             </h3>
             <a
@@ -31,12 +44,13 @@ const ContactInfo = ({ contactDetails }: ContactProps) => {
                   ? `mailto:${contact.value}`
                   : `tel:${contact.value}`
               }
-              className="text-lg font-medium hover:text-primary-light dark:text-text-dark"
+              className="text-lg font-medium text-text-secondary 
+                group-hover:text-primary-light transition-colors duration-300"
             >
               {contact.value}
             </a>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

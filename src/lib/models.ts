@@ -77,7 +77,7 @@ export interface WorksProps {
     skillTags: SkillTagsProps[];
   };
 }
-interface Expertise {
+export interface Expertise {
   id: number;
   title: string;
   description: Paragraph[];

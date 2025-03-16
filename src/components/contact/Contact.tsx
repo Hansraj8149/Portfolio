@@ -6,16 +6,17 @@ import GetSectionData from "../GetSectionData";
 import SectionHeader from "../SectionHeader";
 import ContactInfo from "./ContactInfo";
 import ContactSubmitted from "./ContactSubmitted";
+import Loader from "../Loader";
 
 const Contact = async () => {
   const data = await GetSectionData("contacts");
   const contacts: ContactProps = data?.data?.[0];
 
   if (!contacts) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
   return (
-    <div className="w-full py-20 content-frame flex flex-col">
+    <div className="w-full py-20 content-frame flex flex-col bg-background-light">
       <div className="max-w-6xl mx-auto px-4">
         <SectionHeader
           heading={contacts.heading}
@@ -30,4 +31,4 @@ const Contact = async () => {
   );
 };
 
-export default AppWrap(Contact, "contact");
+export default AppWrap(Contact, "contact", "bg-background-light");

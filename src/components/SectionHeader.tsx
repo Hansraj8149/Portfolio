@@ -22,7 +22,7 @@ const SectionHeader = ({
       {description && (
         <p className="text-text-light max-w-2xl mx-auto">{description}</p>
       )}
-      <div className="flex justify-center mt-8">
+      <div className="flex justify-center py-8">
         <div className="h-1 w-24 bg-gradient-to-r from-primary-light to-secondary-dark rounded-full"></div>
       </div>
     </div>
