@@ -19,7 +19,7 @@ const ExpertiseCards = ({ expertises }: { expertises: Expertise[] }) => {
         >
           <div className="p-6 flex flex-col h-full">
             <div className="flex justify-between items-start mb-4">
-              <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/20 text-primary-light">
+              <span className="text-xs font-medium px-3 py-1 rounded bg-primary/20 text-primary-light">
                 Expertise
               </span>
 
@@ -57,7 +57,7 @@ const ExpertiseCards = ({ expertises }: { expertises: Expertise[] }) => {
                   </svg>
                 ))}
               </div>
-              <span className="text-xs font-medium px-2 py-1 rounded-md bg-background text-gray-300">
+              <span className="text-xs font-medium px-2 py-1 rounded bg-background-lighter text-gray-300">
                 {item.level}
               </span>
             </div>

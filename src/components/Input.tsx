@@ -67,7 +67,7 @@ const Input: React.FC<InputProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           rows={4}
-          className={`w-full p-3 rounded-lg bg-background-light border transition-all duration-200
+          className={`w-full p-3 rounded bg-background-light border transition-all duration-200
             ${isActiveField ? "border-primary" : "border-gray-700"}
             focus:outline-none focus:ring-1 focus:ring-primary`}
         />
@@ -82,7 +82,7 @@ const Input: React.FC<InputProps> = ({
           required={required}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className={`w-full p-3 rounded-lg bg-background-light border transition-all duration-200
+          className={`w-full p-3 rounded bg-background-light border transition-all duration-200
             ${isActiveField ? "border-primary" : "border-gray-700"}
             focus:outline-none focus:ring-1 focus:ring-primary`}
         />

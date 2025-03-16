@@ -53,8 +53,7 @@ const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
       transition={{ duration: 0.5 }}
     >
       <form
-        className="p-8 rounded-2xl bg-background border border-gray-800 
-          shadow-sm hover:shadow-md transition-all duration-300"
+        className="p-8 rounded-2xl bg-background border border-border"
         onSubmit={handleSubmit}
       >
         <h3 className="text-xl font-medium mb-6 text-text-secondary text-center">
@@ -81,10 +80,10 @@ const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
           <motion.button
             type="submit"
             className={clsx(
-              "w-full py-3.5 rounded-xl font-medium text-white mt-8 transition-all duration-300",
+              "w-full py-3.5 rounded-xl font-medium text-text mt-8",
               loading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-primary hover:bg-primary-dark shadow-sm hover:shadow-md"
+                : "bg-primary hover:bg-primary-dark"
             )}
             disabled={loading}
             whileHover={{ scale: loading ? 1 : 1.02 }}
@@ -93,7 +92,7 @@ const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
             {loading ? (
               <div className="flex items-center justify-center">
                 <svg
-                  className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                  className="animate-spin -ml-1 mr-2 h-4 w-4 text-text"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"

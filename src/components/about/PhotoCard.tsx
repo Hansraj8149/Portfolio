@@ -54,7 +54,7 @@ const PhotoCard = ({
             {skillTags.map((skillTag, index) => (
               <span
                 key={index}
-                className="text-xs bg-background text-text-secondary px-2 py-1 rounded-full mr-2"
+                className="text-xs bg-background text-text-secondary px-2 py-1 rounded mr-2"
               >
                 {skillTag.tag}
               </span>

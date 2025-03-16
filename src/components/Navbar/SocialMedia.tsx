@@ -1,6 +1,7 @@
 import React from "react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
+import SocialIcon from "../hero/SocialIcon";
 
 const socialLinks = [
   {
@@ -19,21 +20,9 @@ const socialLinks = [
 
 const SocialMedia = () => {
   return (
-    <div className=" flex-col items-center justify-end p-4 space-y-2 hidden md:flex lg:flex">
+    <div className=" flex-col items-center justify-end p-4 space-y-3 hidden md:flex lg:flex">
       {socialLinks.map(({ href, icon }, index) => (
-        <div
-          key={index}
-          className="rounded-full bg-light-text p-4 cursor-pointer hover:scale-110 w-8 h-8 flex items-center justify-center "
-        >
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-lg"
-          >
-            {icon}
-          </a>
-        </div>
+        <SocialIcon key={index} icon={icon} link={href} target="_blank" />
       ))}
     </div>
   );

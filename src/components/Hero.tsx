@@ -41,15 +41,17 @@ const Hero = async () => {
             const IconComponent =
               iconMap[link.name as keyof typeof iconMap] || FaCode;
             return (
-              <a href={link.link} target="_blank" rel="noreferrer" key={index}>
-                <div className="rounded-full bg-secondary-lighter lg:p-4 p-2 cursor-pointer hover:scale-110 ">
-                  <SocialIcon
-                    icon={
-                      <IconComponent className="w-6 h-6 text-primary-dark" />
-                    }
-                  />
-                </div>
-              </a>
+              <div
+                className="rounded bg-secondary-lighter lg:p-4 p-2 cursor-pointer hover:scale-110"
+                key={index}
+              >
+                <SocialIcon
+                  className="bg-secondary-lighter"
+                  link={link.link}
+                  target="_blank"
+                  icon={<IconComponent className="w-6 h-6 text-primary-dark" />}
+                />
+              </div>
             );
           })}
         </div>

@@ -88,7 +88,7 @@ const Skills = async () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {Object.entries(groupedSkills).map(([category, categorySkills]) => (
-            <div key={category} className="bg-background-light p-6 rounded-lg">
+            <div key={category} className="bg-background-light p-6 rounded">
               <h3 className="text-xl font-semibold mb-4 text-text-secondary">
                 {category}
               </h3>
@@ -97,7 +97,7 @@ const Skills = async () => {
                 {categorySkills.map((skill) => (
                   <div
                     key={skill.skill}
-                    className="flex items-center space-x-2 p-3 bg-background rounded-md"
+                    className="flex items-center space-x-2 p-3 bg-background rounded"
                   >
                     <span className="text-primary">
                       {getSkillIcon(skill.skill)}
