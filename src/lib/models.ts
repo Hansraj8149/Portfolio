@@ -59,12 +59,13 @@ export interface WorkType {
   liveLink?: string;
   githubLink?: string;
   workTags: {
+    id: number;
     tag: string;
   }[];
   image: {
     url: string;
     name: string;
-  };
+  }[];
 }
 
 export interface WorksProps {

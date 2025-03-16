@@ -1,104 +1,86 @@
-import React, { useState, useMemo, MutableRefObject } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
-import clsx from "clsx";
 import { WorkType } from "@/lib/models";
 
 interface WorkCardProps {
-  containerRef: MutableRefObject<HTMLDivElement | null>;
   work: WorkType;
-  className?: string;
 }
 
-const WorkCard = ({ containerRef, work, className }: WorkCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
+const WorkCard = ({ work }: WorkCardProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const randomStyles = useMemo(
-    () => ({
-      top: `${Math.floor(Math.random() * 60 + 20)}%`,
-      left: `${Math.floor(Math.random() * 60 + 20)}%`,
-      rotate: `${Math.floor(Math.random() * 10 - 10)}deg`,
-    }),
-    []
-  );
+  useEffect(() => {
+    if (!work?.image || work.image.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === work.image.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [work?.image]);
 
   return (
-    <motion.div
-      drag
-      dragConstraints={containerRef}
-      style={randomStyles}
-      dragElastic={0.3}
-      className="absolute cursor-grab active:cursor-grabbing drag-elements will-change-transform"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="w-48 md:w-56 lg:w-64 rounded-xl overflow-hidden bg-background border border-border dark:bg-background-dark dark:border-border-dark-mode">
-        <div className="relative lg:h-40 md:h-36 h-24 overflow-hidden">
-          {work?.image?.url ? (
-            <Image
-              width={300}
-              height={200}
-              className={twMerge(
-                "object-cover w-full h-full",
-                className,
-                isHovered ? "scale-110" : "scale-100"
-              )}
-              src={work.image.url}
-              alt={work?.title || "Project Image"}
-            />
-          ) : null}
+    <div className="bg-background p-4 rounded-lg border border-primary/40  w-full">
+      {work?.image?.length > 0 && (
+        <div className="rounded-lg overflow-hidden relative h-48 w-full">
+          <Image
+            width={300}
+            height={200}
+            className="object-cover w-full h-full"
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${work.image[currentImageIndex].url}`}
+            alt={work?.title || "Project Image"}
+          />
+        </div>
+      )}
 
-          <div
-            className={clsx(
-              "absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex items-center justify-center gap-4",
-              isHovered ? "opacity-100" : "opacity-0"
-            )}
-          >
-            <a
-              href={work?.liveLink}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="View Project"
+      <div className="p-3">
+        <h4 className="text-primary text-lg font-semibold mb-1 line-clamp-1">
+          {work?.title}
+        </h4>
+        <p className="text-text-secondary text-sm mb-3 line-clamp-2">
+          {work?.description[0]?.children[0]?.text}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-3">
+          {work?.workTags?.map((workTag) => (
+            <span
+              key={workTag.id}
+              className="bg-background-lighter text-text text-xs px-3 py-1 rounded-full"
             >
-              <div className="w-10 h-10 flex items-center justify-center bg-secondary-lighter rounded-full backdrop-blur-sm">
-                <AiFillEye size={20} className="text-primary-dark" />
-              </div>
-            </a>
-            <a
-              href={work?.githubLink}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="View Code"
-            >
-              <div className="w-10 h-10 flex items-center justify-center bg-secondary-lighter rounded-full backdrop-blur-sm">
-                <AiFillGithub size={20} className="text-primary-dark" />
-              </div>
-            </a>
-          </div>
+              {workTag.tag}
+            </span>
+          ))}
         </div>
 
-        <div className="p-4">
-          <h4 className="text-lg font-bold text-text dark:text-text-dark mb-1 line-clamp-1">
-            {work?.title}
-          </h4>
-          <p className="text-text-light dark:text-light-text-dark text-sm mb-2 line-clamp-2">
-            {work?.description[0]?.children[0].text}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {work?.workTags?.map((tag, index) => (
-              <span
-                key={index}
-                className="bg-secondary-lighter text-text border border-border text-xs p-2 rounded-full dark:border-border-dark-mode"
-              >
-                {tag.toString()}
-              </span>
-            ))}
-          </div>
+        <div className="flex justify-between">
+          {work?.liveLink && (
+            <a
+              href={work.liveLink}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-primary-light hover:text-primary transition"
+            >
+              <AiFillEye size={18} />
+              <span className="text-sm">Live</span>
+            </a>
+          )}
+          {work?.githubLink && (
+            <a
+              href={work.githubLink}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-primary-light hover:text-primary transition"
+            >
+              <AiFillGithub size={18} />
+              <span className="text-sm">Code</span>
+            </a>
+          )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

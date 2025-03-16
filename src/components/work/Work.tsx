@@ -1,25 +1,27 @@
 import React from "react";
 import { AppWrap } from "@/wrapper";
 import { WorksProps } from "@/lib/models";
-import WorkFilters from "./WorkFilter";
 import SectionHeader from "../SectionHeader";
 import GetSectionData from "../GetSectionData";
+import WorkContent from "./WorkContent";
 
 const Work = async () => {
   const data = await GetSectionData("works");
   const works: WorksProps = data?.data?.[0];
 
   return (
-    <div className="flex flex-col items-center content-frame bg-background dark:bg-background-dark text-text dark:text-text-dark">
-      <SectionHeader
-        heading="My Creative Portfolio"
-        subheading="Showcasing my work"
-        description="Here are some of my featured projects."
-      />
+    <section id="work" className="w-full py-36 bg-background-light">
+      <div className="content-frame flex-col items-center justify-center">
+        <SectionHeader
+          heading="My Creative Portfolio"
+          subheading="Showcasing my work"
+          description="Here are some of my featured projects."
+        />
 
-      <WorkFilters filters={works?.filters?.skillTags} works={works.works} />
-    </div>
+        <WorkContent filters={works?.filters?.skillTags} works={works.works} />
+      </div>
+    </section>
   );
 };
 
-export default AppWrap(Work, "work");
+export default AppWrap(Work, "work", "bg-background-light");
