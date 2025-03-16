@@ -11,6 +11,10 @@ export interface SkillTagsProps {
   id: number;
   tag: string;
 }
+export interface ImageProps {
+  url: string;
+  name: string;
+}
 export interface NavbarProps {
   id: number;
   primaryButtonText: string;
@@ -49,6 +53,11 @@ export interface AboutProps {
   photoCard: {
     heading: string;
     subheading: string;
+    image: ImageProps;
+    skillTags: {
+      id: number;
+      tag: string;
+    }[];
   };
 }
 
@@ -62,10 +71,7 @@ export interface WorkType {
     id: number;
     tag: string;
   }[];
-  image: {
-    url: string;
-    name: string;
-  }[];
+  image: ImageProps[];
 }
 
 export interface WorksProps {

@@ -1,26 +1,34 @@
 import React from "react";
 import Image from "next/image";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { ImageProps, SkillTagsProps } from "@/lib/models";
 
 interface PhotoCardProps {
   heading: string;
   subheading: string;
+  image: ImageProps;
+  skillTags: SkillTagsProps[];
 }
 
-const PhotoCard = ({ heading, subheading }: PhotoCardProps) => {
+const PhotoCard = ({
+  heading,
+  subheading,
+  image,
+  skillTags,
+}: PhotoCardProps) => {
   return (
     <CardContainer className="inter-var">
-      <CardBody className="relative group/card bg-secondary-lighter dark:bg-background-light-dark border border-border dark:border-border-dark-mode w-full h-auto rounded-2xl p-6">
+      <CardBody className="relative group/card bg-background-light border border-border  w-5/6 lg:w-full h-full rounded p-6">
         <CardItem
           translateZ={50}
-          className="text-xl font-bold text-dark-text dark:text-text-dark mb-2 z-10"
+          className="text-xl font-bold text-text mb-2 z-10"
         >
           {heading}
         </CardItem>
 
         <CardItem
           translateZ={60}
-          className="text-sm text-primary-dark dark:text-primary-light font-medium mb-4 z-10"
+          className="text-sm text-primary-dark  font-medium mb-4 z-10"
         >
           {subheading}
         </CardItem>
@@ -28,7 +36,7 @@ const PhotoCard = ({ heading, subheading }: PhotoCardProps) => {
         <CardItem translateZ={100} className="w-full h-auto z-10">
           <div className="relative w-full aspect-square overflow-hidden rounded-xl">
             <Image
-              src="/about.jpeg"
+              src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${image.url}`}
               alt="Hansraj Saini - Full Stack Developer"
               fill
               className="object-cover transform group-hover/card:scale-105 transition-transform duration-500"
@@ -42,16 +50,15 @@ const PhotoCard = ({ heading, subheading }: PhotoCardProps) => {
           rotateZ={-10}
           className="mt-4 z-10"
         >
-          <div className="flex justify-between items-center">
-            <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
-              React Native
-            </span>
-            <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-full">
-              Next.js
-            </span>
-            <span className="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-full">
-              Express.js
-            </span>
+          <div className="flex justify-between items-center flex-wrap">
+            {skillTags.map((skillTag, index) => (
+              <span
+                key={index}
+                className="text-xs bg-background text-text-secondary px-2 py-1 rounded-full mr-2"
+              >
+                {skillTag.tag}
+              </span>
+            ))}
           </div>
         </CardItem>
       </CardBody>

@@ -7,8 +7,8 @@ interface SkillCardProps {
 const SkillCard = ({ icon, title, description }: SkillCardProps) => {
   return (
     <div>
-      <div className="flex items-start space-x-3">
-        <div className="p-2 bg-secondary-light rounded-lg">{icon}</div>
+      <div className="flex items-start space-x-3 bg-background-light p-4 w-full h-full rounded">
+        <div className="p-2 bg-background rounded-lg">{icon}</div>
         <div>
           <h4 className="font-semibold text-text dark:text-text-dark mb-1">
             {title}
