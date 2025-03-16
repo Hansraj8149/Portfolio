@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+
+.content-frame {
+  @apply mx-auto flex w-full max-w-screen-lg justify-between px-2;
+}
+.btn-primary {
+  @apply rounded border-0 bg-indigo-500 px-2 py-1 text-white;
+}
+.btn-primary-outline {
+  @apply rounded border border-indigo-400 px-2 py-1 text-indigo-400;
+}
