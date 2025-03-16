@@ -175,7 +175,7 @@ export const Timeline = ({ experiences }: { experiences: Experience[] }) => {
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-primary-light via-secondary-dark to-transparent rounded-full shadow-[0_0_10px_rgba(147,51,234,0.5)]"
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-primary-dark via-primary/10 to-transparent rounded-full shadow-[0_0_10px_rgba(147,51,234,0.5)]"
           />
         </div>
       </div>
