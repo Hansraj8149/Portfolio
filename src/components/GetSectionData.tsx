@@ -1,9 +1,16 @@
 const GetSectionData = async (path: string) => {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const url = `${baseUrl}/api/strapi?path=${path}`;
+    const baseUrl =
+      process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL ||
+      "https://portfolio-backend-xfse.onrender.com";
 
-    const response = await fetch(url);
+    const url = `${baseUrl}/api/${path}`;
+
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_ACCESS_TOKEN}`,
+      },
+    });
 
     if (!response.ok) {
       const errorText = await response.text();
