@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-@plugin "tailwindcss-animate";
 
 .content-frame {
   @apply mx-auto flex w-full max-w-screen-lg justify-between px-2;
