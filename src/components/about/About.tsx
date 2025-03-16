@@ -4,13 +4,12 @@ import PhotoCard from "./PhotoCard";
 import { AboutProps } from "@/lib/models";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { RiCodeSSlashLine } from "react-icons/ri";
-import { FiAward, FiCode } from "react-icons/fi";
+import { FiAward, FiCode, FiArrowRight } from "react-icons/fi";
 import GetSectionData from "../GetSectionData";
 import SkillCard from "./SkillCard";
 import Loader from "../Loader";
 import SectionHeader from "../SectionHeader";
 import Button from "../Button";
-import { IconArrowRight } from "@tabler/icons-react";
 
 const getIcon = (index: number) => {
   const icons = [
@@ -69,7 +68,7 @@ const About = async () => {
                 text={abouts.buttonText}
                 link={abouts.buttonLink}
                 icon={
-                  <IconArrowRight className="z-20 lg:size-6 md:size-6 size-4" />
+                  <FiArrowRight className="z-20 lg:size-6 md:size-6 size-4" />
                 }
               />
             )}

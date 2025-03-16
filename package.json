@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env next dev --turbopack",
     "build": "cross-env NODE_ENV=production next build",
-    "start": "dotenvx run -f .env.production.local -f .env.production -- next start",
+    "start": "cross-env NODE_ENV=production next start",
     "lint": "next lint"
   },
   "dependencies": {
