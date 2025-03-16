@@ -2,7 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["portfolio-backend-xfse.onrender.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "portfolio-backend-xfse.onrender.com",
+      },
+    ],
   },
 };
 

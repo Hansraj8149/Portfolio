@@ -1,11 +1,21 @@
 const GetSectionData = async (path: string) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/strapi?path=${path}`
-  );
-  if (!response.ok) {
-    throw new Error("Failed to fetch API data");
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const url = `${baseUrl}/api/strapi?path=${path}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`API error: ${response.status} - ${errorText}`);
+      return { data: null };
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return { data: null };
   }
-  return response.json();
 };
 
 export default GetSectionData;
