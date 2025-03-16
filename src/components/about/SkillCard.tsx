@@ -10,12 +10,8 @@ const SkillCard = ({ icon, title, description }: SkillCardProps) => {
       <div className="flex items-start space-x-3 bg-background-light p-4 w-full h-full rounded">
         <div className="p-2 bg-background rounded-lg">{icon}</div>
         <div>
-          <h4 className="font-semibold text-text dark:text-text-dark mb-1">
-            {title}
-          </h4>
-          <p className="text-light-text dark:text-light-text-dark text-sm">
-            {description}
-          </p>
+          <h4 className="font-semibold text-text mb-1">{title}</h4>
+          <p className="text-text-secondary text-sm">{description}</p>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ interface FormSubmittedProps {
 const FormSubmitted = ({ resetForm }: FormSubmittedProps) => {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <div className="w-16 h-16 flex items-center justify-center rounded-full bg-secondary-light">
+      <div className="w-16 h-16 flex items-center justify-center rounded-full bg-background-light">
         <svg
           className="w-8 h-8 text-primary-light"
           fill="none"
@@ -20,10 +20,10 @@ const FormSubmitted = ({ resetForm }: FormSubmittedProps) => {
           />
         </svg>
       </div>
-      <h3 className="text-2xl font-bold mb-2 text-text dark:text-background">
+      <h3 className="text-2xl font-bold mb-2 text-text">
         Thank you for getting in touch!
       </h3>
-      <p className="text-lg text-text dark:text-background">
+      <p className="text-lg text-text-secondary">
         I&apos;ll get back to you as soon as possible.
       </p>
       <button

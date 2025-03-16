@@ -60,8 +60,8 @@ export default function RootLayout({
           ]}
         />
 
-        <ScrollProgress className="top-[65px]" />
         <Navbar />
+        <ScrollProgress />
         {children}
       </body>
     </html>

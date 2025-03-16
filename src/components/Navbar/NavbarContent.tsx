@@ -1,35 +1,20 @@
 "use client";
 import React, { JSX } from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
-import {
-  IconBriefcase,
-  IconHistory,
-  IconHome,
-  IconSettings,
-  IconUser,
-  IconArrowRight,
-} from "@tabler/icons-react";
+import { HiHome, HiBriefcase, HiUser } from "react-icons/hi";
+import { FaTools, FaArrowRight } from "react-icons/fa";
+import { BiHistory } from "react-icons/bi";
 import Image from "next/image";
 import { NavbarProps } from "@/lib/models";
 import Button from "../Button";
 import Logo from "../Logo";
 
 const ICONS_MAP: Record<string, JSX.Element> = {
-  Home: (
-    <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-  ),
-  Work: (
-    <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-  ),
-  About: (
-    <IconUser className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-  ),
-  Skills: (
-    <IconSettings className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-  ),
-  Experience: (
-    <IconHistory className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-  ),
+  Home: <HiHome className="h-full w-full text-neutral-300" />,
+  Work: <HiBriefcase className="h-full w-full text-neutral-300" />,
+  About: <HiUser className="h-full w-full text-neutral-300" />,
+  Skills: <FaTools className="h-full w-full text-neutral-300" />,
+  Experience: <BiHistory className="h-full w-full text-neutral-300" />,
 };
 
 const NavbarContent = ({ navbars }: { navbars: NavbarProps }) => {
@@ -49,8 +34,8 @@ const NavbarContent = ({ navbars }: { navbars: NavbarProps }) => {
   }));
 
   return (
-    <nav className="fixed z-50 w-full">
-      <div className="content-frame flex items-center justify-between w-full">
+    <nav className="fixed z-50 w-full backdrop-blur-2xl bg-background-lighter/30 ">
+      <div className="content-frame flex items-center justify-between w-full py-2">
         <Logo />
         <FloatingDock mobileClassName="translate-y-0" items={links} />
         {primaryButtonLink && (
@@ -58,9 +43,7 @@ const NavbarContent = ({ navbars }: { navbars: NavbarProps }) => {
             text={primaryButtonText}
             link={primaryButtonLink}
             target="_blank"
-            icon={
-              <IconArrowRight className="z-20 lg:size-6 md:size-6 size-4" />
-            }
+            icon={<FaArrowRight className="z-20 lg:size-4 md:size-4 size-3" />}
           />
         )}
       </div>
