@@ -28,7 +28,9 @@ const WorkCard = ({work}: WorkCardProps) => {
 
   return (
     <motion.div
-      className="bg-background rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-primary/10"
+      className="rounded-2xl overflow-hidden bg-background 
+            border border-gray-800 shadow-sm hover:shadow-md
+            transition-all duration-300 flex flex-col"
       initial={{opacity: 0, y: 20}}
       whileInView={{opacity: 1, y: 0}}
       transition={{duration: 0.4}}
@@ -62,8 +64,8 @@ const WorkCard = ({work}: WorkCardProps) => {
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
                   className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${currentImageIndex === index
-                      ? "bg-primary w-3"
-                      : "bg-white/60 hover:bg-white/80"
+                    ? "bg-primary w-3"
+                    : "bg-white/60 hover:bg-white/80"
                     }`}
                   aria-label={`View image ${index + 1}`}
                 />
@@ -82,15 +84,15 @@ const WorkCard = ({work}: WorkCardProps) => {
         </p>
 
         <div className="flex flex-wrap gap-1.5 mb-4">
-          {work?.workTags?.map((workTag, index) => (
+          {work?.skillTags?.map((skillTag, index) => (
             <motion.span
-              key={workTag.id}
+              key={skillTag.id}
               initial={{opacity: 0, scale: 0.8}}
               animate={{opacity: 1, scale: 1}}
               transition={{delay: index * 0.05, duration: 0.2}}
               className="bg-background-lighter text-text text-xs px-2.5 py-1 rounded-full"
             >
-              {workTag.tag}
+              {skillTag.tag}
             </motion.span>
           ))}
         </div>

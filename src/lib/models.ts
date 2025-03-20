@@ -72,6 +72,7 @@ export interface WorkType {
     id: number;
     tag: string;
   }[];
+  skillTags: SkillTagsProps[];
   image: ImageProps[];
 }
 
