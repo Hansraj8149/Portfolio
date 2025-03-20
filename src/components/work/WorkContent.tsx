@@ -1,7 +1,7 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, {useState, useMemo} from "react";
 import WorkCard from "./WorkCard";
-import { SkillTagsProps, WorkType } from "@/lib/models";
+import {SkillTagsProps, WorkType} from "@/lib/models";
 import WorkFilters from "./WorkFillters";
 
 interface WorkContentProps {
@@ -9,15 +9,15 @@ interface WorkContentProps {
   works: WorkType[];
 }
 
-const WorkContent = ({ filters, works }: WorkContentProps) => {
+const WorkContent = ({filters, works}: WorkContentProps) => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
   const filteredWorks = useMemo(() => {
-    return activeFilter === "All"
+    return activeFilter === "ALL"
       ? works
       : works.filter((work) =>
-          work.workTags?.some((workTag) => workTag.tag === activeFilter)
-        );
+        work.workTags?.some((workTag) => workTag.tag === activeFilter)
+      );
   }, [activeFilter, works]);
 
   return (
