@@ -1,4 +1,5 @@
 interface TextNode {
+  bold?: boolean;
   text: string;
   type: string;
 }
@@ -125,6 +126,7 @@ export interface Experience {
   fromDate: string;
   toDate: string;
   location: string;
+  images: ImageProps[];
   technologies?: string[];
 }
 

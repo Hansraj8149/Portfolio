@@ -26,7 +26,7 @@ const Hero = async () => {
   return (
     <div
       id="home"
-      className=" h-screen text-center flex items-center justify-center"
+      className=" h-screen text-center w-full bg-black/[0.512] flex items-center justify-center relative overflow-hidden"
     >
       <Spotlight />
       <div className="content-frame flex-col">

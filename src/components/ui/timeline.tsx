@@ -1,17 +1,18 @@
 "use client";
-import { Experience } from "@/lib/models";
-import { useScroll, useTransform, motion } from "motion/react";
-import React, { useEffect, useRef, useState } from "react";
+import {Experience} from "@/lib/models";
+import {useScroll, useTransform, motion} from "motion/react";
+import Image from "next/image";
+import React, {useEffect, useRef, useState} from "react";
 
-export const Timeline = ({ experiences }: { experiences: Experience[] }) => {
+export const Timeline = ({experiences}: {experiences: Experience[]}) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString.split(" - ")[0]);
-
-    return date.toLocaleString("en-US", { month: "short", year: "numeric" });
+    return date.toLocaleString("en-US", {month: "short", year: "numeric"});
   };
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export const Timeline = ({ experiences }: { experiences: Experience[] }) => {
     }
   }, [ref]);
 
-  const { scrollYProgress } = useScroll({
+  const {scrollYProgress} = useScroll({
     target: containerRef,
     offset: ["start 20%", "end 60%"],
   });
@@ -49,43 +50,56 @@ export const Timeline = ({ experiences }: { experiences: Experience[] }) => {
   }, []);
 
   return (
-    <div className="w-full bg-background font-sans md:px-10" ref={containerRef}>
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+    <div className="w-full bg-background font-sans py-16 md:py-24" ref={containerRef}>
+      <div ref={ref} className="relative max-w-4xl mx-auto px-4 md:px-6">
+        {/* Timeline line with subtle glow */}
+        <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-neutral-800/30">
+          <motion.div
+            style={{
+              height: heightTransform,
+              opacity: opacityTransform,
+            }}
+            className="absolute inset-x-0 top-0 w-px bg-gradient-to-t from-primary via-primary/20 to-transparent rounded-full shadow-[0_0_8px_rgba(147,51,234,0.3)]"
+          />
+        </div>
+
         {experiences.map((experience, index) => (
           <motion.div
             key={index}
-            className={`timeline-item flex justify-start pt-10 md:pt-40 md:gap-10 ${
-              activeIndex === index ? "z-10" : ""
-            }`}
-            initial={{ opacity: 0.6, y: 20 }}
+            className={`timeline-item flex justify-start pt-20 md:pt-40 gap-6 md:gap-12 ${activeIndex === index ? "z-10" : ""
+              }`}
+            initial={{opacity: 0, y: 30}}
             whileInView={{
               opacity: 1,
               y: 0,
-              transition: { duration: 0.5, delay: index * 0.1 },
+              transition: {duration: 0.5, ease: "easeOut", delay: index * 0.08},
             }}
-            viewport={{ once: false, margin: "-20%" }}
+            viewport={{once: false, margin: "-10%"}}
           >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+            {/* Date and timeline node */}
+            <div className="sticky flex flex-col md:flex-row z-40 items-center top-32 self-start">
               <motion.div
-                className={`h-10 absolute left-3 md:left-3 w-10 rounded-full flex items-center justify-center ${
-                  activeIndex === index ? "scale-110" : ""
-                }`}
+                className="h-8 absolute left-0 md:left-4 w-8 rounded-full flex items-center justify-center"
                 animate={{
                   scale: activeIndex === index ? 1.1 : 1,
-                  transition: { duration: 0.3 },
+                  transition: {duration: 0.3},
                 }}
               >
                 <div
-                  className={`h-4 w-4 rounded-full 
-                  ${
-                    activeIndex === index
-                      ? "bg-primary-dark border-primary-darker"
-                      : "bg-neutral-800 border-neutral-700"
-                  } 
-                  border p-2 transition-all duration-300`}
+                  className={`h-3 w-3 rounded-full 
+                  ${activeIndex === index
+                      ? "bg-primary border-primary-darker shadow-md shadow-primary/15"
+                      : "bg-neutral-700 border-neutral-800"
+                    } 
+                  border transition-all duration-200`}
                 />
               </motion.div>
-              <motion.h3 className="hidden md:block text-xl md:pl-20 md:text-2xl font-bold transition-colors duration-300 text-neutral-500">
+              <motion.h3
+                className="hidden md:block text-base md:text-lg font-medium md:pl-16 transition-colors duration-200 whitespace-nowrap"
+                style={{
+                  color: activeIndex === index ? 'var(--color-primary-light)' : 'var(--color-neutral-500)'
+                }}
+              >
                 {experience === experiences[0]
                   ? "Present"
                   : formatDate(experience.fromDate)}{" "}
@@ -93,34 +107,51 @@ export const Timeline = ({ experiences }: { experiences: Experience[] }) => {
               </motion.h3>
             </div>
 
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-xl mb-4 text-left font-bold text-neutral-500">
+            {/* Content card */}
+            <motion.div
+              className="relative pl-12 md:pl-8 pr-4 w-full p-4 rounded-lg backdrop-blur-sm"
+              variants={{
+                active: {
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                  backgroundColor: "rgba(255,255,255,0.02)",
+                },
+                inactive: {
+                  boxShadow: "none",
+                  backgroundColor: "transparent"
+                }
+              }}
+              animate={activeIndex === index ? "active" : "inactive"}
+              transition={{duration: 0.2}}
+            >
+              <h3 className="md:hidden block text-sm mb-3 text-left font-medium text-neutral-400">
                 {experience === experiences[0]
                   ? "Present"
                   : formatDate(experience.fromDate)}{" "}
                 - {formatDate(experience.toDate)}
               </h3>
 
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-                <h4 className="text-2xl font-semibold text-background">
+              {/* Role and company */}
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
+                <h4 className="text-xl font-semibold text-text-secondary">
                   {experience.role}
                 </h4>
-                <span className="text-sm  bg-primary/20 text-primary-light px-3 py-1 rounded-full">
+                <span className="text-xs bg-primary/15 text-primary-light px-3 py-1 rounded-full shadow-sm font-medium self-start sm:self-auto">
                   {experience.company}
                 </span>
               </div>
 
-              <p className="text-secondary-light font-medium flex items-center mt-4">
+              <p className="text-secondary-light text-sm font-medium flex items-center mt-1 mb-4 opacity-70">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="14"
+                  height="14"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  className="mr-2"
                 >
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                   <circle cx="12" cy="10" r="3" />
@@ -128,27 +159,26 @@ export const Timeline = ({ experiences }: { experiences: Experience[] }) => {
                 {experience.location}
               </p>
 
-              {experience.technologies && (
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {experience.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="bg-primary/80 hover:bg-primary text-secondary-lighter px-3 py-1 rounded-full text-xs transition-colors duration-200"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
-
+              {/* Description */}
               {experience.description && (
-                <ul className="mt-4 space-y-3 text-light-text-dark">
+                <motion.ul
+                  className="mt-5 space-y-3 text-light-text-dark text-sm"
+                  initial={{opacity: 0}}
+                  animate={{opacity: 1}}
+                  transition={{delay: 0.2, duration: 0.4}}
+                >
                   {experience.description.map((desc, i) => (
-                    <li key={i} className="flex items-start gap-2">
+                    <motion.li
+                      key={i}
+                      className="flex items-start gap-2.5"
+                      initial={{opacity: 0, x: -8}}
+                      animate={{opacity: 1, x: 0}}
+                      transition={{delay: 0.2 + i * 0.08, duration: 0.3}}
+                    >
                       <svg
-                        className="min-w-4 mt-1"
-                        width="16"
-                        height="16"
+                        className="min-w-3.5 mt-0.5 text-primary"
+                        width="14"
+                        height="14"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -158,26 +188,47 @@ export const Timeline = ({ experiences }: { experiences: Experience[] }) => {
                           fill="currentColor"
                         />
                       </svg>
-                      <span>
-                        {desc.children.map((child) => child.text).join(" ")}
+                      <span className="leading-relaxed">
+                        {desc.children.map((child, idx) =>
+                          child.bold ? (
+                            <strong key={idx} className="text-primary-light font-medium">{child.text}</strong>
+                          ) : (
+                            <span key={idx}>{child.text}</span>
+                          )
+                        )}
                       </span>
-                    </li>
+                    </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
               )}
-            </div>
+
+              {/* Images grid */}
+              {experience?.images?.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {experience.images.map((image, imgIndex) => (
+                    <motion.div
+                      key={imgIndex}
+                      initial={{opacity: 0, scale: 0.9, y: 10}}
+                      animate={{opacity: 1, scale: 1, y: 0}}
+                      transition={{delay: 0.1 + (imgIndex * 0.08), duration: 0.3}}
+                      className="relative group overflow-hidden"
+                      style={{zIndex: experience.images.length - imgIndex}}
+                    >
+                      <Image
+                        width={500}
+                        height={500}
+                        className="rounded-md object-cover w-16 lg:w-40 md:w-32 h-16 md:h-32 lg:h-40 shadow-sm transition-transform duration-300 group-hover:scale-105"
+                        src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${image.url}`}
+                        alt={`${experience.company} image ${imgIndex + 1}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </motion.div>
           </motion.div>
         ))}
-
-        <div className="absolute md:left-8 left-8 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-background-lighter to-transparent">
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-primary-dark via-primary/10 to-transparent rounded-full shadow-[0_0_10px_rgba(147,51,234,0.5)]"
-          />
-        </div>
       </div>
     </div>
   );
