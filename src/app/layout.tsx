@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { Karla, Nanum_Pen_Script } from "next/font/google";
+import type {Metadata} from "next";
+import {Karla, Nanum_Pen_Script} from "next/font/google";
 import "./globals.css";
 import "./components.css";
-import { Navbar } from "@/components/Navbar/index";
+import {Navbar} from "@/components/Navbar/index";
 import AnimatedCursor from "react-animated-cursor";
-import { ScrollProgress } from "@/components/magicui/scroll-progress";
+import {ScrollProgress} from "@/components/magicui/scroll-progress";
 const karla = Karla({
   variable: "--font-karla",
   subsets: ["latin"],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{children: React.ReactNode}>) {
   return (
     <html lang="en">
       <body

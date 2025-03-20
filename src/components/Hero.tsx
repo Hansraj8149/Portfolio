@@ -1,11 +1,12 @@
 import React from "react";
-import { FaGithub, FaLinkedinIn, FaEnvelope, FaCode } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import {FaGithub, FaLinkedinIn, FaEnvelope, FaCode} from "react-icons/fa";
+import {FaXTwitter} from "react-icons/fa6";
 import GetSectionData from "./GetSectionData";
-import { HeroProps } from "@/lib/models";
+import {HeroProps} from "@/lib/models";
 import Loader from "./Loader";
 import SocialIcon from "./hero/SocialIcon";
 import SectionHeader from "./SectionHeader";
+import {Spotlight} from "./ui/spotlight-new";
 
 const iconMap = {
   LinkedIn: FaLinkedinIn,
@@ -25,8 +26,9 @@ const Hero = async () => {
   return (
     <div
       id="home"
-      className="h-screen text-center flex items-center justify-center bg-background w-full bg-background bg-[linear-gradient(32deg,rgba(8,8,8,0.74)_30px,transparent)] bg-[size:60px_60px] bg-[position:-5px_-5px]"
+      className=" h-screen text-center flex items-center justify-center"
     >
+      <Spotlight />
       <div className="content-frame flex-col">
         <p className="uppercase text-2xl tracking-widest text-text font-nanum-pen-script">
           {hero.title}
