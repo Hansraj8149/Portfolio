@@ -1,19 +1,19 @@
 "use client";
-import { useState } from "react";
+import {useState} from "react";
 import emailjs from "emailjs-com";
 import clsx from "clsx";
-import { Form, FormInput } from "@/lib/models";
+import {Form, FormInput} from "@/lib/models";
 import Input from "../Input";
-import { motion } from "motion/react";
+import {motion} from "motion/react";
 
 interface ContactFormProps {
   form: Form;
   onFormSubmit: () => void;
 }
 
-const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
+const ContactForm = ({form, onFormSubmit}: ContactFormProps) => {
   const initialState = form.input.reduce(
-    (acc: { [key: string]: string }, input: FormInput) => ({
+    (acc: {[key: string]: string}, input: FormInput) => ({
       ...acc,
       [input.label]: "",
     }),
@@ -27,7 +27,7 @@ const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({...formData, [e.target.name]: e.target.value});
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,12 +48,12 @@ const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      initial={{opacity: 0, y: 20}}
+      animate={{opacity: 1, y: 0}}
+      transition={{duration: 0.5}}
     >
       <form
-        className="p-8 rounded-2xl bg-background border border-border"
+        className="p-8 rounded bg-background border border-border"
         onSubmit={handleSubmit}
       >
         <h3 className="text-xl font-medium mb-6 text-text-secondary text-center">
@@ -80,14 +80,14 @@ const ContactForm = ({ form, onFormSubmit }: ContactFormProps) => {
           <motion.button
             type="submit"
             className={clsx(
-              "w-full py-3.5 rounded-xl font-medium text-text mt-8",
+              "w-auto py-3 rounded font-medium text-text mt-8",
               loading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-primary hover:bg-primary-dark"
+                : "bg-primary-dark hover:bg-primary-light"
             )}
             disabled={loading}
-            whileHover={{ scale: loading ? 1 : 1.02 }}
-            whileTap={{ scale: loading ? 1 : 0.98 }}
+            whileHover={{scale: loading ? 1 : 1.02}}
+            whileTap={{scale: loading ? 1 : 0.98}}
           >
             {loading ? (
               <div className="flex items-center justify-center">

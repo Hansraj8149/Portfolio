@@ -18,7 +18,7 @@ const PhotoCard = ({
 }: PhotoCardProps) => {
   return (
     <CardContainer className="inter-var">
-      <CardBody className="relative group/card bg-background-light border border-border  w-5/6 lg:w-full h-full rounded p-6">
+      <CardBody className="relative group/card bg-background-lighter border border-border  w-5/6 lg:w-full h-full rounded p-6">
         <CardItem
           translateZ={50}
           className="text-xl font-bold text-text mb-2 z-10"

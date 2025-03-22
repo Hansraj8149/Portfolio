@@ -1,24 +1,24 @@
 "use client";
-import { ContactDetail } from "@/lib/models";
+import {ContactDetail} from "@/lib/models";
 import Image from "next/image";
-import { motion } from "motion/react";
+import {motion} from "motion/react";
 
 interface ContactProps {
   contactDetails: ContactDetail[];
 }
 
-const ContactInfo = ({ contactDetails }: ContactProps) => {
+const ContactInfo = ({contactDetails}: ContactProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
       {contactDetails.map((contact, index) => (
         <motion.div
           key={contact.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: index * 0.1 }}
-          whileHover={{ y: -4 }}
-          className="group flex items-center p-6 rounded-2xl bg-background 
-            border border-gray-800 shadow-sm hover:shadow-md transition-all duration-300"
+          initial={{opacity: 0, y: 20}}
+          animate={{opacity: 1, y: 0}}
+          transition={{duration: 0.4, delay: index * 0.1}}
+          whileHover={{y: -4}}
+          className="group flex items-center p-6 rounded bg-background 
+            border border-border"
         >
           <div
             className="p-3 rounded-full mr-5 bg-primary/20 

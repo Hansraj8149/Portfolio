@@ -90,7 +90,7 @@ const WorkCard = ({work, delay = 0}: WorkCardProps) => {
   return (
     <motion.div
       onClick={() => window.open(work.liveLink, "_blank")}
-      className="rounded-lg overflow-hidden bg-background 
+      className="rounded overflow-hidden bg-background 
                 border border-border shadow-sm hover:shadow-md
                 transition-all duration-500 flex flex-col group"
       initial="hidden"
