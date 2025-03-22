@@ -10,7 +10,7 @@ interface WorkContentProps {
 }
 
 const WorkContent = ({filters, works}: WorkContentProps) => {
-  const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [activeFilter, setActiveFilter] = useState<string>("ALL");
 
   const filteredWorks = useMemo(() => {
     return activeFilter === "ALL"
@@ -19,7 +19,6 @@ const WorkContent = ({filters, works}: WorkContentProps) => {
         work.workTags?.some((workTag) => workTag.tag === activeFilter)
       );
   }, [activeFilter, works]);
-
   return (
     <div className="flex flex-col gap-y-4 items-center justify-center">
       <div className="flex flex-wrap justify-center mb-12 gap-3">

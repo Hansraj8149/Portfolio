@@ -205,21 +205,21 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
               {/* Images grid */}
               {experience?.images?.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-6">
-                  {experience.images.map((image, imgIndex) => (
+                  {experience?.images?.map((image, imgIndex) => (
                     <motion.div
                       key={imgIndex}
                       initial={{opacity: 0, scale: 0.9, y: 10}}
                       animate={{opacity: 1, scale: 1, y: 0}}
                       transition={{delay: 0.1 + (imgIndex * 0.08), duration: 0.3}}
                       className="relative group overflow-hidden"
-                      style={{zIndex: experience.images.length - imgIndex}}
+                      style={{zIndex: experience?.images?.length - imgIndex}}
                     >
                       <Image
                         width={500}
                         height={500}
                         className="rounded-md object-cover w-16 lg:w-40 md:w-32 h-16 md:h-32 lg:h-40 shadow-sm transition-transform duration-300 group-hover:scale-105"
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${image.url}`}
-                        alt={`${experience.company} image ${imgIndex + 1}`}
+                        src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${image?.url}`}
+                        alt={`${experience?.company} image ${imgIndex + 1}`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </motion.div>
