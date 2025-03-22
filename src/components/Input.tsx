@@ -1,5 +1,5 @@
 // Input.tsx
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 interface InputProps {
   label: string;
@@ -46,10 +46,9 @@ const Input: React.FC<InputProps> = ({
       <label
         htmlFor={name}
         className={`absolute text-xs font-medium transition-all duration-200 pointer-events-none
-          ${
-            isActiveField
-              ? "text-primary transform -translate-y-6 left-2"
-              : "text-gray-400 left-4 top-3.5"
+          ${isActiveField
+            ? "text-primary transform -translate-y-6 left-2"
+            : "text-gray-400 left-4 top-3.5"
           }`}
       >
         {label}
@@ -67,9 +66,9 @@ const Input: React.FC<InputProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           rows={4}
-          className={`w-full p-3 rounded bg-background-light border transition-all duration-200
-            ${isActiveField ? "border-primary" : "border-gray-700"}
-            focus:outline-none focus:ring-1 focus:ring-primary`}
+          className={`w-full p-3 rounded bg-background-light border-1 transition-all duration-200
+            ${isActiveField ? "border-primary/20" : "border-border-light"}
+            focus:outline-none focus:ring-1 focus:ring-primary/20`}
         />
       ) : (
         <input
@@ -83,8 +82,8 @@ const Input: React.FC<InputProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           className={`w-full p-3 rounded bg-background-light border transition-all duration-200
-            ${isActiveField ? "border-primary" : "border-gray-700"}
-            focus:outline-none focus:ring-1 focus:ring-primary`}
+            ${isActiveField ? "border-primary/20" : "border-border-light"}
+            focus:outline-none focus:ring-1 focus:ring-primary/20`}
         />
       )}
     </div>

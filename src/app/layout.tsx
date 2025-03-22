@@ -4,7 +4,7 @@ import "./globals.css";
 import "./components.css";
 import {Navbar} from "@/components/Navbar/index";
 import AnimatedCursor from "react-animated-cursor";
-import {ScrollProgress} from "@/components/magicui/scroll-progress";
+import {ScrollProgress} from "@/components/scroll-progress";
 const karla = Karla({
   variable: "--font-karla",
   subsets: ["latin"],

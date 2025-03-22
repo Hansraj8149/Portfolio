@@ -3,6 +3,7 @@ import {Experience} from "@/lib/models";
 import {useScroll, useTransform, motion} from "motion/react";
 import Image from "next/image";
 import React, {useEffect, useRef, useState} from "react";
+import Tag from "../Tag";
 
 export const Timeline = ({experiences}: {experiences: Experience[]}) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -79,17 +80,17 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
             {/* Date and timeline node */}
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-32 self-start">
               <motion.div
-                className="h-8 absolute left-0 md:left-4 w-8 rounded-full flex items-center justify-center"
+                className="h-8 absolute lg:-left-2 md:-left-2 w-8 rounded flex items-center justify-center"
                 animate={{
                   scale: activeIndex === index ? 1.1 : 1,
                   transition: {duration: 0.3},
                 }}
               >
                 <div
-                  className={`h-3 w-3 rounded-full 
+                  className={`h-3 w-3 rounded
                   ${activeIndex === index
-                      ? "bg-primary border-primary-darker shadow-md shadow-primary/15"
-                      : "bg-neutral-700 border-neutral-800"
+                      ? "bg-background-secondary border-border shadow-md shadow-primary/15"
+                      : "bg-background-secondary border-border"
                     } 
                   border transition-all duration-200`}
                 />
@@ -135,9 +136,7 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
                 <h4 className="text-xl font-semibold text-text-secondary">
                   {experience.role}
                 </h4>
-                <span className="text-xs bg-primary/15 text-primary-light px-3 py-1 rounded-full shadow-sm font-medium self-start sm:self-auto">
-                  {experience.company}
-                </span>
+                <Tag tag={experience.company} />
               </div>
 
               <p className="text-secondary-light text-sm font-medium flex items-center mt-1 mb-4 opacity-70">

@@ -1,10 +1,10 @@
 import React from "react";
-import { AppWrap } from "@/wrapper";
+import {AppWrap} from "@/wrapper";
 import PhotoCard from "./PhotoCard";
-import { AboutProps } from "@/lib/models";
-import { HiOutlineLightBulb } from "react-icons/hi";
-import { RiCodeSSlashLine } from "react-icons/ri";
-import { FiAward, FiCode, FiArrowRight } from "react-icons/fi";
+import {AboutProps} from "@/lib/models";
+import {HiOutlineLightBulb} from "react-icons/hi";
+import {RiCodeSSlashLine} from "react-icons/ri";
+import {FiAward, FiCode, FiArrowRight} from "react-icons/fi";
 import GetSectionData from "../GetSectionData";
 import SkillCard from "./SkillCard";
 import Loader from "../Loader";
@@ -38,7 +38,7 @@ const About = async () => {
   }
 
   return (
-    <section id="about" className="w-full py-36">
+    <section id="about" className="w-full py-24">
       <div className="content-frame flex-col items-center justify-center">
         <SectionHeader
           heading={abouts.heading}

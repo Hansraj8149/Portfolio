@@ -1,10 +1,10 @@
 import React from "react";
-import { ExperienceProps } from "@/lib/models";
-import SectionHeader from "./SectionHeader";
-import GetSectionData from "./GetSectionData";
-import Loader from "./Loader";
-import { Timeline } from "./ui/timeline";
-import { AppWrap } from "@/wrapper";
+import {ExperienceProps} from "@/lib/models";
+import SectionHeader from "../SectionHeader";
+import GetSectionData from "../GetSectionData";
+import Loader from "../Loader";
+import {AppWrap} from "@/wrapper";
+import {Timeline} from "./timeline";
 
 const Experience = async () => {
   const data = await GetSectionData("experiences");
@@ -15,7 +15,7 @@ const Experience = async () => {
   }
 
   return (
-    <section className="py-36 w-full">
+    <section className="py-24 w-full">
       <div className="content-frame bg-background flex-col">
         <SectionHeader
           heading={experiences.heading}

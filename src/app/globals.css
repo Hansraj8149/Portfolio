@@ -27,9 +27,9 @@
   --color-text-secondary: #cdcbd1; /* neutral soft gray */
 
   /* Borders */
-  --color-border: #2d2d2d; /* dark gray for subtle borders */
-  --color-border-light: #3a3a3a; /* lighter gray */
-  --color-border-dark: #505050; /* even softer gray */
+  --color-border: #1F2937; /* dark gray for subtle borders */
+  --color-border-light: #4B5563; /* lighter gray */
+  --color-border-dark: #111827; /* even softer gray */
 
   /* Button & Interactive Elements */
   --color-button-primary: #6ae584; /* matches primary */
