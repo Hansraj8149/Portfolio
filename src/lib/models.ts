@@ -90,6 +90,7 @@ export interface Expertise {
   id: number;
   title: string;
   description: Paragraph[];
+  image: ImageProps[];
   level: string;
   rating: number;
 }

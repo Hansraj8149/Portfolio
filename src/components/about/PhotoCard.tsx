@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { ImageProps, SkillTagsProps } from "@/lib/models";
+import {CardBody, CardContainer, CardItem} from "@/components/about/3d-card";
+import {ImageProps, SkillTagsProps} from "@/lib/models";
 
 interface PhotoCardProps {
   heading: string;

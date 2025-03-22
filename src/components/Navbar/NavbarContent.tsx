@@ -1,10 +1,10 @@
 "use client";
-import React, { JSX } from "react";
-import { FloatingDock } from "@/components/ui/floating-dock";
-import { HiHome, HiBriefcase, HiUser } from "react-icons/hi";
-import { FaTools, FaArrowRight } from "react-icons/fa";
-import { BiHistory } from "react-icons/bi";
-import { NavbarProps } from "@/lib/models";
+import React, {JSX} from "react";
+import {FloatingDock} from "@/components/Navbar/floating-dock";
+import {HiHome, HiBriefcase, HiUser} from "react-icons/hi";
+import {FaTools, FaArrowRight} from "react-icons/fa";
+import {BiHistory} from "react-icons/bi";
+import {NavbarProps} from "@/lib/models";
 import Button from "../Button";
 import Logo from "../Logo";
 
@@ -16,10 +16,10 @@ const ICONS_MAP: Record<string, JSX.Element> = {
   Experience: <BiHistory className="h-full w-full text-text-secondary" />,
 };
 
-const NavbarContent = ({ navbars }: { navbars: NavbarProps }) => {
-  const { navbarLinks, primaryButtonLink, primaryButtonText } = navbars;
+const NavbarContent = ({navbars}: {navbars: NavbarProps}) => {
+  const {navbarLinks, primaryButtonLink, primaryButtonText} = navbars;
 
-  const links = navbarLinks.map((link: { name: string; link: string }) => ({
+  const links = navbarLinks.map((link: {name: string; link: string}) => ({
     title: link.name,
     icon: ICONS_MAP[link.name],
     href: link.link,

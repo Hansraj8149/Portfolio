@@ -1,12 +1,12 @@
 import React from "react";
 import {FaGithub, FaLinkedinIn, FaEnvelope, FaCode} from "react-icons/fa";
 import {FaXTwitter} from "react-icons/fa6";
-import GetSectionData from "./GetSectionData";
+import GetSectionData from "../GetSectionData";
 import {HeroProps} from "@/lib/models";
-import Loader from "./Loader";
-import SocialIcon from "./hero/SocialIcon";
-import SectionHeader from "./SectionHeader";
-import {Spotlight} from "./ui/spotlight-new";
+import Loader from "../Loader";
+import SocialIcon from "./SocialIcon";
+import SectionHeader from "../SectionHeader";
+import {Spotlight} from "./spotlight-new";
 
 const iconMap = {
   LinkedIn: FaLinkedinIn,

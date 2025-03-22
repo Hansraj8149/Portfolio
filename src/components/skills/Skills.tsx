@@ -1,9 +1,9 @@
-import React, { JSX } from "react";
-import { SkillsProps } from "@/lib/models";
-import SectionHeader from "./SectionHeader";
-import GetSectionData from "./GetSectionData";
-import { AppWrap } from "@/wrapper";
-import Loader from "./Loader";
+import React, {JSX} from "react";
+import {SkillsProps} from "@/lib/models";
+import SectionHeader from "../SectionHeader";
+import GetSectionData from "../GetSectionData";
+import {AppWrap} from "@/wrapper";
+import Loader from "../Loader";
 import {
   SiTypescript,
   SiCplusplus,
@@ -19,9 +19,9 @@ import {
   SiDocker,
   SiGithubactions,
 } from "react-icons/si";
-import { FaAws, FaJava } from "react-icons/fa";
-import { TbSql, TbBrandHtml5, TbApi, TbWebhook } from "react-icons/tb";
-import { RiFileCodeLine } from "react-icons/ri";
+import {FaAws, FaJava} from "react-icons/fa";
+import {TbSql, TbBrandHtml5, TbApi, TbWebhook} from "react-icons/tb";
+import {RiFileCodeLine} from "react-icons/ri";
 
 const Skills = async () => {
   const data = await GetSectionData("skills");
@@ -33,7 +33,7 @@ const Skills = async () => {
 
   // Group skills by tag
   const groupedSkills = skills?.skills?.reduce(
-    (acc: { [key: string]: typeof skills.skills }, skill) => {
+    (acc: {[key: string]: typeof skills.skills}, skill) => {
       const tag = skill.tag.trim();
       if (!acc[tag]) {
         acc[tag] = [];
@@ -46,7 +46,7 @@ const Skills = async () => {
 
   // Define icon mapping
   const getSkillIcon = (skillName: string): JSX.Element => {
-    const iconMap: { [key: string]: JSX.Element } = {
+    const iconMap: {[key: string]: JSX.Element} = {
       TypeScript: <SiTypescript />,
       "C/C++": <SiCplusplus />,
       Python: <SiPython />,
@@ -76,7 +76,7 @@ const Skills = async () => {
   };
 
   return (
-    <section id="skills" className="w-full py-24 md:py-36 overflow-hidden">
+    <section id="skills" className="w-full py-24 md:py-24 overflow-hidden">
       <div className="content-frame flex-col items-center justify-center">
         <div className="flex-col items-center justify-center max-w-3xl mx-auto text-center mb-16">
           <SectionHeader
