@@ -1,5 +1,6 @@
 import {cn} from "@/lib/utils";
 import Image from "next/image";
+import Tag from "../Tag";
 
 export const BentoGrid = ({
   className,
@@ -80,9 +81,7 @@ export const BentoGridItem = ({
           </div>
         )}
         {level && (
-          <div className="px-2 py-1 text-xs font-medium rounded-full bg-opacity-10 bg-primary/10 text-primary">
-            {level}
-          </div>
+          <Tag tag={level} />
         )}
       </div>
     </div>

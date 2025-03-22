@@ -1,4 +1,4 @@
-import { TypingAnimation } from "./magicui/typing-animation";
+import {TypingAnimation} from "./typing-animation";
 
 interface SectionHeaderProps {
   heading?: string;

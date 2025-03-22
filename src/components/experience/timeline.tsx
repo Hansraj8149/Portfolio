@@ -79,7 +79,7 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
             {/* Date and timeline node */}
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-32 self-start">
               <motion.div
-                className="h-8 absolute left-0 md:left-4 w-8 rounded-full flex items-center justify-center"
+                className="h-8 absolute lg:-left-2 md:-left-2 w-8 rounded-full flex items-center justify-center"
                 animate={{
                   scale: activeIndex === index ? 1.1 : 1,
                   transition: {duration: 0.3},
