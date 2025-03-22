@@ -1,14 +1,14 @@
 "use client";
-import { SkillTagsProps } from "@/lib/models";
-import React, { useState } from "react";
+import {SkillTagsProps} from "@/lib/models";
+import React, {useState} from "react";
 
 interface WorkFiltersProps {
   filters: SkillTagsProps[];
   onClick: (tag: string) => void;
 }
 
-const WorkFilters = ({ filters, onClick }: WorkFiltersProps) => {
-  const [activeTag, setActiveTag] = useState<string>("All");
+const WorkFilters = ({filters, onClick}: WorkFiltersProps) => {
+  const [activeTag, setActiveTag] = useState<string>("ALL");
 
   const handleClick = (tag: string) => {
     setActiveTag(tag);
@@ -24,10 +24,9 @@ const WorkFilters = ({ filters, onClick }: WorkFiltersProps) => {
               <button
                 onClick={() => handleClick(item.tag)}
                 className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200
-                  ${
-                    activeTag === item.tag
-                      ? "bg-primary text-white shadow-md"
-                      : "text-text-secondary bg-background"
+                  ${activeTag === item.tag
+                    ? "bg-primary text-white shadow-md"
+                    : "text-text-secondary bg-background"
                   }
                   focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-opacity-50
                 `}
