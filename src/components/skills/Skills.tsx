@@ -31,18 +31,7 @@ const Skills = async () => {
     return <Loader />;
   }
 
-  // Group skills by tag
-  const groupedSkills = skills?.skills?.reduce(
-    (acc: {[key: string]: typeof skills.skills}, skill) => {
-      const tag = skill.tag.trim();
-      if (!acc[tag]) {
-        acc[tag] = [];
-      }
-      acc[tag].push(skill);
-      return acc;
-    },
-    {}
-  );
+
 
   // Define icon mapping
   const getSkillIcon = (skillName: string): JSX.Element => {
@@ -52,9 +41,9 @@ const Skills = async () => {
       Python: <SiPython />,
       Java: <FaJava />,
       SQL: <TbSql />,
-      " HTML/CSS": <TbBrandHtml5 />,
+      "HTML/CSS": <TbBrandHtml5 />,
       "React Native": <SiReact />,
-      " Next.js": <SiNextdotjs />,
+      "Next.js": <SiNextdotjs />,
       Tamagui: <RiFileCodeLine />,
       TailwindCSS: <SiTailwindcss />,
       Strapi: <RiFileCodeLine />,
@@ -66,17 +55,16 @@ const Skills = async () => {
       WebSockets: <TbWebhook />,
       "Git/GitHub": <SiGit />,
       Docker: <SiDocker />,
-      " AWS (S3, SES, SNS)": <FaAws />,
+      "AWS (S3, SES, SNS)": <FaAws />,
       Monorepo: <RiFileCodeLine />,
       "CI/CD": <SiGithubactions />,
     };
 
-    const cleanSkillName = skillName.trim();
-    return iconMap[cleanSkillName] || <RiFileCodeLine />;
+    return iconMap[skillName.trim()] || <RiFileCodeLine />;
   };
 
   return (
-    <section id="skills" className="w-full py-24 md:py-24 overflow-hidden">
+    <section id="skills" className="w-full py-24 overflow-hidden">
       <div className="content-frame flex-col items-center justify-center">
         <div className="flex-col items-center justify-center max-w-3xl mx-auto text-center mb-16">
           <SectionHeader
@@ -86,28 +74,31 @@ const Skills = async () => {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {Object.entries(groupedSkills).map(([category, categorySkills]) => (
-            <div key={category} className="bg-background-light p-6 rounded  border border-border">
-              <h3 className="text-xl font-semibold mb-4 text-text-secondary">
-                {category}
-              </h3>
-
-              <div className="grid grid-cols-2 gap-4">
-                {categorySkills.map((skill) => (
-                  <div
-                    key={skill.skill}
-                    className="flex items-center space-x-2 p-3 bg-background rounded"
-                  >
-                    <span className="text-primary">
-                      {getSkillIcon(skill.skill)}
-                    </span>
-                    <span className="text-base">{skill.skill.trim()}</span>
-                  </div>
-                ))}
-              </div>
+        <div className="flex items-center justify-center">
+          <div
+            className="relative w-full max-w-screen-lg overflow-hidden"
+            style={{
+              maskComposite: "intersect",
+              maskImage: `
+                linear-gradient(to right,  transparent, black 5rem),
+                linear-gradient(to left,   transparent, black 5rem),
+                linear-gradient(to bottom, transparent, black 5rem),
+                linear-gradient(to top,    transparent, black 5rem)
+              `,
+            }}
+          >
+            <div className="mx-auto grid h-[250px] w-[300px] animate-skew-scroll grid-cols-1 gap-5 sm:w-[600px] sm:grid-cols-2">
+              {skills.skills.map((skill) => (
+                <div
+                  key={skill.id}
+                  className="flex cursor-pointer items-center space-x-2 rounded-md border border-gray-100 px-5 shadow-md transition-all hover:-translate-y-1 hover:translate-x-1 hover:scale-[1.025] hover:shadow-xl dark:border-gray-800"
+                >
+                  {getSkillIcon(skill?.skill)}
+                  <p className="text-gray-600">{skill?.skill}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

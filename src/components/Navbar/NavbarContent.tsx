@@ -2,11 +2,11 @@
 import React, {JSX} from "react";
 import {FloatingDock} from "@/components/Navbar/floating-dock";
 import {HiHome, HiBriefcase, HiUser} from "react-icons/hi";
-import {FaTools, FaArrowRight} from "react-icons/fa";
+import {FaTools} from "react-icons/fa";
 import {BiHistory} from "react-icons/bi";
 import {NavbarProps} from "@/lib/models";
-import Button from "../Button";
 import Logo from "../Logo";
+import SpotlightButton from "../SpotlightButton";
 
 const ICONS_MAP: Record<string, JSX.Element> = {
   Home: <HiHome className="h-full w-full text-text-secondary" />,
@@ -31,11 +31,10 @@ const NavbarContent = ({navbars}: {navbars: NavbarProps}) => {
         <Logo />
         <FloatingDock mobileClassName="translate-y-0" items={links} />
         {primaryButtonLink && (
-          <Button
+          <SpotlightButton
             text={primaryButtonText}
             link={primaryButtonLink}
             target="_blank"
-            icon={<FaArrowRight className="z-20 lg:size-4 md:size-4 size-3" />}
           />
         )}
       </div>
