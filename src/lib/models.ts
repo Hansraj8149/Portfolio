@@ -106,6 +106,12 @@ interface Icon {
   url: string;
 }
 
+export interface SkillsType {
+  id: number;
+  tag: string;
+  skill: string;
+}
+
 export interface SkillsProps {
   id: number;
   heading: string;
@@ -114,11 +120,7 @@ export interface SkillsProps {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  skills: {
-    id: number;
-    skill: string;
-    tag: string;
-  }[];
+  skills: SkillsType[];
 }
 export interface Experience {
   id: number;
