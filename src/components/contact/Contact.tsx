@@ -1,7 +1,7 @@
 import React from "react";
 
-import { AppWrap } from "@/wrapper";
-import { ContactProps } from "@/lib/models";
+import {AppWrap} from "@/wrapper";
+import {ContactProps} from "@/lib/models";
 import GetSectionData from "../GetSectionData";
 import SectionHeader from "../SectionHeader";
 import ContactInfo from "./ContactInfo";
@@ -10,14 +10,15 @@ import Loader from "../Loader";
 
 const Contact = async () => {
   const data = await GetSectionData("contacts");
-  const contacts: ContactProps = data?.data?.[0];
-
-  if (!contacts) {
+  if (!data || !data.length) {
     return <Loader />;
   }
+  const contacts: ContactProps = data?.data?.[0];
+
+
   return (
-    <div className="w-full py-20 content-frame flex flex-col bg-background-light">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="w-full py-24 bg-background-light">
+      <div className="max-w-6xl mx-auto">
         <SectionHeader
           heading={contacts.heading}
           subheading={contacts.subheading}

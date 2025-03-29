@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import ContactForm from "./ContactForm";
 import FormSubmitted from "./FormSubmitted";
-import { Form } from "@/lib/models";
+import {Form} from "@/lib/models";
 
 interface FormProps {
   form: Form;
 }
-const ContactSubmitted = ({ form }: FormProps) => {
+const ContactSubmitted = ({form}: FormProps) => {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   return (

@@ -6,40 +6,40 @@ import {HiOutlineLightBulb} from "react-icons/hi";
 import {RiCodeSSlashLine} from "react-icons/ri";
 import {FiAward, FiCode, FiArrowRight} from "react-icons/fi";
 import GetSectionData from "../GetSectionData";
-import SkillCard from "./SkillCard";
 import Loader from "../Loader";
 import SectionHeader from "../SectionHeader";
-import Button from "../Button";
+import SpotlightButton from "../SpotlightButton";
+import AboutPoints from "./AboutPoints";
 
 const getIcon = (index: number) => {
   const icons = [
     <HiOutlineLightBulb
       key="lightbulb"
-      className="text-primary-dark"
+      className="text-accent-dark"
       size={24}
     />,
     <RiCodeSSlashLine
       key="code-slash"
-      className="text-primary-dark"
+      className="text-accent-dark"
       size={24}
     />,
-    <FiAward key="award" className="text-primary-dark" size={24} />,
-    <FiCode key="code" className="text-primary-dark" size={24} />,
+    <FiAward key="award" className="text-accent-dark" size={24} />,
+    <FiCode key="code" className="text-accent-dark" size={24} />,
   ];
   return icons[index % icons.length];
 };
 
 const About = async () => {
   const data = await GetSectionData("abouts");
-  const abouts: AboutProps = data?.data?.[0];
-
-  if (!abouts) {
+  if (!data || !data.length) {
     return <Loader />;
   }
+  const abouts: AboutProps = data?.data?.[0];
+
 
   return (
     <section id="about" className="w-full py-24">
-      <div className="content-frame flex-col items-center justify-center">
+      <div className="content-frame flex-col items-center justify-center gap-12">
         <SectionHeader
           heading={abouts.heading}
           subheading={abouts.subheading}
@@ -53,7 +53,7 @@ const About = async () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {abouts.aboutPoints.map((point, index) => (
-              <SkillCard
+              <AboutPoints
                 key={point.id}
                 icon={getIcon(index)}
                 title={point.title}
@@ -64,12 +64,12 @@ const About = async () => {
 
           <div className="mt-8 flex items-start">
             {abouts.buttonText && (
-              <Button
+              <SpotlightButton
                 text={abouts.buttonText}
                 link={abouts.buttonLink}
-                icon={
-                  <FiArrowRight className="z-20 lg:size-6 md:size-6 size-4" />
-                }
+                target="_blank"
+                variant="primary"
+                icon={<FiArrowRight className="h-full w-full" />}
               />
             )}
           </div>

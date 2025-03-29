@@ -17,19 +17,20 @@ const iconMap = {
 };
 const Hero = async () => {
   const data = await GetSectionData("heroes");
-  const hero: HeroProps = data?.data?.[0];
-
-  if (!hero) {
+  if (!data || !data.length) {
     return <Loader />;
   }
+  const hero: HeroProps = data?.data?.[0];
+
+
 
   return (
     <div
       id="home"
-      className=" h-screen text-center w-full bg-black/[0.512] flex items-center justify-center relative overflow-hidden"
+      className="py-44 text-center w-full bg-black flex items-center justify-center relative overflow-hidden"
     >
       <Spotlight />
-      <div className="content-frame flex-col">
+      <div className="content-frame flex-col gap-4">
         <p className="uppercase text-2xl tracking-widest text-text font-nanum-pen-script">
           {hero.title}
         </p>
@@ -51,7 +52,7 @@ const Hero = async () => {
                   className="bg-secondary-lighter"
                   link={link.link}
                   target="_blank"
-                  icon={<IconComponent className="w-6 h-6 text-primary-dark" />}
+                  icon={<IconComponent className="w-6 h-6 text-accent" />}
                 />
               </div>
             );

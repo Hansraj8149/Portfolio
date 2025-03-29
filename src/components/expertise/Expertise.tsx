@@ -8,21 +8,20 @@ import {BentoGrid, BentoGridItem} from "./bento-grid";
 
 const Expertise = async () => {
   const data = await GetSectionData("expertises");
-  const expertises: ExpertiseProps = data?.data?.[0] ?? null;
-
-  if (!expertises) {
+  if (!data || !data.length) {
     return <Loader />;
   }
+  const expertises: ExpertiseProps = data?.data?.[0] ?? null;
+
+
   return (
     <section id="expertise" className="w-full py-24 bg-background-light">
-      <div className="content-frame flex-col items-center justify-center">
-        <div className="flex-col items-center justify-center ">
-          <SectionHeader
-            heading={expertises.heading}
-            subheading={expertises.subheading}
-            description={expertises.description[0].children[0].text}
-          />
-        </div>
+      <div className="content-frame flex-col items-center justify-center gap-12">
+        <SectionHeader
+          heading={expertises.heading}
+          subheading={expertises.subheading}
+          description={expertises.description[0].children[0].text}
+        />
 
         <BentoGrid className="max-w-4xl mx-auto">
           {expertises.expertises.map((item, i) => (

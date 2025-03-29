@@ -5,7 +5,10 @@ import clsx from "clsx";
 import {Form, FormInput} from "@/lib/models";
 import Input from "../Input";
 import {motion} from "motion/react";
-
+import {MagicCard} from "../magicui/magic-card";
+import SpotlightButton from "../SpotlightButton";
+import {BiMailSend} from "react-icons/bi";
+import {AiOutlineLoading3Quarters} from "react-icons/ai";
 interface ContactFormProps {
   form: Form;
   onFormSubmit: () => void;
@@ -52,73 +55,52 @@ const ContactForm = ({form, onFormSubmit}: ContactFormProps) => {
       animate={{opacity: 1, y: 0}}
       transition={{duration: 0.5}}
     >
-      <form
-        className="p-8 rounded bg-background border border-border"
-        onSubmit={handleSubmit}
-      >
-        <h3 className="text-xl font-medium mb-6 text-text-secondary text-center">
-          {form.title}
-        </h3>
+      <MagicCard gradientColor={"#262626"}>
+        <form
+          className="p-8 "
+          onSubmit={handleSubmit}
+        >
+          <h3 className="text-xl font-medium mb-6 text-center">
+            {form.title}
+          </h3>
 
-        <div className="flex flex-col gap-y-8">
-          {form.input.map((field: FormInput) => (
-            <Input
-              key={field.label}
-              type={field.type}
-              placeholder={field.placeholder}
-              name={field.label}
-              label={field.label}
-              value={formData[field.label]}
-              onChange={handleChangeInput}
-              onFocus={() => setFocusedField(field.label)}
-              onBlur={() => setFocusedField(null)}
-              isFocused={focusedField === field.label}
-              required
-            />
-          ))}
+          <div className="flex flex-col gap-y-8">
+            {form.input.map((field: FormInput) => (
+              <Input
+                key={field.label}
+                type={field.type}
+                placeholder={field.placeholder}
+                name={field.label}
+                label={field.label}
+                value={formData[field.label]}
+                onChange={handleChangeInput}
+                onFocus={() => setFocusedField(field.label)}
+                onBlur={() => setFocusedField(null)}
+                isFocused={focusedField === field.label}
+                required
+              />
+            ))}
+            <SpotlightButton
+              variant="primary"
+              className="flex items-center justify-center">
 
-          <motion.button
-            type="submit"
-            className={clsx(
-              "w-auto py-3 rounded font-medium text-text mt-8",
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-primary-dark hover:bg-primary-light"
-            )}
-            disabled={loading}
-            whileHover={{scale: loading ? 1 : 1.02}}
-            whileTap={{scale: loading ? 1 : 0.98}}
-          >
-            {loading ? (
-              <div className="flex items-center justify-center">
-                <svg
-                  className="animate-spin -ml-1 mr-2 h-4 w-4 text-text"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Sending...
-              </div>
-            ) : (
-              form.buttonText
-            )}
-          </motion.button>
-        </div>
-      </form>
+
+              <button
+                type="submit"
+                className={clsx("relative z-10 flex items-center justify-center gap-2 rounded bg-background px-4 py-2 lg:px-6 lg:py-3 ring-1 ring-primary/20 w-full")}
+                disabled={loading}
+              >
+                {loading ?
+                  <AiOutlineLoading3Quarters className="text-primary animate-spin" /> :
+                  <BiMailSend className="text-primary" />}
+                <span className="text-primary lg:text-sm text-xs">
+                  {loading ? "Sending..." : form.buttonText}
+                </span>
+              </button>
+            </SpotlightButton>
+          </div>
+        </form>
+      </MagicCard>
     </motion.div>
   );
 };

@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { motion, MotionProps } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import {cn} from "@/lib/utils";
+import {motion, MotionProps} from "motion/react";
+import {useEffect, useRef, useState} from "react";
 
 interface TypingAnimationProps extends MotionProps {
   children: string;
@@ -47,7 +47,7 @@ export function TypingAnimation({
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      {threshold: 0.1}
     );
 
     if (elementRef.current) {
@@ -79,7 +79,7 @@ export function TypingAnimation({
     <MotionComponent
       ref={elementRef}
       className={cn(
-        "text-3xl md:text-4xl font-extrabold mt-3 mb-6 leading-tight",
+        "text-2xl lg:text-3xl font-extrabold mt-3 mb-6 leading-tight",
         className
       )}
       {...props}

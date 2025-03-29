@@ -7,9 +7,9 @@ interface TagProps {
 }
 const Tag = ({tag, className}: TagProps) => {
   return (
-    <div className={clsx("px-2 py-1 text-xs font-medium rounded bg-opacity-10 bg-primary/10 text-primary", className)}>
+    <span className={clsx("bg-gradient-to-r from-accent-light/10 to-accent-dark/10 text-white/90 text-xs lg:text-sm px-3 lg:px-4 py-1 lg:py-1.5 rounded border border-border", className)}>
       {tag}
-    </div>
+    </span>
   )
 }
 

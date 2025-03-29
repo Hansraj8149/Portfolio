@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import {CardBody, CardContainer, CardItem} from "@/components/about/3d-card";
 import {ImageProps, SkillTagsProps} from "@/lib/models";
+import Tag from "../Tag";
 
 interface PhotoCardProps {
   heading: string;
@@ -50,14 +51,12 @@ const PhotoCard = ({
           rotateZ={-10}
           className="mt-4 z-10"
         >
-          <div className="flex justify-between items-center flex-wrap">
+          <div className="flex gap-2 items-center flex-wrap">
             {skillTags.map((skillTag, index) => (
-              <span
+              <Tag
                 key={index}
-                className="text-xs bg-background text-text-secondary px-2 py-1 rounded mr-2"
-              >
-                {skillTag.tag}
-              </span>
+                tag={skillTag.tag}
+              />
             ))}
           </div>
         </CardItem>

@@ -9,34 +9,51 @@
   --font-nanum-pen-script: var(--font-nanum-pen-script);
 }
 
-
 @theme {
-  /* Primary Colors - Vibrant & Accessible */
-  --color-primary: #6ae584; /* green-400 */
-  --color-primary-light: #81f29b; /* green-300 */
-  --color-primary-dark: #4dcc6b; /* green-500 */
-  --color-primary-darker: #3ea85a; /* green-600 */
+  /* Primary Colors - Teal & Emerald */
+  --color-primary: #14b8a6; /* teal-500 */
+  --color-primary-light: #2dd4bf; /* teal-400 */
+  --color-primary-dark: #0f766e; /* teal-700 */
+  --color-primary-darker: #0d635d; /* deeper teal */
 
-  /* Secondary Background */
-  --color-background: #111111; /* dark background */
-  --color-background-light: #151515; /* slightly lighter dark background */
-  --color-background-lighter: #1e1e1e; /* subtle grayish black */
+  /* Secondary Accent - Gold */
+  --color-accent: #ffd700; /* gold */
+  --color-accent-light: #ffdf42; /* lighter gold */
+  --color-accent-dark: #b29500; /* deeper gold */
+
+  /* Background - Black & Dark Shades */
+  --color-background: #0f0f0f; /* deep black */
+  --color-background-light: #171717; /* slightly lighter black */
+  --color-background-lighter: #1f1f1f; /* soft gray-black */
 
   /* Text Colors */
-  --color-text: #ffffff; /* pure white text */
-  --color-text-secondary: #cdcbd1; /* neutral soft gray */
+  --color-text: #ffffff; /* pure white */
+  --color-text-secondary: #d1d5db; /* neutral gray */
 
   /* Borders */
-  --color-border: #1F2937; /* dark gray for subtle borders */
-  --color-border-light: #4B5563; /* lighter gray */
-  --color-border-dark: #111827; /* even softer gray */
+  --color-border: #1f2937; /* dark gray */
+  --color-border-light: #374151; /* soft gray */
+  --color-border-dark: #0d131a; /* deep blue-black */
 
-  /* Button & Interactive Elements */
-  --color-button-primary: #6ae584; /* matches primary */
-  --color-button-hover: #4dcc6b; /* darker green for hover */
-  --color-button-text: #ffffff; /* ensures readability */
+  /* Buttons & Interactive Elements */
+  --color-button-primary: var(--color-primary);
+  --color-button-hover: var(--color-primary-dark);
+  --color-button-text: var(--color-text);
+
+  /* Secondary Button & Highlights */
+  --color-button-secondary: var(--color-accent);
+  --color-button-secondary-hover: var(--color-accent-dark);
 }
 
+
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
 
 
 /* SPOTLIGHT ANIMATION */
@@ -56,6 +73,8 @@
 }
 
 
+
+
 /* RIPPLE ANIMATION */
 
 @theme {
@@ -69,6 +88,32 @@
     }
   }
 }
+
+/* MARQUEE ANIMATION */
+
+@theme {
+  --animate-marquee: marquee var(--duration, 20s) linear infinite;
+  --animate-marquee-vertical: marquee-vertical var(--duration, 20s) linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap, 0px)));
+    }
+  }
+}
+
 @layer base {
   
   body {

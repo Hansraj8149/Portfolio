@@ -7,7 +7,7 @@ interface SocialIconProps {
   link?: string;
   target?: string;
 }
-const SocialIcon = ({ icon, className, link, target }: SocialIconProps) => {
+const SocialIcon = ({icon, className, link, target}: SocialIconProps) => {
   return (
     <a
       href={link}
@@ -17,7 +17,7 @@ const SocialIcon = ({ icon, className, link, target }: SocialIconProps) => {
         className
       )}
     >
-      <span className="flex items-center justify-center w-full h-full bg-transparent border border-gray-500/50 rounded-lg transition-all duration-300 group-hover:bg-gray-500/50 group-hover:backdrop-blur-sm">
+      <span className="flex items-center justify-center w-full h-full bg-transparent border border-border rounded-lg transition-all duration-300 group-hover:bg-border/50 group-hover:backdrop-blur-sm">
         {icon}
       </span>
       <span className="absolute inset-0 w-full h-full bg-[#181818] rounded-lg -z-10 transition-transform duration-300 group-hover:rotate-[35deg] origin-bottom" />

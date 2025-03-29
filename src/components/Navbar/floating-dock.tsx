@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import { HiOutlineMenuAlt1 } from "react-icons/hi";
+import {cn} from "@/lib/utils";
+import {HiOutlineMenuAlt1} from "react-icons/hi";
 import {
   AnimatePresence,
   MotionValue,
@@ -9,14 +9,14 @@ import {
   useTransform,
 } from "motion/react";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import {useRef, useState} from "react";
 
 export const FloatingDock = ({
   items,
   desktopClassName,
   mobileClassName,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: {title: string; icon: React.ReactNode; href: string}[];
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
@@ -32,12 +32,12 @@ const FloatingDockMobile = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: {title: string; icon: React.ReactNode; href: string}[];
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cn("relative block md:hidden ", className)}>
+    <div className={cn("relative block md:hidden", className)}>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -47,7 +47,7 @@ const FloatingDockMobile = ({
             {items.map((item, idx) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{opacity: 0, y: 10}}
                 animate={{
                   opacity: 1,
                   y: 0,
@@ -59,14 +59,14 @@ const FloatingDockMobile = ({
                     delay: idx * 0.05,
                   },
                 }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+                transition={{delay: (items.length - 1 - idx) * 0.05}}
               >
                 <Link
                   href={item.href}
                   key={item.title}
-                  className="h-10 w-10 rounded-full bg-background flex items-center justify-center"
+                  className="h-10 w-10 rounded-full bg-background-light flex items-center justify-center"
                 >
-                  <div className="h-4 w-4">{item.icon}</div>
+                  <div className="h-4 w-4 text-text-secondary">{item.icon}</div>
                 </Link>
               </motion.div>
             ))}
@@ -75,9 +75,9 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-background flex items-center justify-center"
+        className="h-10 w-10 rounded-full bg-background-lighter flex items-center justify-center"
       >
-        <HiOutlineMenuAlt1 className="h-5 w-5 text-text" />
+        <HiOutlineMenuAlt1 className="h-6 w-6 text-accent" />
       </button>
     </div>
   );
@@ -87,7 +87,7 @@ const FloatingDockDesktop = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: {title: string; icon: React.ReactNode; href: string}[];
   className?: string;
 }) => {
   const mouseX = useMotionValue(Infinity);
@@ -96,7 +96,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex h-16 gap-4 items-end  rounded-2xl bg-background px-4 pb-3",
+        "mx-auto hidden md:flex gap-4 items-center  rounded-2xl bg-background-light p-3 ",
         className
       )}
     >
@@ -121,8 +121,7 @@ function IconContainer({
   const ref = useRef<HTMLDivElement>(null);
 
   const distance = useTransform(mouseX, (val) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-
+    const bounds = ref.current?.getBoundingClientRect() ?? {x: 0, width: 0};
     return val - bounds.x - bounds.width / 2;
   });
 
@@ -168,26 +167,26 @@ function IconContainer({
     <Link href={href}>
       <motion.div
         ref={ref}
-        style={{ width, height }}
+        style={{width, height}}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="aspect-square rounded-full bg-background-lighter flex items-center justify-center relative"
+        className="aspect-square rounded-full bg-background flex items-center justify-center relative"
       >
         <AnimatePresence>
           {hovered && (
             <motion.div
-              initial={{ opacity: 0, y: 10, x: "-50%" }}
-              animate={{ opacity: 1, y: 0, x: "-50%" }}
-              exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="px-2 py-0.5 whitespace-pre rounded-md border bg-background border-border text-text absolute left-1/2 -translate-x-1/2 -bottom-8 w-fit text-xs"
+              initial={{opacity: 0, y: 10, x: "-50%"}}
+              animate={{opacity: 1, y: 0, x: "-50%"}}
+              exit={{opacity: 0, y: 2, x: "-50%"}}
+              className="px-2 py-0.5 whitespace-pre rounded-md border bg-primary border-border-light text-text absolute left-1/2 -translate-x-1/2 -bottom-8 w-fit text-xs"
             >
               {title}
             </motion.div>
           )}
         </AnimatePresence>
         <motion.div
-          style={{ width: widthIcon, height: heightIcon }}
-          className="flex items-center justify-center"
+          style={{width: widthIcon, height: heightIcon}}
+          className="flex items-center justify-center text-text-secondary"
         >
           {icon}
         </motion.div>
@@ -195,3 +194,6 @@ function IconContainer({
     </Link>
   );
 }
+
+
+
