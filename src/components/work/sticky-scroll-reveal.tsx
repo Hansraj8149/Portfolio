@@ -15,15 +15,6 @@ interface WorkCardProps {
 }
 
 export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
-
-
-
-
-
-
-
-
-
   return (
     <motion.div
       ref={ref}
