@@ -39,7 +39,7 @@ const About = async () => {
 
   return (
     <section id="about" className="w-full py-24">
-      <div className="content-frame flex-col items-center justify-center">
+      <div className="content-frame flex-col items-center justify-center gap-12">
         <SectionHeader
           heading={abouts.heading}
           subheading={abouts.subheading}

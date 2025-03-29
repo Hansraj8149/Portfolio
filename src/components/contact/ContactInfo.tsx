@@ -9,7 +9,7 @@ interface ContactProps {
 
 const ContactInfo = ({contactDetails}: ContactProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto py-12">
       {contactDetails.map((contact, index) => (
         <motion.div
           key={contact.id}
