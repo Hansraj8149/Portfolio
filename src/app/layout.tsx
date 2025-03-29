@@ -29,36 +29,40 @@ export default function RootLayout({
       <body
         className={`${karla.variable} ${nanumPenScript.variable} antialiased`}
       >
-        <AnimatedCursor
-          innerSize={4}
-          outerSize={40}
-          innerScale={0.7}
-          outerScale={2}
-          innerStyle={{
-            backgroundColor: "rgb(106, 229, 132)",
-          }}
-          outerStyle={{
-            backgroundColor: "transparent",
-            border: "2px solid white",
-          }}
-          outerAlpha={1}
-          clickables={[
-            "a",
-            'input[type="text"]',
-            'input[type="email"]',
-            'input[type="number"]',
-            'input[type="submit"]',
-            'input[type="image"]',
-            "label[for]",
-            "select",
-            "textarea",
-            "button",
-            ".link",
-            {
-              target: ".custom",
-            },
-          ]}
-        />
+        <div className="lg:block md:block hidden">
+
+          <AnimatedCursor
+            innerSize={4}
+            outerSize={40}
+            innerScale={0.7}
+            outerScale={2}
+            innerStyle={{
+              backgroundColor: "rgb(20, 184, 166)",
+            }}
+            outerStyle={{
+              backgroundColor: "transparent",
+              border: "2px solid white",
+            }}
+            outerAlpha={1}
+            clickables={[
+              "a",
+              'input[type="text"]',
+              'input[type="email"]',
+              'input[type="number"]',
+              'input[type="submit"]',
+              'input[type="image"]',
+              "label[for]",
+              "select",
+              "textarea",
+              "button",
+              ".link",
+              {
+                target: ".custom",
+              },
+            ]}
+          />
+        </div>
+
 
         <Navbar />
         <ScrollProgress />
