@@ -117,7 +117,7 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
               </div>
 
               <p className="text-secondary-light text-xs lg:text-sm font-medium flex items-center gap-2">
-                <IoLocationOutline className="text-accent-dark lg:h-5 lg:w-5 h-3 w-3 " />
+                <IoLocationOutline className="text-accent lg:h-5 lg:w-5 h-3 w-3 " />
                 {experience.location}
               </p>
 
@@ -126,7 +126,7 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
                   {experience.description.map((desc, i) => (
                     <motion.li key={i} className="flex items-start gap-2.5" initial={{opacity: 0, x: -8}} animate={{opacity: 1, x: 0}} transition={{delay: 0.2 + i * 0.08, duration: 0.3}}>
                       <span>
-                        <IoCheckmark className="text-accent-dark lg:h-5 lg:w-5 h-3 w-3 mt-1" />
+                        <IoCheckmark className="text-accent lg:h-5 lg:w-5 h-3 w-3 mt-1" />
                       </span>
                       <span className="leading-relaxed">
                         {desc.children.map((child, idx) =>

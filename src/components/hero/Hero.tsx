@@ -51,7 +51,7 @@ const Hero = async () => {
                   className="bg-secondary-lighter"
                   link={link.link}
                   target="_blank"
-                  icon={<IconComponent className="w-6 h-6 text-accent-dark" />}
+                  icon={<IconComponent className="w-6 h-6 text-accent" />}
                 />
               </div>
             );

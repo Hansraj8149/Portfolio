@@ -67,7 +67,7 @@ export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
                     transition={{delay: 0.3 + i * 0.1, duration: 0.4}}
                   >
                     <span>
-                      <IoCheckmark className="text-accent-dark lg:h-5 lg:w-5 h-3 w-3 mt-1" />
+                      <IoCheckmark className="text-accent lg:h-5 lg:w-5 h-3 w-3 mt-1" />
                     </span>
                     <span className="leading-relaxed">
                       {desc.children.map((child, idx) =>

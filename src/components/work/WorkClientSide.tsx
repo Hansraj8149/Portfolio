@@ -35,7 +35,7 @@ const WorkClientSide = ({worksData}: {worksData: WorksProps}) => {
     <motion.div
 
       animate={{backgroundColor: backgroundColors[activeCard % backgroundColors.length]}}
-      id="work" className="w-full py-24 bg-background-light">
+      id="work" className="w-full py-24">
       <SectionHeader
         heading={worksData?.heading || "My Work"}
         subheading={worksData?.subHeading || "Check out my latest projects"}

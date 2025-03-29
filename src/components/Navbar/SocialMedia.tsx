@@ -6,15 +6,15 @@ import SocialIcon from "../hero/SocialIcon";
 const socialLinks = [
   {
     href: "https://www.linkedin.com/in/hansraj-saini-634864190/",
-    icon: <FaLinkedin className="w-4 h-4 text-accent-dark" />,
+    icon: <FaLinkedin className="w-4 h-4 text-accent" />,
   },
   {
     href: "https://www.instagram.com/direct/inbox/",
-    icon: <BsInstagram className="w-4 h-4 text-accent-dark" />,
+    icon: <BsInstagram className="w-4 h-4 text-accent" />,
   },
   {
     href: "https://github.com/Hansraj8149?tab=repositories",
-    icon: <FaGithub className="w-4 h-4 text-accent-dark" />,
+    icon: <FaGithub className="w-4 h-4 text-accent" />,
   },
 ];
 
