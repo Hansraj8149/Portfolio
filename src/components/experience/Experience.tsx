@@ -8,12 +8,12 @@ import {Timeline} from "./timeline";
 
 const Experience = async () => {
   const data = await GetSectionData("experiences");
-  if (!data || !data.length) {
-    return <Loader />;
-  }
+
   const experiences: ExperienceProps = data?.data?.[0];
 
-
+  if (!experiences) {
+    return <Loader />;
+  }
 
   return (
     <section className="py-24 w-full">

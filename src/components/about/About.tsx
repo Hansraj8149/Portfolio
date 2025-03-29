@@ -31,11 +31,11 @@ const getIcon = (index: number) => {
 
 const About = async () => {
   const data = await GetSectionData("abouts");
-  if (!data || !data.length) {
-    return <Loader />;
-  }
   const abouts: AboutProps = data?.data?.[0];
 
+  if (!abouts) {
+    return <Loader />;
+  }
 
   return (
     <section id="about" className="w-full py-24">
