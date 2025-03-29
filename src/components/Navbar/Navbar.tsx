@@ -1,7 +1,7 @@
 import React from "react";
 
 import GetSectionData from "../GetSectionData";
-import { NavbarProps } from "@/lib/models";
+import {NavbarProps} from "@/lib/models";
 import NavbarContent from "./NavbarContent";
 import Loader from "../Loader";
 

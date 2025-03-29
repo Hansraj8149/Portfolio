@@ -14,7 +14,7 @@ const SectionHeader = ({
   return (
     <div className="text-center py-2">
       {heading && (
-        <span className="bg-gradient-to-r from-primary to-primary-dark text-transparent bg-clip-text font-bold text-sm uppercase tracking-wider">
+        <span className="bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider">
           {heading}
         </span>
       )}

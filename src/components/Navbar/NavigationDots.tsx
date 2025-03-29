@@ -4,11 +4,10 @@ interface NavigationDotsProps {
   active: string;
 }
 
-const NavigationDots = ({ active }: NavigationDotsProps) => {
+const NavigationDots = ({active}: NavigationDotsProps) => {
   const sections = [
     "home",
     "experience",
-    "work",
     "about",
     "expertise",
     "skills",
@@ -21,9 +20,8 @@ const NavigationDots = ({ active }: NavigationDotsProps) => {
         <a
           key={item}
           href={`#${item}`}
-          className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-            active === item ? "bg-primary" : "bg-primary/10"
-          } hover:bg-primary`}
+          className={`w-2 h-2 rounded-full transition-colors duration-200 ${active === item ? "bg-accent" : "bg-accent/10"
+            } hover:bg-accent`}
         />
       ))}
     </div>

@@ -1,40 +1,23 @@
 "use client";
-import React, {useRef, useState} from "react";
-import {useMotionValueEvent, useScroll, motion} from "motion/react";
+import React from "react";
+import {motion} from "motion/react";
 import Image from "next/image";
 import {WorkType} from "@/lib/models";
 import {AiFillEye, AiFillGithub} from "react-icons/ai";
 import Tag from "../Tag";
 import SpotlightButton from "../SpotlightButton";
+import {IoCheckmark} from "react-icons/io5";
 
 interface WorkCardProps {
   works: WorkType[];
+  activeCard: number;
+  ref: React.Ref<HTMLDivElement>;
 }
 
-export const StickyScroll = ({works}: WorkCardProps) => {
-  const [activeCard, setActiveCard] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const {scrollYProgress} = useScroll({
-    container: ref,
-    offset: ["start start", "end start"],
-  });
+export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
 
-  const cardLength = works.length;
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const breakpoints = works.map((_, index) => index / cardLength);
-    const closestIndex = breakpoints.reduce((acc, point, index) => {
-      return Math.abs(latest - point) < Math.abs(latest - breakpoints[acc]) ? index : acc;
-    }, 0);
-    setActiveCard(closestIndex);
-  });
 
-  const backgroundColors = [
-    "#0d1117",
-    "#000000",
-    "#121212",
-    "#1a1a1a",
-  ];
 
 
 
@@ -43,9 +26,8 @@ export const StickyScroll = ({works}: WorkCardProps) => {
 
   return (
     <motion.div
-      animate={{backgroundColor: backgroundColors[activeCard % backgroundColors.length]}}
-      className="relative flex h-[35rem] justify-center overflow-y-auto w-full no-scrollbar"
       ref={ref}
+      className="relative flex h-[35rem] justify-center overflow-y-auto w-full no-scrollbar"
     >
       <div className="flex items-start px-4 max-w-3xl w-full flex-col mb-24">
         {works.map((item, index) => (
@@ -84,18 +66,8 @@ export const StickyScroll = ({works}: WorkCardProps) => {
                     animate={{opacity: 1, x: 0}}
                     transition={{delay: 0.3 + i * 0.1, duration: 0.4}}
                   >
-                    <span className="flex-shrink-0 mt-1.5">
-                      <svg
-                        className="h-3 w-3 lg:h-5 lg:w-5 text-teal-400"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
-                          fill="currentColor"
-                        />
-                      </svg>
+                    <span>
+                      <IoCheckmark className="text-accent-dark lg:h-5 lg:w-5 h-3 w-3 mt-1" />
                     </span>
                     <span className="leading-relaxed">
                       {desc.children.map((child, idx) =>

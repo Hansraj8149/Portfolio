@@ -26,7 +26,7 @@ const Hero = async () => {
   return (
     <div
       id="home"
-      className=" h-screen text-center w-full bg-black/[0.512] flex items-center justify-center relative overflow-hidden"
+      className=" h-screen text-center w-full bg-black flex items-center justify-center relative overflow-hidden"
     >
       <Spotlight />
       <div className="content-frame flex-col">
@@ -51,7 +51,7 @@ const Hero = async () => {
                   className="bg-secondary-lighter"
                   link={link.link}
                   target="_blank"
-                  icon={<IconComponent className="w-6 h-6 text-primary-dark" />}
+                  icon={<IconComponent className="w-6 h-6 text-accent-dark" />}
                 />
               </div>
             );

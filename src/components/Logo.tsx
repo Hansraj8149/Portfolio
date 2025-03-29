@@ -2,7 +2,7 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center pr-6">
       <h1 className="font-nanum-pen-script text-4xl lg:text-5xl font-bold text-primary">
         H
       </h1>

@@ -4,6 +4,7 @@ import {useScroll, useTransform, motion} from "motion/react";
 import Image from "next/image";
 import React, {useEffect, useRef, useState} from "react";
 import Tag from "../Tag";
+import {IoCheckmark, IoLocationOutline} from "react-icons/io5";
 
 export const Timeline = ({experiences}: {experiences: Experience[]}) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
   return (
     <div className="w-full bg-background py-16 md:py-24" ref={containerRef}>
       <div ref={ref} className="relative md:px-6">
-        <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-neutral-800/30">
+        <div className="absolute lg:left-6  top-0 bottom-0 w-px bg-neutral-800/30">
           <motion.div
             style={{height: heightTransform, opacity: opacityTransform}}
             className="absolute top-0 w-px bg-gradient-to-t from-primary via-primary/20 to-transparent rounded-full shadow-[0_0_8px_rgba(147,51,234,0.3)]"
@@ -63,7 +64,7 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
         {experiences.map((experience, index) => (
           <motion.div
             key={index}
-            className={`timeline-item flex justify-start pt-20 md:pt-40 gap-6 md:gap-12 ${activeIndex === index ? "z-10" : ""
+            className={`timeline-item flex justify-start lg:gap-12 ${activeIndex === index ? "z-10" : ""
               }`}
             initial={{opacity: 0, y: 30}}
             whileInView={{
@@ -73,20 +74,20 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
             }}
             viewport={{once: false, margin: "-10%"}}
           >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-32">
+            <div className="sticky flex lg:w-2/6 z-40 items-center justify-start">
               <motion.div
-                className="h-8 absolute w-8 rounded flex items-center justify-center"
-                animate={{scale: activeIndex === index ? 1.1 : 1, transition: {duration: 0.3}}}
+                className="h-8  w-8 rounded flex items-center justify-start "
+                animate={{scale: activeIndex === index ? 1.5 : 1, transition: {duration: 0.3}}}
               >
                 <div
                   className={`h-3 w-3 rounded border ${activeIndex === index
-                    ? "bg-background-secondary border-border shadow-primary/15 shadow-md"
-                    : "bg-background-secondary border-border"
+                    ? "bg-accent-light border-border shadow-primary/15 shadow-md"
+                    : "bg-primary border-border"
                     } transition-all duration-200`}
                 />
               </motion.div>
               <motion.h3
-                className="hidden md:block text-base md:text-lg font-medium md:pl-16 transition-colors duration-200"
+                className=" hidden lg:block text-xs lg:text-base font-medium  transition-colors duration-200"
                 style={{color: activeIndex === index ? "var(--color-primary-light)" : "var(--color-neutral-500)"}}
               >
                 {experience === experiences[0] ? "Present" : formatDate(experience.fromDate)} -{" "}
@@ -95,7 +96,7 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
             </div>
 
             <motion.div
-              className="relative pl-12 md:pl-8 pr-4 w-full p-4 rounded-lg backdrop-blur-sm"
+              className="relative w-full p-8 rounded border border-border mb-24 backdrop-blur-sm"
               variants={{
                 active: {boxShadow: "0 2px 12px rgba(0,0,0,0.08)", backgroundColor: "rgba(255,255,255,0.02)"},
                 inactive: {boxShadow: "none", backgroundColor: "transparent"},
@@ -115,22 +116,8 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
                 <Tag tag={experience.company} />
               </div>
 
-              <p className="text-secondary-light text-xs lg:text-sm font-medium flex items-center mt-1 mb-4 opacity-70">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-2"
-                >
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
+              <p className="text-secondary-light text-xs lg:text-sm font-medium flex items-center gap-2">
+                <IoLocationOutline className="text-accent-dark lg:h-5 lg:w-5 h-3 w-3 " />
                 {experience.location}
               </p>
 
@@ -138,12 +125,12 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
                 <motion.ul className="mt-5 space-y-3 text-light-text-dark text-sm" initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.2, duration: 0.4}}>
                   {experience.description.map((desc, i) => (
                     <motion.li key={i} className="flex items-start gap-2.5" initial={{opacity: 0, x: -8}} animate={{opacity: 1, x: 0}} transition={{delay: 0.2 + i * 0.08, duration: 0.3}}>
-                      <svg className="min-w-3.5 mt-0.5 text-primary" width="14" height="14" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor" />
-                      </svg>
+                      <span>
+                        <IoCheckmark className="text-accent-dark lg:h-5 lg:w-5 h-3 w-3 mt-1" />
+                      </span>
                       <span className="leading-relaxed">
                         {desc.children.map((child, idx) =>
-                          child.bold ? <strong key={idx} className="text-accent-light font-medium">{child.text}</strong> : <span key={idx}>{child.text}</span>
+                          child.bold ? <strong key={idx} className="text-primary-light font-medium">{child.text}</strong> : <span key={idx}>{child.text}</span>
                         )}
                       </span>
                     </motion.li>

@@ -1,10 +1,10 @@
-interface SkillCardProps {
+interface AboutPointsProps {
   icon: React.ReactNode;
   title: string;
   description: string;
 }
 
-const SkillCard = ({icon, title, description}: SkillCardProps) => {
+const AboutPoints = ({icon, title, description}: AboutPointsProps) => {
   return (
     <div>
       <div className="flex items-start space-x-3 bg-background-light p-4 w-full h-full rounded border border-border">
@@ -18,4 +18,4 @@ const SkillCard = ({icon, title, description}: SkillCardProps) => {
   );
 };
 
-export default SkillCard;
+export default AboutPoints;
