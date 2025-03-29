@@ -35,6 +35,7 @@ const NavbarContent = ({navbars}: {navbars: NavbarProps}) => {
             text={primaryButtonText}
             link={primaryButtonLink}
             target="_blank"
+            icon={<HiBriefcase className="h-full w-full text-text-secondary" />}
           />
         )}
       </div>

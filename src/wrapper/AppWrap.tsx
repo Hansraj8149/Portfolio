@@ -1,5 +1,5 @@
-import { NavigationDots, SocialMedia } from "@/components/Navbar";
-import React, { ComponentType } from "react";
+import {NavigationDots, SocialMedia} from "@/components/Navbar";
+import React, {ComponentType} from "react";
 import clsx from "clsx";
 const AppWrap = <P extends object>(
   Component: ComponentType<P>,
