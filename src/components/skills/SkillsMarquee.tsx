@@ -12,9 +12,9 @@ const SkillsMarquee = ({skillsByTag}: {skillsByTag: SkillsCategory}) => {
   const rows = tags.map((tag) => skillsByTag[tag]);
 
   return (
-    <div className="relative flex h-96 w-full flex-row items-center justify-center gap-4 overflow-hidden">
+    <div className="relative flex h-96 w-full  items-center justify-center gap-4 overflow-hidden">
       <div
-        className="flex flex-row items-center gap-4"
+        className="flex items-center gap-4"
         style={{
           transform:
             "translateX(-100px) translateY(0px) translateZ(-100px) rotateX(20deg) rotateY(-10deg) rotateZ(20deg)",

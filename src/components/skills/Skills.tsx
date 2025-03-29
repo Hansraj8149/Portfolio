@@ -21,14 +21,12 @@ const Skills = async () => {
 
   return (
     <section id="skills" className="w-full py-24 overflow-hidden">
-      <div className="content-frame flex-col items-center justify-center">
-        <div className="flex-col items-center justify-center max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader
-            heading={skills.heading}
-            subheading={skills.subheading}
-            description={skills.description}
-          />
-        </div>
+      <div className="content-frame flex-col items-center justify-center gap-12">
+        <SectionHeader
+          heading={skills.heading}
+          subheading={skills.subheading}
+          description={skills.description}
+        />
         <SkillsMarquee skillsByTag={skillsByTag} />
       </div>
     </section>

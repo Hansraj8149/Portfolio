@@ -9,11 +9,11 @@ import Logo from "../Logo";
 import SpotlightButton from "../SpotlightButton";
 
 const ICONS_MAP: Record<string, JSX.Element> = {
-  Home: <HiHome className="h-full w-full text-text-secondary" />,
-  Work: <HiBriefcase className="h-full w-full text-text-secondary" />,
-  About: <HiUser className="h-full w-full text-text-secondary" />,
-  Skills: <FaTools className="h-full w-full text-text-secondary" />,
-  Experience: <BiHistory className="h-full w-full text-text-secondary" />,
+  Home: <HiHome className="h-full w-full text-text" />,
+  Work: <HiBriefcase className="h-full w-full text-text" />,
+  About: <HiUser className="h-full w-full text-text" />,
+  Skills: <FaTools className="h-full w-full text-text" />,
+  Experience: <BiHistory className="h-full w-full text-text" />,
 };
 
 const NavbarContent = ({navbars}: {navbars: NavbarProps}) => {

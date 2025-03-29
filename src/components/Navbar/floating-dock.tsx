@@ -75,9 +75,9 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-primary flex items-center justify-center hover:bg-primary-dark"
+        className="h-10 w-10 rounded-full bg-background-lighter flex items-center justify-center"
       >
-        <HiOutlineMenuAlt1 className="h-5 w-5 text-button-text" />
+        <HiOutlineMenuAlt1 className="h-6 w-6 text-accent" />
       </button>
     </div>
   );
@@ -96,7 +96,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex h-16 gap-4 items-end rounded-2xl bg-background-light px-4 pb-3",
+        "mx-auto hidden md:flex gap-4 items-center  rounded-2xl bg-background-light p-3 ",
         className
       )}
     >
