@@ -8,9 +8,12 @@ import SkillsMarquee from "./SkillsMarquee";
 
 const Skills = async () => {
   const data = await GetSectionData("skills");
+  if (!data || !data.length) {
+    return <Loader />;
+  }
   const skills: SkillsProps = data?.data?.[0];
 
-  if (!skills) return <Loader />;
+
 
   const skillsByTag: {[key: string]: SkillsType[]} = skills.skills.reduce((acc: {[key: string]: SkillsType[]}, skill: SkillsType) => {
     const tag = skill.tag.trim();
