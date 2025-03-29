@@ -32,7 +32,7 @@ export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
       <div className="flex items-start px-4 max-w-3xl w-full flex-col mb-24">
         {works.map((item, index) => (
           <motion.div
-            key={item.title}
+            key={item?.title}
             className="px-0 lg:px-10 py-14 pb-36 flex flex-col gap-6"
             initial={{opacity: 0, y: 20}}
             animate={{
@@ -48,7 +48,7 @@ export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
               animate={{opacity: 1, y: 0}}
               transition={{delay: 0.1, duration: 0.4}}
             >
-              {item.title}
+              {item?.title}
             </motion.h2>
 
             {item?.description && (
@@ -70,7 +70,7 @@ export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
                       <IoCheckmark className="text-accent lg:h-5 lg:w-5 h-3 w-3 mt-1" />
                     </span>
                     <span className="leading-relaxed">
-                      {desc.children.map((child, idx) =>
+                      {desc?.children?.map((child, idx) =>
                         child.bold ? (
                           <strong key={idx} className="text-teal-300 font-semibold">{child.text}</strong>
                         ) : (
@@ -105,7 +105,7 @@ export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
                 <SpotlightButton
                   variant="secondary"
                   text="Live"
-                  link={item.liveLink}
+                  link={item?.liveLink}
                   target="_blank"
                   icon={<AiFillEye className="h-full w-full text-text-secondary" />}
                 />
@@ -115,7 +115,7 @@ export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
                 <SpotlightButton
                   variant="primary"
                   text="Code"
-                  link={item.githubLink}
+                  link={item?.githubLink}
                   target="_blank"
                   icon={<AiFillGithub className="h-full w-full" />}
                 />

@@ -11,7 +11,7 @@ import Loader from "../Loader";
 const Contact = async () => {
   const data = await GetSectionData("contacts");
 
-  const contacts: ContactProps = data?.data?.[0];
+  const contacts: ContactProps = data?.data?.length ? data.data[0] : null;
 
   if (!contacts) {
     return <Loader />;
@@ -20,13 +20,13 @@ const Contact = async () => {
     <div className="w-full py-24 bg-background-light">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          heading={contacts.heading}
-          subheading={contacts.subheading}
-          description={contacts.description}
+          heading={contacts?.heading}
+          subheading={contacts?.subheading}
+          description={contacts?.description}
         />
 
-        <ContactInfo contactDetails={contacts.contactDetails} />
-        <ContactSubmitted form={contacts.form} />
+        <ContactInfo contactDetails={contacts?.contactDetails} />
+        <ContactSubmitted form={contacts?.form} />
       </div>
     </div>
   );

@@ -26,8 +26,8 @@ const ContactInfo = ({contactDetails}: ContactProps) => {
           >
             <div className="relative w-8 h-8 flex items-center justify-center">
               <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${contact.icon.url}`}
-                alt={contact.name}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${contact?.icon?.url}`}
+                alt={contact?.name}
                 width={24}
                 height={24}
                 className="transition-transform duration-300 group-hover:scale-110"
@@ -36,18 +36,18 @@ const ContactInfo = ({contactDetails}: ContactProps) => {
           </div>
           <div>
             <h3 className="text-xs uppercase tracking-wider font-semibold mb-1.5 text-gray-400 group-hover:text-primary-light transition-colors duration-300">
-              {contact.name}
+              {contact?.name}
             </h3>
             <a
               href={
-                contact.name.toLowerCase() === "email"
-                  ? `mailto:${contact.value}`
-                  : `tel:${contact.value}`
+                contact?.name.toLowerCase() === "email"
+                  ? `mailto:${contact?.value}`
+                  : `tel:${contact?.value}`
               }
               className="text-lg font-medium text-text-secondary 
                 group-hover:text-primary-light transition-colors duration-300"
             >
-              {contact.value}
+              {contact?.value}
             </a>
           </div>
         </motion.div>

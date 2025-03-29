@@ -31,7 +31,7 @@ const getIcon = (index: number) => {
 
 const About = async () => {
   const data = await GetSectionData("abouts");
-  const abouts: AboutProps = data?.data?.[0];
+  const abouts: AboutProps = data?.data?.length ? data.data[0] : null;
 
   if (!abouts) {
     return <Loader />;
@@ -41,18 +41,18 @@ const About = async () => {
     <section id="about" className="w-full py-24">
       <div className="content-frame flex-col items-center justify-center gap-12">
         <SectionHeader
-          heading={abouts.heading}
-          subheading={abouts.subheading}
-          description={abouts.description}
+          heading={abouts?.heading}
+          subheading={abouts?.subheading}
+          description={abouts?.description}
         />
 
         <div className="flex flex-col items-center  lg:items-start">
           <h3 className="text-5xl font-bold text-text-secondary text-left mb-5 font-nanum-pen-script">
-            {abouts.title}
+            {abouts?.title}
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {abouts.aboutPoints.map((point, index) => (
+            {abouts?.aboutPoints?.map((point, index) => (
               <AboutPoints
                 key={point.id}
                 icon={getIcon(index)}
@@ -63,10 +63,10 @@ const About = async () => {
           </div>
 
           <div className="mt-8 flex items-start">
-            {abouts.buttonText && (
+            {abouts?.buttonText && (
               <SpotlightButton
-                text={abouts.buttonText}
-                link={abouts.buttonLink}
+                text={abouts?.buttonText}
+                link={abouts?.buttonLink}
                 target="_blank"
                 variant="primary"
                 icon={<FiArrowRight className="h-full w-full" />}
@@ -77,10 +77,10 @@ const About = async () => {
 
         <div className="flex justify-center items-center">
           <PhotoCard
-            heading={abouts.photoCard.heading}
-            subheading={abouts.photoCard.subheading}
-            image={abouts.photoCard.image}
-            skillTags={abouts.photoCard.skillTags}
+            heading={abouts?.photoCard?.heading}
+            subheading={abouts?.photoCard?.subheading}
+            image={abouts.photoCard?.image}
+            skillTags={abouts?.photoCard.skillTags}
           />
         </div>
       </div>

@@ -18,7 +18,7 @@ const iconMap = {
 const Hero = async () => {
   const data = await GetSectionData("heroes");
 
-  const hero: HeroProps = data?.data?.[0];
+  const hero: HeroProps = data?.data?.length ? data.data[0] : null;
 
   if (!hero) {
     return <Loader />;
@@ -32,17 +32,17 @@ const Hero = async () => {
       <Spotlight />
       <div className="content-frame flex-col gap-4">
         <p className="uppercase text-2xl tracking-widest text-text font-nanum-pen-script">
-          {hero.title}
+          {hero?.title}
         </p>
         <SectionHeader
-          heading={hero.heading}
-          subheading={hero.subheading}
-          description={hero.description}
+          heading={hero?.heading}
+          subheading={hero?.subheading}
+          description={hero?.description}
         />
         <div className="flex items-center justify-center py-4">
           {hero?.links?.map((link, index) => {
             const IconComponent =
-              iconMap[link.name as keyof typeof iconMap] || FaCode;
+              iconMap[link?.name as keyof typeof iconMap] || FaCode;
             return (
               <div
                 className="rounded bg-secondary-lighter lg:p-4 p-2 cursor-pointer hover:scale-110"
@@ -50,7 +50,7 @@ const Hero = async () => {
               >
                 <SocialIcon
                   className="bg-secondary-lighter"
-                  link={link.link}
+                  link={link?.link}
                   target="_blank"
                   icon={<IconComponent className="w-6 h-6 text-accent" />}
                 />
