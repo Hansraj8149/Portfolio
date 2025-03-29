@@ -10,12 +10,12 @@ import Loader from "../Loader";
 
 const Contact = async () => {
   const data = await GetSectionData("contacts");
-  if (!data || !data.length) {
-    return <Loader />;
-  }
+
   const contacts: ContactProps = data?.data?.[0];
 
-
+  if (!contacts) {
+    return <Loader />;
+  }
   return (
     <div className="w-full py-24 bg-background-light">
       <div className="max-w-6xl mx-auto">

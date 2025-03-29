@@ -17,12 +17,12 @@ const iconMap = {
 };
 const Hero = async () => {
   const data = await GetSectionData("heroes");
-  if (!data || !data.length) {
-    return <Loader />;
-  }
+
   const hero: HeroProps = data?.data?.[0];
 
-
+  if (!hero) {
+    return <Loader />;
+  }
 
   return (
     <div
