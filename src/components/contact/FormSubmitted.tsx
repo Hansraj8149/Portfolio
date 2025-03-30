@@ -1,7 +1,5 @@
 "use client";
 import SpotlightButton from "../SpotlightButton";
-import Lottie from "lottie-react";
-import successCheck from "../successCheck.json"
 interface FormSubmittedProps {
   resetForm: () => void;
 }
@@ -9,7 +7,7 @@ interface FormSubmittedProps {
 const FormSubmitted = ({resetForm}: FormSubmittedProps) => {
   return (
     <div className="flex flex-col items-center justify-center gap-6">
-      <Lottie className="h-48 w-48" animationData={successCheck} loop={true} />
+      {/* <Lottie className="h-48 w-48" animationData={successCheck} loop={true} /> */}
 
       <h3 className="text-2xl font-bold text-text">
         Thank you for getting in touch!
