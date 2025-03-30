@@ -1,3 +1,4 @@
+"use client";
 import SpotlightButton from "../SpotlightButton";
 import Lottie from "lottie-react";
 import successCheck from "../successCheck.json"
