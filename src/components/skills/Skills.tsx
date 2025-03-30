@@ -9,11 +9,11 @@ import SkillsMarquee from "./SkillsMarquee";
 const Skills = async () => {
   const data = await GetSectionData("skills");
 
-  const skills: SkillsProps = data?.data?.[0];
+  const skills: SkillsProps = data?.data?.length ? data.data[0] : null;
 
   if (!skills) return <Loader />;
 
-  const skillsByTag: {[key: string]: SkillsType[]} = skills.skills.reduce((acc: {[key: string]: SkillsType[]}, skill: SkillsType) => {
+  const skillsByTag: {[key: string]: SkillsType[]} = skills?.skills?.reduce((acc: {[key: string]: SkillsType[]}, skill: SkillsType) => {
     const tag = skill.tag.trim();
     if (!acc[tag]) acc[tag] = [];
     acc[tag].push(skill);
@@ -24,9 +24,9 @@ const Skills = async () => {
     <section id="skills" className="w-full py-24 overflow-hidden">
       <div className="content-frame flex-col items-center justify-center gap-12">
         <SectionHeader
-          heading={skills.heading}
-          subheading={skills.subheading}
-          description={skills.description}
+          heading={skills?.heading}
+          subheading={skills?.subheading}
+          description={skills?.description}
         />
         <SkillsMarquee skillsByTag={skillsByTag} />
       </div>

@@ -7,7 +7,7 @@ import WorkClientSide from "./WorkClientSide";
 const Work = async () => {
   const data = await GetSectionData("works");
 
-  const worksData: WorksProps = data?.data?.[0];
+  const worksData: WorksProps = data?.data?.length ? data.data[0] : null;
 
   if (!worksData) {
     return <Loader />;

@@ -1,9 +1,14 @@
+"use client";
+import dynamic from "next/dynamic";
 import SpotlightButton from "../SpotlightButton";
-import Lottie from "lottie-react";
-import successCheck from "../successCheck.json"
+
+import successCheck from "../successCheck.json";
 interface FormSubmittedProps {
   resetForm: () => void;
 }
+
+
+const Lottie = dynamic(() => import('lottie-react'), {ssr: false});
 
 const FormSubmitted = ({resetForm}: FormSubmittedProps) => {
   return (

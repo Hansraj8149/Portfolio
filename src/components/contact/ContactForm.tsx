@@ -5,7 +5,7 @@ import clsx from "clsx";
 import {Form, FormInput} from "@/lib/models";
 import Input from "../Input";
 import {motion} from "motion/react";
-import {MagicCard} from "../magicui/magic-card";
+import {MagicCard} from "./magic-card";
 import SpotlightButton from "../SpotlightButton";
 import {BiMailSend} from "react-icons/bi";
 import {AiOutlineLoading3Quarters} from "react-icons/ai";

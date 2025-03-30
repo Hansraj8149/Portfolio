@@ -60,6 +60,8 @@ export function MagicCard({
   }, [handleMouseMove, mouseX, gradientSize, mouseY]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return; // Prevents execution on the server
+
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseout", handleMouseOut);
     document.addEventListener("mouseenter", handleMouseEnter);
@@ -70,6 +72,7 @@ export function MagicCard({
       document.removeEventListener("mouseenter", handleMouseEnter);
     };
   }, [handleMouseEnter, handleMouseMove, handleMouseOut]);
+
 
   useEffect(() => {
     mouseX.set(-gradientSize);

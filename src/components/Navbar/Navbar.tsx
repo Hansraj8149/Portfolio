@@ -8,7 +8,7 @@ import Loader from "../Loader";
 const Navbar = async () => {
   const data = await GetSectionData("navbars");
 
-  const navbars: NavbarProps = data?.data?.[0];
+  const navbars: NavbarProps = data?.data?.length ? data.data[0] : null;
   if (!navbars) {
     return <Loader />;
   }

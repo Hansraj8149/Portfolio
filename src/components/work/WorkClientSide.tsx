@@ -41,7 +41,7 @@ const WorkClientSide = ({worksData}: {worksData: WorksProps}) => {
         subheading={worksData?.subHeading || "Check out my latest projects"}
         description={worksData?.description || "Check out my latest projects"}
       />
-      <StickyScroll works={worksData.works} activeCard={activeCard} ref={ref} />
+      <StickyScroll works={worksData?.works} activeCard={activeCard} ref={ref} />
 
 
     </motion.div>

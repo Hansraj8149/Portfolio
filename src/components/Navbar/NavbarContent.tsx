@@ -19,10 +19,10 @@ const ICONS_MAP: Record<string, JSX.Element> = {
 const NavbarContent = ({navbars}: {navbars: NavbarProps}) => {
   const {navbarLinks, primaryButtonLink, primaryButtonText} = navbars;
 
-  const links = navbarLinks.map((link: {name: string; link: string}) => ({
-    title: link.name,
-    icon: ICONS_MAP[link.name],
-    href: link.link,
+  const links = navbarLinks?.map((link: {name: string; link: string}) => ({
+    title: link?.name,
+    icon: ICONS_MAP[link?.name],
+    href: link?.link,
   }));
 
   return (
