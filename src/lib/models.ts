@@ -4,7 +4,7 @@ interface TextNode {
   type: string;
 }
 
-interface Paragraph {
+export interface Paragraph {
   type: string;
   children: TextNode[];
 }
@@ -15,6 +15,7 @@ export interface SkillTagsProps {
 export interface ImageProps {
   url: string;
   name: string;
+  alternativeText: string;
 }
 export interface NavbarProps {
   id: number;
@@ -25,6 +26,13 @@ export interface NavbarProps {
     name: string;
     link: string;
   }[];
+}
+
+export interface SeoResponse {
+  title: string;
+  description: string;
+  url: string;
+  openGraphImage: ImageProps;
 }
 
 export interface HeroProps {
@@ -49,7 +57,7 @@ export interface AboutProps {
   aboutPoints: {
     id: number;
     title: string;
-    description: { type: string; children: { text: string }[] }[];
+    description: Paragraph[];
   }[];
   photoCard: {
     heading: string;
@@ -101,10 +109,6 @@ export interface ExpertiseProps {
   subheading: string;
   expertises: Expertise[];
 }
-interface Icon {
-  id: number;
-  url: string;
-}
 
 export interface SkillsType {
   id: number;
@@ -144,7 +148,7 @@ export interface ContactDetail {
   id: number;
   name: string;
   value: string;
-  icon: Icon;
+  icon: ImageProps;
 }
 
 export interface FormInput {

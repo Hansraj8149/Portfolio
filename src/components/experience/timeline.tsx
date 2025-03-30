@@ -142,7 +142,7 @@ export const Timeline = ({experiences}: {experiences: Experience[]}) => {
                 <div className="flex flex-wrap gap-2 mt-6">
                   {experience.images.map((image, imgIndex) => (
                     <motion.div key={imgIndex} initial={{opacity: 0, scale: 0.9, y: 10}} animate={{opacity: 1, scale: 1, y: 0}} transition={{delay: 0.1 + imgIndex * 0.08, duration: 0.3}} className="relative group">
-                      <Image width={500} height={500} className="rounded-md object-cover w-16 lg:w-40 md:w-32 h-16 md:h-32 lg:h-40 transition-transform group-hover:scale-105" src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${image.url}`} alt={`${experience.company} image ${imgIndex + 1}`} />
+                      <Image width={500} height={500} className="rounded-md object-cover w-16 lg:w-40 md:w-32 h-16 md:h-32 lg:h-40 transition-transform group-hover:scale-105" src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${image.url}`} alt={`${image?.alternativeText || "Hansraj Saini - Full Stack Developer"} image ${imgIndex + 1}`} />
                     </motion.div>
                   ))}
                 </div>

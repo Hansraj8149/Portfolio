@@ -47,7 +47,7 @@ export const BentoGridItem = ({
         <div className="relative h-48 w-full overflow-hidden rounded-md">
           <Image
             src={imageUrl}
-            alt={typeof title === 'string' ? title : 'Item image'}
+            alt={"Hansraj Saini - Full Stack Developer"}
             fill
             className="transition-transform duration-200 group-hover/bento:scale-105 object-cover"
           />

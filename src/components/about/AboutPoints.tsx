@@ -1,7 +1,9 @@
+import {Paragraph} from "@/lib/models";
+
 interface AboutPointsProps {
   icon: React.ReactNode;
   title: string;
-  description: string;
+  description: Paragraph[];
 }
 
 const AboutPoints = ({icon, title, description}: AboutPointsProps) => {
@@ -11,7 +13,21 @@ const AboutPoints = ({icon, title, description}: AboutPointsProps) => {
         <div className="p-2 bg-background rounded">{icon}</div>
         <div>
           <h4 className="font-semibold text-text mb-1">{title}</h4>
-          <p className="text-text-secondary text-sm">{description}</p>
+          {description && (
+            <ul className="mt-5 space-y-3 text-light-text-dark text-sm" >
+              {description?.map((desc, i) => (
+                <li key={i} className="flex items-start gap-2.5" >
+
+                  <span className="leading-relaxed">
+                    {desc.children.map((child, idx) =>
+                      // child.bold ? <strong key={idx} className="text-primary-light font-medium">{child.text}</strong> : 
+                      <span key={idx}>{child.text}</span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>

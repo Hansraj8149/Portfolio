@@ -38,7 +38,7 @@ const PhotoCard = ({
           <div className="relative w-full aspect-square overflow-hidden rounded-xl">
             <Image
               src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${image.url}`}
-              alt="Hansraj Saini - Full Stack Developer"
+              alt={image.alternativeText || "Hansraj Saini - Full Stack Developer"}
               fill
               className="object-cover transform group-hover/card:scale-105 transition-transform duration-500"
             />
