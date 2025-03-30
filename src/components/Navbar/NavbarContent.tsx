@@ -176,6 +176,7 @@ const NavbarContent = ({navbars}: {navbars: NavbarProps}) => {
                     <SpotlightButton variant="primary" className="w-full">
                       <button
                         type="submit"
+                        onClick={() => window.open(primaryButtonLink, "_blank")}
                         className={clsx(
                           "relative z-10 flex items-center justify-center gap-2 rounded bg-background px-6 py-2 ring-1 ring-primary/20 w-full"
                         )}

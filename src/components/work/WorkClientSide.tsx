@@ -26,11 +26,14 @@ const WorkClientSide = ({worksData}: {worksData: WorksProps}) => {
     setActiveCard(closestIndex);
   });
   const backgroundColors = [
-    "#0d1117",
-    "#000000",
-    "#121212",
-    "#1a1a1a",
+    "#0d1117", // Deep black with a hint of blue
+    "#000000", // Pure black
+    "#181818", // Soft black with a slight warm tint
+    "#1a1a1a", // Dark neutral gray-black
+    "#101418", // Deep charcoal with a blue undertone
+    "#121212", // True dark mode black
   ];
+
   return (
     <motion.div
 
