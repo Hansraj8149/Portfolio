@@ -27,7 +27,7 @@ const ContactInfo = ({contactDetails}: ContactProps) => {
             <div className="relative w-8 h-8 flex items-center justify-center">
               <Image
                 src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${contact?.icon?.url}`}
-                alt={contact?.name}
+                alt={contact?.icon?.alternativeText || "Hansraj Saini - Full Stack Developer "}
                 width={24}
                 height={24}
                 className="transition-transform duration-300 group-hover:scale-110"

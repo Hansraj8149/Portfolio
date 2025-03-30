@@ -1,3 +1,17 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
-Disallow:
+Allow: /
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Host
+Host: https://hansrajsaini.vercel.app
+
+# Sitemaps
+Sitemap: https://hansrajsaini.vercel.app/sitemap.xml

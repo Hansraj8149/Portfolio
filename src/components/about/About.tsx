@@ -57,7 +57,7 @@ const About = async () => {
                 key={point.id}
                 icon={getIcon(index)}
                 title={point.title}
-                description={point.description[0].children[0].text}
+                description={point.description}
               />
             ))}
           </div>

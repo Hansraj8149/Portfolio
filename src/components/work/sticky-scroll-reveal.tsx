@@ -127,7 +127,7 @@ export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
           width={320}
           height={320}
           className="h-full w-full object-cover"
-          alt="Project Preview"
+          alt={works[activeCard]?.image[0]?.alternativeText || "Hansraj Saini - Full Stack Developer"}
         />
       </motion.div>
     </motion.div>
