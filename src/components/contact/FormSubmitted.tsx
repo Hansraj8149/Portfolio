@@ -1,13 +1,19 @@
 "use client";
+import dynamic from "next/dynamic";
 import SpotlightButton from "../SpotlightButton";
+
+import successCheck from "../successCheck.json";
 interface FormSubmittedProps {
   resetForm: () => void;
 }
 
+
+const Lottie = dynamic(() => import('lottie-react'), {ssr: false});
+
 const FormSubmitted = ({resetForm}: FormSubmittedProps) => {
   return (
     <div className="flex flex-col items-center justify-center gap-6">
-      {/* <Lottie className="h-48 w-48" animationData={successCheck} loop={true} /> */}
+      <Lottie className="h-48 w-48" animationData={successCheck} loop={true} />
 
       <h3 className="text-2xl font-bold text-text">
         Thank you for getting in touch!

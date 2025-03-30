@@ -1,4 +1,3 @@
-"use client";
 import React, {useState} from "react";
 import ContactForm from "./ContactForm";
 import FormSubmitted from "./FormSubmitted";

@@ -1,4 +1,3 @@
-"use client"
 import React from "react";
 import Image from "next/image";
 import {CardBody, CardContainer, CardItem} from "@/components/about/3d-card";
