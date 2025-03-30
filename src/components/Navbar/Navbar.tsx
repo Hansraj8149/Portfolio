@@ -12,7 +12,12 @@ const Navbar = async () => {
   if (!navbars) {
     return <Loader />;
   }
-  return <NavbarContent navbars={navbars} />;
+  return (
+
+    <NavbarContent navbars={navbars} />
+  )
+
+
 };
 
 export default Navbar;
