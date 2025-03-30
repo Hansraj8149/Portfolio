@@ -13,12 +13,12 @@ const Lottie = dynamic(() => import('lottie-react'), {ssr: false});
 const FormSubmitted = ({resetForm}: FormSubmittedProps) => {
   return (
     <div className="flex flex-col items-center justify-center gap-6">
-      <Lottie className="h-48 w-48" animationData={successCheck} loop={true} />
+      <Lottie className="h-36 w-36lg:h-48 lg:w-48" animationData={successCheck} loop={false} />
 
-      <h3 className="text-2xl font-bold text-text">
+      <h3 className="text-xl lg:text-2xl font-bold text-text">
         Thank you for getting in touch!
       </h3>
-      <p className="text-lg text-text-secondary">
+      <p className="text-base lg:text-lg text-text-secondary">
         I&apos;ll get back to you as soon as possible.
       </p>
       <SpotlightButton

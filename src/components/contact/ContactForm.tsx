@@ -18,7 +18,7 @@ const ContactForm = ({form, onFormSubmit}: ContactFormProps) => {
   const initialState = form.input.reduce(
     (acc: {[key: string]: string}, input: FormInput) => ({
       ...acc,
-      [input.label]: "",
+      [input.label.toLowerCase()]: "",
     }),
     {}
   );
@@ -70,9 +70,9 @@ const ContactForm = ({form, onFormSubmit}: ContactFormProps) => {
                 key={field.label}
                 type={field.type}
                 placeholder={field.placeholder}
-                name={field.label}
+                name={field.label.toLowerCase()}
                 label={field.label}
-                value={formData[field.label]}
+                value={formData[field.label.toLowerCase()]}
                 onChange={handleChangeInput}
                 onFocus={() => setFocusedField(field.label)}
                 onBlur={() => setFocusedField(null)}

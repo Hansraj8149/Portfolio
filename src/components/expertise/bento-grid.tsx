@@ -48,9 +48,8 @@ export const BentoGridItem = ({
           <Image
             src={imageUrl}
             alt={typeof title === 'string' ? title : 'Item image'}
-            layout="fill"
-            objectFit="cover"
-            className="transition-transform duration-200 group-hover/bento:scale-105"
+            fill
+            className="transition-transform duration-200 group-hover/bento:scale-105 object-cover"
           />
         </div>
       )}

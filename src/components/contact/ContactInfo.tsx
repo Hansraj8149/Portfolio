@@ -21,8 +21,8 @@ const ContactInfo = ({contactDetails}: ContactProps) => {
             border border-border"
         >
           <div
-            className="p-3 rounded-full mr-5 bg-primary/20 
-            group-hover:bg-primary/30 transition-colors duration-300"
+            className="p-3 rounded-full mr-5 bg-accent/20 
+            "
           >
             <div className="relative w-8 h-8 flex items-center justify-center">
               <Image
@@ -35,7 +35,7 @@ const ContactInfo = ({contactDetails}: ContactProps) => {
             </div>
           </div>
           <div>
-            <h3 className="text-xs uppercase tracking-wider font-semibold mb-1.5 text-gray-400 group-hover:text-primary-light transition-colors duration-300">
+            <h3 className="text-xs uppercase tracking-wider font-semibold mb-1.5 text-text-secondary">
               {contact?.name}
             </h3>
             <a
@@ -44,8 +44,7 @@ const ContactInfo = ({contactDetails}: ContactProps) => {
                   ? `mailto:${contact?.value}`
                   : `tel:${contact?.value}`
               }
-              className="text-lg font-medium text-text-secondary 
-                group-hover:text-primary-light transition-colors duration-300"
+              className="text-base lg:text-lg font-medium text-text"
             >
               {contact?.value}
             </a>
