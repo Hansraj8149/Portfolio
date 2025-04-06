@@ -2,6 +2,7 @@
 import {ContactDetail} from "@/lib/models";
 import Image from "next/image";
 import {motion} from "motion/react";
+import {getFullMediaUrl} from "@/utils/utils";
 
 interface ContactProps {
   contactDetails: ContactDetail[];
@@ -26,7 +27,7 @@ const ContactInfo = ({contactDetails}: ContactProps) => {
           >
             <div className="relative w-8 h-8 flex items-center justify-center">
               <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${contact?.icon?.url}`}
+                src={getFullMediaUrl(contact?.icon?.url)}
                 alt={contact?.icon?.alternativeText || "Hansraj Saini - Full Stack Developer "}
                 width={24}
                 height={24}

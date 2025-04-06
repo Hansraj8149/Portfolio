@@ -32,7 +32,7 @@ export interface SeoResponse {
   title: string;
   description: string;
   url: string;
-  openGraphImage: ImageProps;
+  image: ImageProps;
 }
 
 export interface HeroProps {

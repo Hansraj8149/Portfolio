@@ -1,13 +1,13 @@
 import React from "react";
 import {SkillsProps, SkillsType} from "@/lib/models";
 import SectionHeader from "../SectionHeader";
-import GetSectionData from "../GetSectionData";
+import {getSectionData} from "@/utils/utils";
 import {AppWrap} from "@/wrapper";
 import Loader from "../Loader";
 import SkillsMarquee from "./SkillsMarquee";
 
 const Skills = async () => {
-  const data = await GetSectionData("skills");
+  const data = await getSectionData("skills");
 
   const skills: SkillsProps = data?.data?.length ? data.data[0] : null;
 

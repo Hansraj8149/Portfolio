@@ -7,6 +7,7 @@ import {AiFillEye, AiFillGithub} from "react-icons/ai";
 import Tag from "../Tag";
 import SpotlightButton from "../SpotlightButton";
 import {IoCheckmark} from "react-icons/io5";
+import {getFullMediaUrl} from "@/utils/utils";
 
 interface WorkCardProps {
   works: WorkType[];
@@ -123,7 +124,7 @@ export const StickyScroll = ({works, activeCard, ref}: WorkCardProps) => {
         className="sticky top-48 lg:top-28 w-56 h-36 lg:h-72 lg:w-80 rounded-lg lblock overflow-hidden px-4"
       >
         <Image
-          src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${works[activeCard]?.image[0]?.url}`}
+          src={getFullMediaUrl(works[activeCard]?.image[0]?.url)}
           width={320}
           height={320}
           className="h-full w-full object-cover"

@@ -5,7 +5,8 @@ import {AboutProps} from "@/lib/models";
 import {HiOutlineLightBulb} from "react-icons/hi";
 import {RiCodeSSlashLine} from "react-icons/ri";
 import {FiAward, FiCode, FiArrowRight} from "react-icons/fi";
-import GetSectionData from "../GetSectionData";
+import {getSectionData} from "@/utils/utils";
+
 import Loader from "../Loader";
 import SectionHeader from "../SectionHeader";
 import SpotlightButton from "../SpotlightButton";
@@ -30,7 +31,7 @@ const getIcon = (index: number) => {
 };
 
 const About = async () => {
-  const data = await GetSectionData("abouts");
+  const data = await getSectionData("abouts");
   const abouts: AboutProps = data?.data?.length ? data.data[0] : null;
 
   if (!abouts) {

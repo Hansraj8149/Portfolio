@@ -6,7 +6,7 @@ import {Navbar} from "@/components/Navbar/index";
 import AnimatedCursor from "react-animated-cursor";
 import {ScrollProgress} from "@/components/scroll-progress";
 import {SeoResponse} from "@/lib/models";
-import GetSectionData from "@/components/GetSectionData";
+import {getFullMediaUrl, getSectionData} from "@/utils/utils";
 import {siteConfig} from "@/constants/config";
 import {Analytics} from "@vercel/analytics/react"
 const karla = Karla({
@@ -21,9 +21,9 @@ const nanumPenScript = Nanum_Pen_Script({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await GetSectionData("seos");
+  const data = await getSectionData("seos");
   const seoData: SeoResponse = data?.data?.[0];
-  const openGraphImageUrl = `${process.env.NEXT_PUBLIC_STRAPI_IMAGE_BASE_URL}${seoData?.openGraphImage?.url}`;
+  const openGraphImageUrl = getFullMediaUrl(seoData?.image?.url);
 
   return {
     metadataBase: new URL(siteConfig.url),

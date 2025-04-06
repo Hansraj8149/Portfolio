@@ -1,13 +1,13 @@
 import {AppWrap} from "@/wrapper";
 import {ExpertiseProps} from "@/lib/models";
 import SectionHeader from "../SectionHeader";
-import GetSectionData from "../GetSectionData";
+import {getFullMediaUrl, getSectionData} from "@/utils/utils";
 import Loader from "../Loader";
 
 import {BentoGrid, BentoGridItem} from "./bento-grid";
 
 const Expertise = async () => {
-  const data = await GetSectionData("expertises");
+  const data = await getSectionData("expertises");
 
   const expertises: ExpertiseProps = data?.data?.length ? data.data[0] : null;
 
@@ -32,9 +32,7 @@ const Expertise = async () => {
                 title={item?.title}
                 description={item?.description?.[0]?.children?.[0]?.text || ""}
                 imageUrl={
-                  item?.image?.[0]?.url
-                    ? `${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${item.image[0].url}`
-                    : "/default-image.jpg"
+                  getFullMediaUrl(item?.image[0]?.url)
                 }
                 level={item?.level}
                 rating={item?.rating}
