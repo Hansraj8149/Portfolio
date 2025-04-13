@@ -1,13 +1,13 @@
 import React from "react";
 import {ExperienceProps} from "@/lib/models";
 import SectionHeader from "../SectionHeader";
-import GetSectionData from "../GetSectionData";
+import {getSectionData} from "@/utils/utils";
 import Loader from "../Loader";
 import {AppWrap} from "@/wrapper";
 import {Timeline} from "./timeline";
 
 const Experience = async () => {
-  const data = await GetSectionData("experiences");
+  const data = await getSectionData("experiences");
 
   const experiences: ExperienceProps = data?.data?.length ? data.data[0] : null;
 

@@ -2,14 +2,15 @@ import React from "react";
 
 import {AppWrap} from "@/wrapper";
 import {ContactProps} from "@/lib/models";
-import GetSectionData from "../GetSectionData";
+import {getSectionData} from "@/utils/utils";
+
 import SectionHeader from "../SectionHeader";
 import ContactInfo from "./ContactInfo";
 import ContactSubmitted from "./ContactSubmitted";
 import Loader from "../Loader";
 
 const Contact = async () => {
-  const data = await GetSectionData("contacts");
+  const data = await getSectionData("contacts");
 
   const contacts: ContactProps = data?.data?.length ? data.data[0] : null;
 

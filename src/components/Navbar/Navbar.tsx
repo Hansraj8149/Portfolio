@@ -1,12 +1,12 @@
 import React from "react";
 
-import GetSectionData from "../GetSectionData";
+import {getSectionData} from "@/utils/utils";
 import {NavbarProps} from "@/lib/models";
 import NavbarContent from "./NavbarContent";
 import Loader from "../Loader";
 
 const Navbar = async () => {
-  const data = await GetSectionData("navbars");
+  const data = await getSectionData("navbars");
 
   const navbars: NavbarProps = data?.data?.length ? data.data[0] : null;
   if (!navbars) {

@@ -3,6 +3,7 @@ import Image from "next/image";
 import {CardBody, CardContainer, CardItem} from "@/components/about/3d-card";
 import {ImageProps, SkillTagsProps} from "@/lib/models";
 import Tag from "../Tag";
+import {getFullMediaUrl} from "@/utils/utils";
 
 interface PhotoCardProps {
   heading: string;
@@ -37,7 +38,7 @@ const PhotoCard = ({
         <CardItem translateZ={100} className="w-full h-auto z-10">
           <div className="relative w-full aspect-square overflow-hidden rounded-xl">
             <Image
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL}${image.url}`}
+              src={getFullMediaUrl(image.url)}
               alt={image.alternativeText || "Hansraj Saini - Full Stack Developer"}
               fill
               className="object-cover transform group-hover/card:scale-105 transition-transform duration-500"

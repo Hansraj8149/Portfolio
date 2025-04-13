@@ -1,4 +1,11 @@
-const GetSectionData = async (path: string) => {
+export const getFullMediaUrl = (path: string) => {
+  const base =
+    process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL ||
+    "https://portfolio-backend-xfse.onrender.com";
+  return path.startsWith("http") ? path : `${base}${path}`;
+};
+
+export const getSectionData = async (path: string) => {
   try {
     const baseUrl =
       process.env.NEXT_PUBLIC_STRAPI_API_BASE_URL ||
@@ -24,5 +31,3 @@ const GetSectionData = async (path: string) => {
     return { data: null };
   }
 };
-
-export default GetSectionData;
