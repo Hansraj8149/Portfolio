@@ -8,6 +8,7 @@ import Skills from "@/components/skills/Skills";
 import Work from "@/components/work/Work";
 
 export default function Home() {
+  console.log("test console");
   return (
     <div className="">
       <Hero />
