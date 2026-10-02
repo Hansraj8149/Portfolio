@@ -1,130 +1,127 @@
 @import "tailwindcss";
 
-@plugin "tailwindcss-animate";
-
-@custom-variant dark (&:is(.dark *));
-
 @theme {
-  --font-karla: var(--font-karla);
-  --font-nanum-pen-script: var(--font-nanum-pen-script);
-}
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
 
-@theme {
-  /* Primary Colors - Teal & Emerald */
-  --color-primary: #14b8a6; /* teal-500 */
-  --color-primary-light: #2dd4bf; /* teal-400 */
-  --color-primary-dark: #0f766e; /* teal-700 */
-  --color-primary-darker: #0d635d; /* deeper teal */
+  /* Black, white and green; silver grays carry everything else. Red = negative. */
+  --color-bg: #000000;
+  --color-panel: #0a0a0a;
+  --color-panel-2: #121212;
+  --color-line: #1d1d1d;
+  --color-line-2: #2c2c2c;
+  --color-fg: #ffffff;
+  --color-muted: #a3a8ae;
+  --color-dim: #63686e;
+  --color-up: #2bd47d;
+  --color-down: #ff5a5f;
 
-  /* Secondary Accent - Gold */
-  --color-accent: #ffd700; /* gold */
-  --color-accent-light: #ffdf42; /* lighter gold */
-  --color-accent-dark: #b29500; /* deeper gold */
-
-  /* Background - Black & Dark Shades */
-  --color-background: #0f0f0f; /* deep black */
-  --color-background-light: #171717; /* slightly lighter black */
-  --color-background-lighter: #1f1f1f; /* soft gray-black */
-
-  /* Text Colors */
-  --color-text: #ffffff; /* pure white */
-  --color-text-secondary: #d1d5db; /* neutral gray */
-
-  /* Borders */
-  --color-border: #1f2937; /* dark gray */
-  --color-border-light: #374151; /* soft gray */
-  --color-border-dark: #0d131a; /* deep blue-black */
-
-  /* Buttons & Interactive Elements */
-  --color-button-primary: var(--color-primary);
-  --color-button-hover: var(--color-primary-dark);
-  --color-button-text: var(--color-text);
-
-  /* Secondary Button & Highlights */
-  --color-button-secondary: var(--color-accent);
-  --color-button-secondary-hover: var(--color-accent-dark);
-}
-
-
-
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}
-
-
-/* SPOTLIGHT ANIMATION */
-@theme {
-  --animate-spotlight: spotlight 2s ease .75s 1 forwards;
-  @keyframes spotlight {
-    0%{
-      opacity: 0;
-      transform: translate(-72%, -62%) scale(0.5)
-    }
-    100% {
-      opacity: 1;
-      transform: translate(-50%,-40%) scale(1);
-    }
-   
+  --animate-tape: tape 60s linear infinite;
+  @keyframes tape {
+    to { transform: translateX(-50%); }
   }
-}
-
-
-
-
-/* RIPPLE ANIMATION */
-
-@theme {
-  --animate-ripple: ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite;
-  @keyframes ripple {
-    0% ,100%{
-      transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(0.9);
-    }
+  --animate-fade-in: fade-in 0.35s ease both;
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
   }
-}
-
-/* MARQUEE ANIMATION */
-
-@theme {
-  --animate-marquee: marquee var(--duration, 20s) linear infinite;
-  --animate-marquee-vertical: marquee-vertical var(--duration, 20s) linear infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
-  }
-
-  @keyframes marquee-vertical {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(calc(-100% - var(--gap, 0px)));
-    }
+  --animate-blink: blink 1.1s steps(1) infinite;
+  @keyframes blink {
+    50% { opacity: 0; }
   }
 }
 
 @layer base {
-  
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
-    @apply bg-background text-text;
+    @apply bg-bg text-fg font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background: var(--color-up);
+    color: var(--color-bg);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-up);
+    outline-offset: 2px;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
   }
 }
-.app-head {
-  font-size: 2.75rem;
-  font-weight: bold;
-  font-family: var(--font-eczar), serif;
+
+/* Panels share one hairline frame so the page reads as a single terminal. */
+.panel {
+  @apply border border-line bg-panel;
+}
+.panel-head {
+  @apply flex items-center justify-between gap-3 border-b border-line px-4 py-2 font-mono text-[11px] tracking-wider text-muted uppercase;
+}
+
+/* Faint grid behind the hero, like chart paper. */
+.chart-paper {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 75%);
+}
+
+/* Reveal-on-scroll: content is only hidden once JS has marked the page,
+   so nothing disappears for no-JS visitors or crawlers. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.js [data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Pulsing ring on career milestones until the visitor interacts. */
+.career-ring {
+  stroke-width: 1.5;
+  animation: career-ring 2.2s ease-out infinite;
+}
+@keyframes career-ring {
+  from { r: 8px; opacity: 0.9; }
+  to { r: 24px; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 
-
+/* A small signal travelling along the system-map pipeline. */
+.flow-signal {
+  left: 12%;
+  box-shadow: 0 0 10px 2px var(--color-up);
+  animation: flow-signal 2.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+@keyframes flow-signal {
+  from { left: 12%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  to { left: 88%; opacity: 0; }
+}
