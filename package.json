@@ -7,24 +7,20 @@
     "build": "cross-env NODE_ENV=production next build",
     "start": "cross-env NODE_ENV=production next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "portrait": "node scripts/build-portrait.mjs",
+    "brand": "node scripts/build-brand.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
     "emailjs-com": "^3.2.0",
-    "framer-motion": "^12.6.2",
-    "lottie-react": "^2.4.1",
-    "motion": "^12.6.2",
-    "next": "15.2.0",
+    "lucide-react": "^1.50.0",
+    "next": "^15.5.27",
     "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
-    "react-animated-cursor": "^2.11.2",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0",
-    "tailwind-merge": "^3.0.2",
-    "tailwindcss-animate": "^1.0.7"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -34,8 +30,10 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.20",
     "eslint": "^9",
-    "eslint-config-next": "15.2.0",
+    "eslint-config-next": "^15.5.27",
+    "opentype.js": "^2.0.0",
     "postcss": "^8.5.3",
+    "sharp": "^0.34.1",
     "tailwindcss": "^4.0.9",
     "typescript": "^5"
   },
