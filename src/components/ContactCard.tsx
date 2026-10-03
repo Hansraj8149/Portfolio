@@ -1,4 +1,4 @@
-import { ArrowUpRight, CodeXml, FileText, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, CodeXml, FileText, Mail } from "lucide-react";
 import { profile } from "@/content/profile";
 
 type IconProps = { className?: string };
@@ -77,12 +77,13 @@ export default function ContactCard() {
         ))}
       </ul>
 
-      <div className="mt-auto space-y-1.5 border-t border-line p-5 font-mono text-[11px] text-dim">
-        <p className="flex items-center gap-2">
-          <MapPin className="h-3.5 w-3.5" /> {profile.location} · IST (UTC+5:30)
-        </p>
-        <p className="pl-[22px]">{profile.remote}</p>
-      </div>
+      <figure className="mt-auto border-t border-line p-5">
+        <blockquote className="font-serif text-2xl leading-snug text-fg italic">
+          <span className="mr-1 text-up not-italic">“</span>
+          {profile.quote.text}
+        </blockquote>
+        <figcaption className="mt-3 font-mono text-[10px] tracking-wider text-dim uppercase">— {profile.quote.by}</figcaption>
+      </figure>
     </aside>
   );
 }

@@ -7,6 +7,8 @@ export const profile = {
   specialty: "Fintech",
   location: "Jaipur, India",
   remote: "Remote · overlaps US / EU / JST",
+  /** Closing line on the contact card. */
+  quote: { text: "Ship small. Reconcile daily. Let it compound.", by: "How I build" },
   headline: "I build the software money moves through.",
   intro:
     "Product engineer for web and mobile, specialised in fintech. I've shipped a brokerage app for iOS and Android, an AI market-intelligence platform, and the back-office systems behind them — working directly with founders.",
