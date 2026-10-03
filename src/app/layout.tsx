@@ -1,147 +1,75 @@
-import type {Metadata} from "next";
-import {Karla, Nanum_Pen_Script} from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { profile } from "@/content/profile";
 import "./globals.css";
-import "./components.css";
-import {Navbar} from "@/components/Navbar/index";
-import AnimatedCursor from "react-animated-cursor";
-import {ScrollProgress} from "@/components/scroll-progress";
-import {SeoResponse} from "@/lib/models";
-import GetSectionData from "@/components/GetSectionData";
-import {siteConfig} from "@/constants/config";
-import {Analytics} from "@vercel/analytics/react"
-const karla = Karla({
-  variable: "--font-karla",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-});
-const nanumPenScript = Nanum_Pen_Script({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-nanum-pen-script",
-});
 
-export async function generateMetadata(): Promise<Metadata> {
-  const data = await GetSectionData("seos");
-  const seoData: SeoResponse = data?.data?.[0];
-  const openGraphImageUrl = `${process.env.NEXT_PUBLIC_STRAPI_IMAGE_BASE_URL}${seoData?.openGraphImage?.url}`;
+const sans = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const serif = Newsreader({ variable: "--font-newsreader", subsets: ["latin"], style: ["normal", "italic"] });
+const mono = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"] });
 
-  return {
-    metadataBase: new URL(siteConfig.url),
-    title: {
-      default: siteConfig.title,
-      template: `%s | ${siteConfig.title}`,
-    },
-    description: siteConfig.description,
-    robots: {
-      index: true,
-      follow: true,
-    },
-    icons: {
-      icon: "/favicon/favicon.ico",
-      shortcut: "/favicon/favicon-16x16.png",
-      apple: "/favicon/apple-touch-icon.png",
-    },
-    manifest: `/favicon/site.webmanifest`,
-    openGraph: {
-      url: siteConfig.url,
-      title: seoData?.title || siteConfig.title,
-      description: seoData?.description || siteConfig.description,
-      siteName: siteConfig.title,
-      images: [
-        {
-          url: openGraphImageUrl,
-          width: 1200,
-          height: 630,
-          alt: "Hansraj Saini - Full Stack Developer",
-        },
-      ],
-      type: "website",
-      locale: "en_US",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: seoData?.title || siteConfig.title,
-      description: seoData?.description || siteConfig.description,
-      images: [openGraphImageUrl],
-      site: "https://x.com/Hansraj32323520",
-      creator: "@Hansaj32323520",
-    },
+const title = `${profile.name} — ${profile.role}, ${profile.specialty}`;
+const description =
+  "Product engineer for web and mobile, specialised in fintech. Shipped the Unlok trading app (iOS + Android), Unlok Insights and Flyku. React Native, Next.js, TypeScript, Temporal, AI agents.";
 
-    alternates: {
-      canonical: siteConfig.url,
-    },
-    appLinks: {
-      web: {
-        url: siteConfig.url,
-        should_fallback: true,
-      },
-    },
-  };
-}
+export const metadata: Metadata = {
+  metadataBase: new URL(profile.url),
+  title: { default: title, template: `%s | ${profile.name}` },
+  description,
+  alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico", sizes: "48x48" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon/favicon-96x96.png", sizes: "96x96" },
+    ],
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  manifest: "/favicon/site.webmanifest",
+  openGraph: {
+    type: "website",
+    url: profile.url,
+    title,
+    description,
+    siteName: profile.name,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    creator: "@Hansraj32323520",
+  },
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<{children: React.ReactNode}>) {
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  url: profile.url,
+  sameAs: profile.socials.map((s) => s.href),
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="/favicon/favicon.ico" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Hansraj Saini",
-            "jobTitle": "Full Stack Developer",
-            "url": "https://hansrajsaini.vercel.app/",
-            "sameAs": [
-              "https://www.linkedin.com/in/hansraj-saini-634864190/",
-              "https://github.com/Hansraj8149",
-              "https://x.com/Hansraj32323520"
-            ]
-          })}
-        </script>
-
+        {/* Marks the page as JS-enabled before paint so reveal styles apply without a flash. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
-      <body className={`${karla.variable} ${nanumPenScript.variable} antialiased`}>
-        <div className="lg:block md:block hidden">
-          <AnimatedCursor
-            innerSize={4}
-            outerSize={40}
-            innerScale={0.7}
-            outerScale={2}
-            innerStyle={{
-              backgroundColor: "rgb(20, 184, 166)",
-            }}
-            outerStyle={{
-              backgroundColor: "transparent",
-              border: "2px solid white",
-            }}
-            outerAlpha={1}
-            clickables={[
-              "a",
-              'input[type="text"]',
-              'input[type="email"]',
-              'input[type="number"]',
-              'input[type="submit"]',
-              'input[type="image"]',
-              "label[for]",
-              "select",
-              "textarea",
-              "button",
-              ".link",
-              {
-                target: ".custom",
-              },
-            ]}
-          />
-        </div>
-        <Analytics />
-        <Navbar />
-        <ScrollProgress />
+      <body>
         {children}
+        <Analytics />
       </body>
     </html>
   );

@@ -1,0 +1,15 @@
+networks:
+  local:
+    driver: bridge
+
+services:
+  frontend:
+    image: 992382607149.dkr.ecr.eu-north-1.amazonaws.com/hansraj-portfolio-frontend:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - local
+    deploy:
+      resources:
+        limits:
+          memory: 400m
