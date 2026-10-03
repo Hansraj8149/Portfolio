@@ -1,0 +1,48 @@
+name: Deploy Portfolio
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
+    branches: [main, master]
+    paths-ignore: ['**.md', 'Dockerfile', 'docker-compose.yml', 'deploy-*.sh']
+  push:
+    branches: [main, master]
+    paths-ignore: ['**.md', 'Dockerfile', 'docker-compose.yml', 'deploy-*.sh']
+
+jobs:
+  build-and-deploy:
+    env:
+      APP_NAME: portfolio
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      # push to main/master ships to production, pull requests get a preview
+      VERCEL_ENV: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Pull Vercel environment - ${{ env.VERCEL_ENV }}
+        run: vercel pull --yes --environment=${{ env.VERCEL_ENV }} --token=$VERCEL_TOKEN
+
+      - name: Build ${{ env.APP_NAME }}
+        run: vercel build ${{ env.VERCEL_ENV == 'production' && '--prod' || '' }} --token=$VERCEL_TOKEN
+
+      - name: Deploy ${{ env.APP_NAME }} to Vercel - ${{ env.VERCEL_ENV }}
+        run: |
+          url=$(vercel deploy --prebuilt ${{ env.VERCEL_ENV == 'production' && '--prod' || '' }} --token=$VERCEL_TOKEN)
+          echo "Deployed to $url" >> "$GITHUB_STEP_SUMMARY"
