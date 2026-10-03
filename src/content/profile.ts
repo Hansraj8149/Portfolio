@@ -13,7 +13,7 @@ export const profile = {
   intro:
     "Product engineer for web and mobile, specialised in fintech. I've shipped a brokerage app for iOS and Android, an AI market-intelligence platform, and the back-office systems behind them — working directly with founders.",
   resume: "https://drive.google.com/file/d/1SoKBP5J_axRjmNAlJwAuv1E9UqmmUgK5/view",
-  email: "hansrajsaini8149@gmail.com",
+  email: "hansrajwork8149@gmail.com",
   url: "https://hansrajsaini.vercel.app",
   socials: [
     { name: "GitHub", href: "https://github.com/Hansraj8149" },
